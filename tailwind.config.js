@@ -6,9 +6,9 @@ const path = require('path');
 module.exports = {
   darkMode: 'class',
   content: [
-    path.join(__dirname, './src/pages/**/*.{js,ts,jsx,tsx}'),
-    path.join(__dirname, './src/modules/**/*.{js,ts,jsx,tsx}'),
-    path.join(__dirname, './src/common/**/*.{js,ts,jsx,tsx}'),
+    path.join(__dirname, './pages/**/*.{js,ts,jsx,tsx}'),
+    path.join(__dirname, './components/**/*.{js,ts,jsx,tsx}'),
+    path.join(__dirname, './modules/**/*.{js,ts,jsx,tsx}'),
   ],
   theme: {
     primaryColor: 'blue',
@@ -95,6 +95,7 @@ module.exports = {
         shake: 'kf_shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
         'bg-blur': 'kf_blur 1s ease-out',
         'slide-left': 'kf_slide_left 0.5s ease-out',
+        'slide-up': 'kf_slide_up 0.5s ease-out',
       },
       keyframes: {
         kf_modal: {
@@ -126,6 +127,10 @@ module.exports = {
         kf_slide_left: {
           '0%': { transform: 'translateX(4rem)', opacity: 0 },
           '100%': { transform: 'translateX(0rem)', opacity: 1 },
+        },
+        kf_slide_up: {
+          '0%': { transform: 'translateY(4rem)', opacity: 0 },
+          '100%': { transform: 'translateY(0rem)', opacity: 1 },
         },
       },
     },

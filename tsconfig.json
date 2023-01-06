@@ -21,6 +21,7 @@
     "strictPropertyInitialization": false,
     "strictNullChecks": true,
     "paths": {
+      "@res/*": ["./res/*"]
     }
   },
   "include": ["next-env.d.ts", "./**/*.ts","./**/*.d.ts", "./**/*.tsx"],
