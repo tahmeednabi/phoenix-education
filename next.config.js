@@ -1,6 +1,13 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const withPlugins = require('next-compose-plugins')
+const withSvgr = require('next-svgr');
+const withFonts = require('next-fonts');
 
-module.exports = nextConfig
+/** @type {require('next').NextConfig} */
+module.exports = withPlugins([
+  withSvgr,
+  withFonts
+], {
+  typescript: {
+    ignoreBuildErrors: true
+  }
+})

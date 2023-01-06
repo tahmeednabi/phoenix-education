@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false
+  },
+  "include": ["next-env.d.ts", "**/*.ts","./**/*.d.ts", "**/*.tsx"],
+  "exclude": ["node_modules", ".next", "shared"]
+}
