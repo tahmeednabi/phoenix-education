@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+echo "================================="
+echo "Running pre-commit tests"
+echo "================================="
+yarn lint
