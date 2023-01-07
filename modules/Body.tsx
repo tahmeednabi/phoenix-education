@@ -11,7 +11,9 @@ export default function Body() {
         <div ref={ref} className="flex flex-col gap-12 p-12">
           <Title />
 
-          <h1 className="container py-12 text-[4rem]">Experience</h1>
+          <h1 className="w-[56rem] xl:w-[84rem] mx-auto py-12 text-[4rem]">
+            Experience
+          </h1>
 
           <ExoDigital />
 
