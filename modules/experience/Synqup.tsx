@@ -7,13 +7,13 @@ import * as THREE from "three";
 const Synqup: React.FC = () => {
   return (
     <Card
-      className="relative animate-opacity flex flex-col justify-center gap-6 bg-gray-900 p-24 xl:p-36"
+      className="relative animate-opacity flex flex-col justify-center gap-6 bg-[#0e0c2d] p-24 xl:p-36"
       vanta={(ref) =>
         HALO({
           THREE,
           el: ref.current,
           color: "#a32abe",
-          backgroundColor: "#1e0d59",
+          backgroundColor: "#0e0c2d",
           xOffset: 0.3,
         })
       }
