@@ -121,4 +121,8 @@ a {
   h5 {
     @apply font-medium m-0;
   }
+
+  p {
+    @apply text-2xl font-light
+  }
 }

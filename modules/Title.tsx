@@ -15,7 +15,7 @@ const Title: React.FC = () => {
 
   return (
     <Card
-      className="relative animate-opacity flex flex-col justify-center bg-indigo-900 p-24 xl:p-36"
+      className="relative animate-opacity flex flex-col justify-center bg-[#1e0d59] p-24 xl:p-36"
       vanta={(ref) =>
         TOPOLOGY({
           p5,
@@ -33,10 +33,11 @@ const Title: React.FC = () => {
 
       <h2
         className="
-        font-bold text-right mr-96 text-[3rem] mt-8 leading-[1]
+        font-bold text-right mr-[24rem] xl:mr-[36rem] text-[3rem] xl:text-[4.5rem] mt-8 leading-[1]
         text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-300"
       >
-        FULL-STACK <br /> <span className="text-[2.8rem]">DEVELOPER</span>
+        FULL-STACK <br />
+        <span className="text-[2.8rem] xl:text-[4.2rem]">DEVELOPER</span>
       </h2>
 
       <motion.div
@@ -53,7 +54,7 @@ const Title: React.FC = () => {
         animate="show"
       >
         <motion.a
-          className="cursor-pointer hover:scale-105 transition"
+          className="cursor-pointer hover:-translate-y-1 transition duration-300"
           variants={buttonVariants}
           href="mailto:tahmeednabi1998@gmail.com"
         >
@@ -61,7 +62,7 @@ const Title: React.FC = () => {
         </motion.a>
 
         <motion.a
-          className="cursor-pointer hover:scale-105 transition"
+          className="cursor-pointer hover:-translate-y-1 transition duration-300"
           variants={buttonVariants}
           href="https://www.linkedin.com/in/tahmeed-nabi/"
         >
@@ -69,7 +70,7 @@ const Title: React.FC = () => {
         </motion.a>
 
         <motion.a
-          className="cursor-pointer hover:scale-105 transition"
+          className="cursor-pointer hover:-translate-y-1 transition duration-300"
           variants={buttonVariants}
           href="https://github.com/tahmeednabi"
         >
