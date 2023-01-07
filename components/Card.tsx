@@ -11,20 +11,26 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ vanta, children, className }) => {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
   const vantaRef = useRef<HTMLDivElement>(null);
-  const { ref: intersectionRef, inView } = useInView({ threshold: 0.5 });
+  const { ref: intersectionRef, inView } = useInView({ threshold: 0.2 });
   const ref = useMergedRef(vantaRef, intersectionRef);
 
   useEffect(() => {
-    if (vanta && !vantaEffect) {
+    if (!inView && vantaEffect) {
+      vantaEffect.destroy();
+      setVantaEffect(null);
+    }
+
+    if (inView && vanta && !vantaEffect) {
       setVantaEffect(vanta(vantaRef));
     }
+
     return () => {
       if (vantaEffect) {
         vantaEffect.destroy();
         setVantaEffect(null);
       }
     };
-  }, [vanta, vantaEffect]);
+  }, [vanta, vantaEffect, inView]);
 
   return (
     <div
