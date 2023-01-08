@@ -1,7 +1,9 @@
 import React from "react";
 import { InView } from "react-intersection-observer";
 import { ExoDigital } from "./experience/ExoDigital";
+import { Phoenix } from "./experience/Phoenix";
 import { Synqup } from "./experience/Synqup";
+import { Eclat } from "./projects/Eclat";
 import { Title } from "./Title";
 
 export default function Body() {
@@ -18,6 +20,14 @@ export default function Body() {
           <ExoDigital />
 
           <Synqup />
+
+          <Phoenix />
+
+          <h1 className="w-[56rem] xl:w-[84rem] mx-auto py-12 text-[4rem]">
+            Projects
+          </h1>
+
+          <Eclat />
         </div>
       )}
     </InView>

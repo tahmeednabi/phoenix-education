@@ -40,3 +40,10 @@ a {
     @apply text-2xl font-light
   }
 }
+
+.video > video {
+  @apply absolute top-10
+  -m-[4rem] scale-110 opacity-40
+  w-[12rem] h-[7rem]
+  pointer-events-none
+}

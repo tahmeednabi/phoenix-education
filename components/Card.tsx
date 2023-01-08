@@ -35,7 +35,7 @@ const Card: React.FC<CardProps> = ({ vanta, children, className }) => {
   return (
     <div
       ref={ref}
-      className={`w-[64rem] xl:w-[96rem] h-[36rem] xl:h-[54rem] rounded-[3rem] xl:rounded-[4rem] overflow-hidden mx-auto transition-transform duration-700 ${className}`}
+      className={`w-[64rem] xl:w-[96rem] h-[36rem] xl:h-[54rem] rounded-[3rem] xl:rounded-[4rem] overflow-hidden mx-auto transition-transform duration-500 ${className}`}
       style={{
         transform: inView ? "scale(1)" : "scale(0.95)",
       }}

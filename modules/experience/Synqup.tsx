@@ -18,8 +18,11 @@ const Synqup: React.FC = () => {
         })
       }
     >
-      <a href="https://exodigital.com.au">
-        <SynqupSvg className="absolute w-24" viewBox="0 0 139 32" />
+      <a
+        className="absolute top-24 left-24 xl:p-12"
+        href="https://exodigital.com.au"
+      >
+        <SynqupSvg className="w-24" viewBox="0 0 139 32" />
       </a>
 
       <h1 className="text-[3.5rem] mt-16">Full-stack Developer</h1>

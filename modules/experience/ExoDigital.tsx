@@ -17,11 +17,11 @@ const ExoDigital: React.FC = () => {
         className="absolute"
       />
 
-      <a href="https://exodigital.com.au">
-        <ExoDigitalSvg
-          className="absolute w-48 top-24 left-24"
-          viewBox="0 0 241 57"
-        />
+      <a
+        className="absolute top-24 left-24 xl:p-12"
+        href="https://exodigital.com.au"
+      >
+        <ExoDigitalSvg className="w-36" viewBox="0 0 241 57" />
       </a>
 
       <h1 className="text-[3.5rem] mt-16">Full-stack Developer</h1>
