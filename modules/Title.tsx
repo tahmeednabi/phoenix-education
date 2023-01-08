@@ -5,12 +5,22 @@ import * as p5 from "p5";
 import AtIcon from "@res/svgs/AtIcon.svg";
 import LinkedInIcon from "@res/svgs/LinkedInIcon.svg";
 import GithubIcon from "@res/svgs/GithubIcon.svg";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const Title: React.FC = () => {
-  const buttonVariants = {
-    hidden: { opacity: 0, translateY: 48 },
-    show: { opacity: 1, translateY: 0 },
+  const buttonVariants: Variants = {
+    hidden: { opacity: 0, scale: 0 },
+    show: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+  };
+
+  const titleVariants: Variants = {
+    hidden: { opacity: 0, translateY: 10 },
+    show: { opacity: 1, translateY: 0, transition: { delay: 0.5 } },
+  };
+
+  const subtitleVariants: Variants = {
+    hidden: { opacity: 0, translateY: 10 },
+    show: { opacity: 1, translateY: 0, transition: { delay: 1 } },
   };
 
   return (
@@ -25,20 +35,28 @@ const Title: React.FC = () => {
         })
       }
     >
-      <h1 className="text-[6rem] mt-10 xl:text-[9rem] leading-[0.9]">
+      <motion.h1
+        initial="hidden"
+        animate="show"
+        variants={titleVariants}
+        className="text-[6rem] mt-10 xl:text-[9rem] leading-[0.9]"
+      >
         Tahmeed
         <br />
         Nabi
-      </h1>
+      </motion.h1>
 
-      <h2
+      <motion.h2
+        initial="hidden"
+        animate="show"
+        variants={subtitleVariants}
         className="
         font-bold text-right mr-[24rem] xl:mr-[36rem] text-[3rem] xl:text-[4.5rem] mt-8 leading-[1]
         text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-300"
       >
         FULL-STACK <br />
         <span className="text-[2.8rem] xl:text-[4.2rem]">DEVELOPER</span>
-      </h2>
+      </motion.h2>
 
       <motion.div
         className="absolute right-24 bottom-32 flex gap-6 items-center"
@@ -46,7 +64,7 @@ const Title: React.FC = () => {
           show: {
             transition: {
               staggerChildren: 0.2,
-              delayChildren: 0.4,
+              delayChildren: 1.5,
             },
           },
         }}

@@ -50,9 +50,10 @@ const Card: React.FC<CardProps> = ({ vanta, children, className }) => {
   return (
     <div
       ref={ref}
-      className={`w-[64rem] xl:w-[96rem] h-[36rem] xl:h-[54rem] rounded-[3rem] xl:rounded-[4rem] overflow-hidden mx-auto transition-transform ease-linear duration-200 ${className}`}
+      className={`w-[64rem] xl:w-[96rem] h-[36rem] xl:h-[54rem] rounded-[3rem] xl:rounded-[4rem] overflow-hidden mx-auto transition ease-linear duration-200 ${className}`}
       style={{
         transform: `scale(${throttledScale})`,
+        opacity: Number(throttledScale) * 3 - 2,
       }}
     >
       {children}
