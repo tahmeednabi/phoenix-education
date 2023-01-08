@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 
 interface CardProps {
   className?: string;
-  children?: JSX.Element | JSX.Element[];
+  children?: any | any[];
   vanta?: (ref: React.MutableRefObject<HTMLDivElement | null>) => any;
 }
 
@@ -15,13 +15,7 @@ const Card: React.FC<CardProps> = ({ vanta, children, className }) => {
   const [throttledScale, setThrottledScale] = useState("1");
 
   const vantaRef = useRef<HTMLDivElement>(null);
-  const {
-    ref: intersectionRef,
-    inView,
-    entry,
-  } = useInView({
-    threshold: 0.2,
-  });
+  const { ref: intersectionRef, inView, entry } = useInView();
   const ref = useMergedRef(vantaRef, intersectionRef);
 
   useEffect(() => {
@@ -42,17 +36,14 @@ const Card: React.FC<CardProps> = ({ vanta, children, className }) => {
     };
   }, [vanta, vantaEffect, inView]);
 
-  const diff = (entry?.target as any)?.offsetTop - scroll.y;
-  const scale = (0.9 + 0.1 / (1 + (diff / 300) ** 2)).toFixed(3);
-
   const throttled = useRef(
     throttle((diff) => {
-      setThrottledScale((0.9 + 0.1 / (1 + (diff / 300) ** 2)).toFixed(3));
+      setThrottledScale((0.9 + 0.1 / (1 + (diff / 500) ** 4)).toFixed(3));
     }, 200)
   );
 
   useEffect(
-    () => throttled.current((entry?.target as any)?.offsetTop - scroll.y),
+    () => throttled.current((entry?.target as any)?.offsetTop - scroll.y - 64),
     [entry, scroll]
   );
 
@@ -61,7 +52,7 @@ const Card: React.FC<CardProps> = ({ vanta, children, className }) => {
       ref={ref}
       className={`w-[64rem] xl:w-[96rem] h-[36rem] xl:h-[54rem] rounded-[3rem] xl:rounded-[4rem] overflow-hidden mx-auto transition-transform ease-linear duration-200 ${className}`}
       style={{
-        transform: `scale(${scale})`,
+        transform: `scale(${throttledScale})`,
       }}
     >
       {children}

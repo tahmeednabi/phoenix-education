@@ -5,6 +5,9 @@ import { Phoenix } from "./experience/Phoenix";
 import { Synqup } from "./experience/Synqup";
 import { Eclat } from "./projects/Eclat";
 import { ExoWebsite } from "./projects/ExoWebsite";
+import { PhoenixLMS } from "./projects/PhoenixLMS";
+import { SynqupProject } from "./projects/SynqupProject";
+import { Skills } from "./Skills";
 import { Title } from "./Title";
 
 export default function Body() {
@@ -28,6 +31,14 @@ export default function Body() {
 
           <Eclat />
           <ExoWebsite />
+          <SynqupProject />
+          <PhoenixLMS />
+
+          <h1 className="w-[56rem] xl:w-[84rem] mx-auto py-12 text-[4rem]">
+            Skills
+          </h1>
+
+          <Skills />
         </div>
       )}
     </InView>

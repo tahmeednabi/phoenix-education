@@ -37,7 +37,17 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({ logo, slides }) => {
       <div className="-mx-12">
         <Carousel
           withIndicators
-          classNames={{ indicator: "w-2 h-2", ...classes }}
+          classNames={classes}
+          styles={{
+            indicator: {
+              width: 6,
+              height: 6,
+              backgroundColor: "#b0b0b0",
+              "&[data-active]": {
+                backgroundColor: "#33373b",
+              },
+            },
+          }}
           slideSize="100%"
           height={200}
         >
