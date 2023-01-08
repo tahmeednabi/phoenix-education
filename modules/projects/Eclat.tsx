@@ -1,6 +1,6 @@
 import Image from "next/image";
 import {
-  DeviceMobile,
+  DeviceMobile, DiamondsFour,
   GearSix,
   GlobeSimple,
   PuzzlePiece,
@@ -30,6 +30,11 @@ const Eclat: React.FC = () => {
       <ProjectBox
         logo={<EclatSvg className="w-28" viewBox="0 0 164 57" />}
         slides={[
+          {
+            icon: <DiamondsFour fontSize={32} />,
+            title: "Overview",
+            body: "A mobile app for members of Eclat, a coworking space, to manage their bookings, catering and other needs.",
+          },
           {
             icon: <GearSix fontSize={32} />,
             title: "DevOps",

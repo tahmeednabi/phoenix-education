@@ -4,6 +4,7 @@ import { ExoDigital } from "./experience/ExoDigital";
 import { Phoenix } from "./experience/Phoenix";
 import { Synqup } from "./experience/Synqup";
 import { Eclat } from "./projects/Eclat";
+import { ExoWebsite } from "./projects/ExoWebsite";
 import { Title } from "./Title";
 
 export default function Body() {
@@ -18,9 +19,7 @@ export default function Body() {
           </h1>
 
           <ExoDigital />
-
           <Synqup />
-
           <Phoenix />
 
           <h1 className="w-[56rem] xl:w-[84rem] mx-auto py-12 text-[4rem]">
@@ -28,6 +27,7 @@ export default function Body() {
           </h1>
 
           <Eclat />
+          <ExoWebsite />
         </div>
       )}
     </InView>

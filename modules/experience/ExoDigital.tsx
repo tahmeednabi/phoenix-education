@@ -12,9 +12,9 @@ const ExoDigital: React.FC = () => {
       <Image
         src="/images/splash-bg.png"
         alt=""
-        width={1200}
-        height={600}
-        className="absolute"
+        width={2563}
+        height={1242}
+        className="absolute w-full h-full -right-[15%] -z-10"
       />
 
       <a

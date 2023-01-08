@@ -38,8 +38,8 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({ logo, slides }) => {
         <Carousel
           withIndicators
           classNames={{ indicator: "w-2 h-2", ...classes }}
+          slideSize="100%"
           height={200}
-          loop
         >
           {slides.map((slide, index) => (
             <Carousel.Slide key={index}>

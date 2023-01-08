@@ -1,4 +1,4 @@
-import { useMergedRef } from "@mantine/hooks";
+import { useMergedRef, useWindowScroll } from "@mantine/hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -10,8 +10,16 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ vanta, children, className }) => {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const [scroll] = useWindowScroll();
+
   const vantaRef = useRef<HTMLDivElement>(null);
-  const { ref: intersectionRef, inView } = useInView({ threshold: 0.2 });
+  const {
+    ref: intersectionRef,
+    inView,
+    entry,
+  } = useInView({
+    threshold: 0.2,
+  });
   const ref = useMergedRef(vantaRef, intersectionRef);
 
   useEffect(() => {
@@ -32,12 +40,15 @@ const Card: React.FC<CardProps> = ({ vanta, children, className }) => {
     };
   }, [vanta, vantaEffect, inView]);
 
+  const diff = (entry?.target as any)?.offsetTop - scroll.y;
+  const scale = (0.9 + 0.1 / (1 + (diff / 300) ** 2)).toFixed(3);
+
   return (
     <div
       ref={ref}
-      className={`w-[64rem] xl:w-[96rem] h-[36rem] xl:h-[54rem] rounded-[3rem] xl:rounded-[4rem] overflow-hidden mx-auto transition-transform duration-500 ${className}`}
+      className={`w-[64rem] xl:w-[96rem] h-[36rem] xl:h-[54rem] rounded-[3rem] xl:rounded-[4rem] overflow-hidden mx-auto transition-transform duration-75 ${className}`}
       style={{
-        transform: inView ? "scale(1)" : "scale(0.95)",
+        transform: `scale(${scale})`,
       }}
     >
       {children}
