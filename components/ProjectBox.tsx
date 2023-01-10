@@ -4,6 +4,7 @@ import React from "react";
 
 interface ProjectBoxProps {
   logo: React.ReactNode;
+  link: string;
   slides: Array<{
     title: string;
     icon: React.ReactNode;
@@ -27,12 +28,12 @@ const useStyles = createStyles((_theme, _params, getRef) => ({
   },
 }));
 
-const ProjectBox: React.FC<ProjectBoxProps> = ({ logo, slides }) => {
+const ProjectBox: React.FC<ProjectBoxProps> = ({ logo, slides, link }) => {
   const { classes } = useStyles();
 
   return (
     <div className="w-[40%] ml-auto pt-24 flex flex-col gap-10">
-      {logo}
+      <a href={link}>{logo}</a>
 
       <div className="-mx-12">
         <Carousel

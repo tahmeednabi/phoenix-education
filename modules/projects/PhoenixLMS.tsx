@@ -29,6 +29,7 @@ const PhoenixLMS: React.FC = () => {
       />
 
       <ProjectBox
+        link="https://www.phoenixlms.com"
         logo={<PhoenixLMSSvg className="w-56 -ml-3" viewBox="0 0 317 69" />}
         slides={[
           {

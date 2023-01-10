@@ -27,6 +27,7 @@ const SynqupProject: React.FC = () => {
       }
     >
       <ProjectBox
+        link="https://dev.synqup.com.au"
         logo={<SynqupSvg className="w-36" viewBox="0 0 139 32" />}
         slides={[
           {

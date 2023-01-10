@@ -19,7 +19,7 @@ const ExoWebsite: React.FC = () => {
         alt=""
         width={2563}
         height={1242}
-        className="absolute w-full h-full -left-[20%]"
+        className="absolute w-full h-full -left-[20%] -z-10"
       />
 
       <Image
@@ -31,6 +31,7 @@ const ExoWebsite: React.FC = () => {
       />
 
       <ProjectBox
+        link="https://www.exodigital.com.au"
         logo={<ExoDigitalSvg className="w-48" viewBox="0 0 241 57" />}
         slides={[
           {
