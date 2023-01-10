@@ -15,14 +15,14 @@ const ExoWebsite: React.FC = () => {
   return (
     <Card
       bgColor="#43424E"
-      className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-24 xl:p-36"
+      className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-8 md:p-24 xl:p-36"
     >
       <Image
         src="/images/splash-bg.png"
         alt=""
         width={2563}
         height={1242}
-        className="absolute w-full h-full -left-[20%] -z-10"
+        className="absolute w-auto h-full -left-[150%] md:w-full md:h-auto md:-left-[20%] -z-10"
       />
 
       <Image
@@ -30,7 +30,7 @@ const ExoWebsite: React.FC = () => {
         alt=""
         width={1776}
         height={1296}
-        className="absolute left-[10%] w-[40%] h-auto"
+        className="md:absolute md:left-[10%] w-full md:w-[40%] h-auto"
       />
 
       <ProjectBox

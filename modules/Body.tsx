@@ -3,6 +3,7 @@ import React, {
   Dispatch,
   SetStateAction,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -34,6 +35,11 @@ export function useBody() {
 
 export default function Body() {
   const [bgColor, setBgColor] = useState("#000");
+
+  useEffect(() => {
+    document.body.className = "transition duration-700";
+    document.body.style.backgroundColor = bgColor;
+  }, [bgColor]);
 
   const Cards = useMemo(
     () => (
@@ -79,8 +85,7 @@ export default function Body() {
         {({ ref }) => (
           <div
             ref={ref}
-            style={{ backgroundColor: bgColor }}
-            className="flex flex-col gap-12 p-12 transition duration-700"
+            className="flex flex-col gap-6 md:gap-12 p-6 md:p-12 transition duration-700"
           >
             {Cards}
           </div>

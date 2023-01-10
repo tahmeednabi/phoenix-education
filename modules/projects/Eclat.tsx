@@ -16,7 +16,7 @@ const Eclat: React.FC = () => {
   return (
     <Card
       bgColor="#959290"
-      className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-24 xl:p-36"
+      className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-8 md:p-24 xl:p-36"
     >
       <EclatBgSvg
         className="absolute left-24 w-full h-full -z-10"
@@ -28,7 +28,7 @@ const Eclat: React.FC = () => {
         alt=""
         width={1476}
         height={1704}
-        className="absolute w-1/3 h-auto"
+        className="w-full md:absolute md:w-1/3 h-auto"
       />
 
       <ProjectBox

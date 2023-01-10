@@ -43,7 +43,7 @@ const Skills: React.FC = () => {
 
   return (
     <Card
-      className="relative animate-opacity flex flex-col gap-2 bg-[#242833] p-24 xl:p-36"
+      className="relative animate-opacity flex flex-col gap-2 bg-[#242833] p-8 md:p-24 xl:p-36"
       bgColor="#141527"
       vanta={(ref) =>
         WAVES({
@@ -54,13 +54,13 @@ const Skills: React.FC = () => {
         })
       }
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-wrap">
         {languages.map((language, index) => (
           <Skill key={index} skill={language} icon={<Code />} color={"teal"} />
         ))}
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-wrap">
         {databases.map((database, index) => (
           <Skill
             key={index}
@@ -71,7 +71,7 @@ const Skills: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-wrap">
         {frameworks.map((framework, index) => (
           <Skill
             key={index}
@@ -82,7 +82,7 @@ const Skills: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-wrap">
         {teamwork.map((work, index) => (
           <Skill
             key={index}
@@ -93,7 +93,7 @@ const Skills: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-wrap">
         {miscellaneous.map((misc, index) => (
           <Skill
             key={index}

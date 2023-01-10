@@ -14,7 +14,7 @@ const Phoenix: React.FC = () => {
       wrapper={({ children }) => (
         <Card
           bgColor={"#b04444"}
-          className="relative animate-opacity flex flex-col justify-center gap-6 bg-[#0d112c] p-24 xl:p-36"
+          className="relative animate-opacity flex flex-col justify-center gap-6 bg-[#0d112c] p-8 md:p-24 xl:p-36"
         >
           <div
             className="absolute top-10 left-0 w-full h-full z-[1] -m-[4rem] scale-110"
@@ -25,7 +25,7 @@ const Phoenix: React.FC = () => {
           />
 
           <a
-            className="absolute z-20 top-20 left-20 xl:p-12"
+            className="md:absolute z-20 md:top-20 md:left-20 xl:p-12"
             href="https://phoenixedu.com.au"
           >
             <PhoenixSvg className="w-36" viewBox="0 0 234 69" />

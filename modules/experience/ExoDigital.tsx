@@ -9,8 +9,8 @@ import EclatLogoSvg from "@res/svgs/EclatLogoSvg.svg";
 const ExoDigital: React.FC = () => {
   return (
     <Card
-      bgColor={"#222223"}
-      className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-24 xl:p-36"
+      bgColor={"#060617"}
+      className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-8 md:p-24 xl:p-36"
     >
       <Image
         src="/images/splash-bg.png"
@@ -21,7 +21,7 @@ const ExoDigital: React.FC = () => {
       />
 
       <a
-        className="absolute top-24 left-24 xl:p-12"
+        className="md:absolute md:top-24 md:left-24 xl:p-12"
         href="https://exodigital.com.au"
       >
         <ExoDigitalSvg className="w-36" viewBox="0 0 241 57" />
@@ -38,7 +38,7 @@ const ExoDigital: React.FC = () => {
         and deploy websites and applications for clients.
       </p>
 
-      <div className="absolute right-16 bottom-16 flex flex-col items-end gap-4">
+      <div className="md:absolute md:right-16 md:bottom-16 flex flex-col items-end gap-4">
         <p className="text-[1rem] tracking-widest">PROJECTS</p>
         <div className="flex items-center gap-4">
           <ExoTeamAugSvg viewBox="0 0 63 63" className="w-12 h-12" />

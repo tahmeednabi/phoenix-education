@@ -16,7 +16,7 @@ const SynqupProject: React.FC = () => {
   return (
     <Card
       bgColor="#08071B"
-      className="relative animate-opacity flex flex-col justify-center gap-6 bg-[#0e0c2d] p-24 xl:p-36"
+      className="relative animate-opacity flex flex-col justify-center gap-6 bg-[#0e0c2d] p-8 md:p-24 xl:p-36"
       vanta={(ref) =>
         HALO({
           THREE,

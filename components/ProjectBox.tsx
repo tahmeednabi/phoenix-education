@@ -32,7 +32,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({ logo, slides, link }) => {
   const { classes } = useStyles();
 
   return (
-    <div className="w-[40%] ml-auto pt-24 flex flex-col gap-10">
+    <div className="w-full md:w-[40%] ml-auto md:pt-24 flex flex-col gap-10">
       <a href={link}>{logo}</a>
 
       <div className="-mx-12">

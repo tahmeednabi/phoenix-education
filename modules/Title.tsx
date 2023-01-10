@@ -26,7 +26,7 @@ const Title: React.FC = () => {
   return (
     <Card
       bgColor={"#06041B"}
-      className="relative animate-opacity flex flex-col justify-center bg-[#1e0d59] p-24 xl:p-36"
+      className="relative animate-opacity flex flex-col justify-center bg-[#1e0d59] p-8 md:p-24 xl:p-36"
       vanta={(ref) =>
         TOPOLOGY({
           p5,
@@ -40,7 +40,7 @@ const Title: React.FC = () => {
         initial="hidden"
         animate="show"
         variants={titleVariants}
-        className="text-[6rem] mt-10 xl:text-[9rem] leading-[0.9]"
+        className="text-[4rem] md:text-[6rem] mt-10 xl:text-[9rem] leading-[0.9]"
       >
         Tahmeed
         <br />
@@ -52,15 +52,17 @@ const Title: React.FC = () => {
         animate="show"
         variants={subtitleVariants}
         className="
-        font-bold text-right mr-[24rem] xl:mr-[36rem] text-[3rem] xl:text-[4.5rem] mt-8 leading-[1]
+        font-bold md:text-right md:mr-[24rem] xl:mr-[36rem] text-4xl md:text-[3rem] xl:text-[4.5rem] mt-8 leading-[1]
         text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-300"
       >
         FULL-STACK <br />
-        <span className="text-[2.8rem] xl:text-[4.2rem]">DEVELOPER</span>
+        <span className="text-4xl md:text-[2.8rem] xl:text-[4.2rem]">
+          DEVELOPER
+        </span>
       </motion.h2>
 
       <motion.div
-        className="absolute right-24 bottom-32 flex gap-6 items-center"
+        className="mt-8 md:mt-0 md:absolute md:right-24 md:bottom-32 flex gap-6 items-center"
         variants={{
           show: {
             transition: {

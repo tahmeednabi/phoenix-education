@@ -6,7 +6,7 @@ const UNSW: React.FC = () => {
   return (
     <Card
       bgColor={"#e3af03"}
-      className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-24 xl:p-36"
+      className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-8 md:p-24 xl:p-36"
     >
       <UNSWSvg className="w-32 h-32" viewBox="0 0 143 167" />
 
