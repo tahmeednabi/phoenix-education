@@ -8,7 +8,10 @@ import EclatLogoSvg from "@res/svgs/EclatLogoSvg.svg";
 
 const ExoDigital: React.FC = () => {
   return (
-    <Card className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-24 xl:p-36">
+    <Card
+      bgColor={"#222223"}
+      className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-24 xl:p-36"
+    >
       <Image
         src="/images/splash-bg.png"
         alt=""

@@ -13,7 +13,10 @@ import ExoDigitalSvg from "@res/svgs/ExoDigitalSvg.svg";
 
 const ExoWebsite: React.FC = () => {
   return (
-    <Card className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-24 xl:p-36">
+    <Card
+      bgColor="#43424E"
+      className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-24 xl:p-36"
+    >
       <Image
         src="/images/splash-bg.png"
         alt=""

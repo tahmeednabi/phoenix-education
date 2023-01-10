@@ -14,7 +14,10 @@ import { ProjectBox } from "../../components/ProjectBox";
 
 const PhoenixLMS: React.FC = () => {
   return (
-    <Card className="relative animate-opacity flex flex-col justify-center gap-6 bg-[#0e0c2d] p-24 xl:p-36">
+    <Card
+      bgColor="#000"
+      className="relative animate-opacity flex flex-col justify-center gap-6 bg-[#0e0c2d] p-24 xl:p-36"
+    >
       <PhoenixBgSvg
         className="absolute left-0 top-0 w-full h-full scale-110 -z-10"
         viewBox="0 0 1285 757"

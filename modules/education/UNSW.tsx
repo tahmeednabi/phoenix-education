@@ -4,7 +4,10 @@ import UNSWSvg from "@res/svgs/UNSWSvg.svg";
 
 const UNSW: React.FC = () => {
   return (
-    <Card className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-24 xl:p-36">
+    <Card
+      bgColor={"#e3af03"}
+      className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-24 xl:p-36"
+    >
       <UNSWSvg className="w-32 h-32" viewBox="0 0 143 167" />
 
       <h1 className="text-[3.5rem] mt-4">Bachelor of Computer Science</h1>

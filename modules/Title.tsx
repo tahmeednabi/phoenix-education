@@ -25,6 +25,7 @@ const Title: React.FC = () => {
 
   return (
     <Card
+      bgColor={"#06041B"}
       className="relative animate-opacity flex flex-col justify-center bg-[#1e0d59] p-24 xl:p-36"
       vanta={(ref) =>
         TOPOLOGY({

@@ -14,7 +14,10 @@ import { ProjectBox } from "../../components/ProjectBox";
 
 const Eclat: React.FC = () => {
   return (
-    <Card className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-24 xl:p-36">
+    <Card
+      bgColor="#959290"
+      className="relative animate-opacity text-black flex flex-col justify-center gap-6 bg-white p-24 xl:p-36"
+    >
       <EclatBgSvg
         className="absolute left-24 w-full h-full -z-10"
         viewBox="0 0 1230 757"

@@ -44,6 +44,7 @@ const Skills: React.FC = () => {
   return (
     <Card
       className="relative animate-opacity flex flex-col gap-2 bg-[#242833] p-24 xl:p-36"
+      bgColor="#141527"
       vanta={(ref) =>
         WAVES({
           THREE,

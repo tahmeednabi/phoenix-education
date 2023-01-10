@@ -8,14 +8,17 @@ import {
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useBody } from "../modules/Body";
 
 interface CardProps {
   className?: string;
   children?: any | any[];
   vanta?: (ref: React.MutableRefObject<HTMLDivElement | null>) => any;
+  bgColor?: string;
 }
 
-const Card: React.FC<CardProps> = ({ vanta, children, className }) => {
+const Card: React.FC<CardProps> = ({ vanta, children, className, bgColor }) => {
+  const { setBgColor } = useBody();
   const [vantaEffect, setVantaEffect] = useState<any>(null);
 
   const vantaRef = useRef<HTMLDivElement>(null);
@@ -53,6 +56,13 @@ const Card: React.FC<CardProps> = ({ vanta, children, className }) => {
       }
     };
   }, [vanta, vantaEffect, inView]);
+
+  useEffect(() => {
+    if (inView && bgColor) {
+      console.log(bgColor);
+      setBgColor(bgColor);
+    }
+  }, [bgColor, inView, setBgColor]);
 
   useEffect(() => {
     if (entry?.target) {

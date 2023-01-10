@@ -12,7 +12,10 @@ const Phoenix: React.FC = () => {
       muted
       height={600}
       wrapper={({ children }) => (
-        <Card className="relative animate-opacity flex flex-col justify-center gap-6 bg-[#0d112c] p-24 xl:p-36">
+        <Card
+          bgColor={"#b04444"}
+          className="relative animate-opacity flex flex-col justify-center gap-6 bg-[#0d112c] p-24 xl:p-36"
+        >
           <div
             className="absolute top-10 left-0 w-full h-full z-[1] -m-[4rem] scale-110"
             style={{
