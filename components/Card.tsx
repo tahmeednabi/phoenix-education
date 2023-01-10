@@ -34,6 +34,7 @@ const Card: React.FC<CardProps> = ({ vanta, children, className }) => {
     damping: 30,
     restDelta: 0.001,
   });
+  const opacity = useTransform(springScale, [0.9, 1], [0.6, 1]);
 
   useEffect(() => {
     if (!inView && vantaEffect) {
@@ -65,6 +66,7 @@ const Card: React.FC<CardProps> = ({ vanta, children, className }) => {
       className={`w-[64rem] xl:w-[96rem] h-[36rem] xl:h-[54rem] rounded-[3rem] xl:rounded-[4rem] overflow-hidden mx-auto transition ease-linear duration-200 ${className}`}
       style={{
         scale: springScale,
+        opacity,
       }}
     >
       {children}

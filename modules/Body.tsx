@@ -1,5 +1,6 @@
 import React from "react";
 import { InView } from "react-intersection-observer";
+import { UNSW } from "./education/UNSW";
 import { ExoDigital } from "./experience/ExoDigital";
 import { Phoenix } from "./experience/Phoenix";
 import { Synqup } from "./experience/Synqup";
@@ -39,6 +40,12 @@ export default function Body() {
           </h1>
 
           <Skills />
+
+          <h1 className="w-[56rem] xl:w-[84rem] mx-auto py-12 text-[4rem]">
+            Education
+          </h1>
+
+          <UNSW />
         </div>
       )}
     </InView>
