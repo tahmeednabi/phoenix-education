@@ -1,4 +1,4 @@
-import { useMergedRef } from "@mantine/hooks";
+import { useMergedRef, useViewportSize } from "@mantine/hooks";
 import {
   motion,
   useMotionValue,
@@ -45,6 +45,8 @@ const Card: React.FC<CardProps> = ({ vanta, children, className, bgColor }) => {
   });
   const opacity = useTransform(springScale, [0.9, 1], [0.6, 1]);
 
+  const { width } = useViewportSize();
+
   useEffect(() => {
     if (!inView && vantaEffect) {
       vantaEffect.destroy();
@@ -80,8 +82,8 @@ const Card: React.FC<CardProps> = ({ vanta, children, className, bgColor }) => {
       ref={ref}
       className={`w-full md:w-[64rem] xl:w-[96rem] min-h-[36rem] h-full md:min-h-0 md:h-[36rem] xl:h-[54rem] rounded-[3rem] xl:rounded-[4rem] overflow-hidden mx-auto transition ease-linear duration-200 ${className}`}
       style={{
-        scale: springScale,
-        opacity,
+        scale: width >= 768 ? springScale : 1,
+        opacity: width >= 768 ? opacity : 1,
       }}
     >
       {children}
