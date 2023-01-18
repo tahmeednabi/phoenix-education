@@ -35,7 +35,7 @@ const Card: React.FC<CardProps> = ({ vanta, children, className, bgColor }) => {
   const cardY = useMotionValue(0);
   const scale = useTransform(scrollY, (value) => {
     const diff = cardY.get() - value;
-    return 0.9 + 0.1 / (1 + (diff / 500) ** 2);
+    return 0.9 + 0.1 / (1 + (diff / 500) ** 6);
   });
   const springScale = useSpring(scale, {
     duration: 0.2,
@@ -80,7 +80,7 @@ const Card: React.FC<CardProps> = ({ vanta, children, className, bgColor }) => {
   return (
     <motion.div
       ref={ref}
-      className={`w-full md:w-[64rem] xl:w-[96rem] min-h-[36rem] h-full md:min-h-0 md:h-[36rem] xl:h-[54rem] rounded-[3rem] xl:rounded-[4rem] overflow-hidden mx-auto transition ease-linear duration-200 ${className}`}
+      className={`card w-full md:w-[64rem] xl:w-[96rem] min-h-[36rem] h-full md:min-h-0 md:h-[36rem] xl:h-[54rem] rounded-[3rem] xl:rounded-[4rem] overflow-hidden mx-auto transition ease-linear duration-200 ${className}`}
       style={{
         scale: width >= 768 ? springScale : 1,
         opacity: width >= 768 ? opacity : 1,
