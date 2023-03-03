@@ -7,6 +7,9 @@ module.exports = withPlugins([
   withSvgr,
   withFonts
 ], {
+  images: {
+    domains: ["images.prismic.io"]
+  },
   typescript: {
     ignoreBuildErrors: true
   }

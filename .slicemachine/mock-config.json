@@ -4,10 +4,24 @@
       "default": {
         "primary": {}
       }
+    },
+    "SellingPoints": {
+      "default": {
+        "items": {},
+        "primary": {}
+      }
+    },
+    "TutorCarousel": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
     }
   },
   "_cts": {
     "page": {},
-    "home": {}
+    "home": {},
+    "selling_point": {},
+    "tutor": {}
   }
 }

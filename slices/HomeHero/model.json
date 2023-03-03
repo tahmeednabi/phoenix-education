@@ -39,6 +39,20 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "book_trial": {
+          "type": "Link",
+          "config": {
+            "label": "Book Trial",
+            "select": "document"
+          }
+        },
+        "enrol_now": {
+          "type": "Link",
+          "config": {
+            "label": "Enrol Now",
+            "select": "document"
+          }
         }
       },
       "items": {},

@@ -12,7 +12,7 @@ module.exports = {
     path.join(__dirname, './slices/**/*.{js,ts,jsx,tsx}'),
   ],
   theme: {
-    primaryColor: 'blue',
+    primaryColor: 'red',
     screens: {
       sm: '480px',
       md: '768px',
@@ -24,7 +24,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: colors.blue,
+        primary: colors.red,
         blue: {
           50: '#ffffff',
           100: '#d7d8ff',

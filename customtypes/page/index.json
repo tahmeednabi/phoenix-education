@@ -19,11 +19,27 @@
           "placeholder": ""
         }
       },
+      "short_name": {
+        "type": "Text",
+        "config": {
+          "label": "Short Name",
+          "placeholder": ""
+        }
+      },
       "description": {
         "type": "Text",
         "config": {
           "label": "Description",
           "placeholder": ""
+        }
+      },
+      "show_in_navigation": {
+        "type": "Boolean",
+        "config": {
+          "label": "Show in navigation",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
         }
       },
       "slices": {

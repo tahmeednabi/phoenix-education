@@ -28,18 +28,32 @@
       },
       "line_1": {
         "__TYPE__": "FieldContent",
-        "value": "stepped",
-        "type": "Text"
+        "type": "Text",
+        "value": "HSC TUTORING"
       },
       "line_2": {
         "__TYPE__": "FieldContent",
-        "value": "tales",
-        "type": "Text"
+        "type": "Text",
+        "value": "Don't pass your HSC"
       },
       "line_3": {
         "__TYPE__": "FieldContent",
-        "value": "pair",
-        "type": "Text"
+        "type": "Text",
+        "value": "Ace it."
+      },
+      "book_trial": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "DocumentLink",
+          "id": "mock_document_id"
+        }
+      },
+      "enrol_now": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "DocumentLink",
+          "id": "mock_document_id"
+        }
       }
     },
     "items": [

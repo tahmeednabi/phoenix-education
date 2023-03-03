@@ -26,6 +26,12 @@
           "choices": {
             "home_hero": {
               "type": "SharedSlice"
+            },
+            "selling_points": {
+              "type": "SharedSlice"
+            },
+            "tutor_carousel": {
+              "type": "SharedSlice"
             }
           }
         }

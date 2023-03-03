@@ -1,49 +1,86 @@
 {
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "lamp"
+    "value": "firm"
   },
   "title": {
     "__TYPE__": "FieldContent",
-    "value": "case",
+    "value": "guard",
+    "type": "Text"
+  },
+  "short_name": {
+    "__TYPE__": "FieldContent",
+    "value": "move",
     "type": "Text"
   },
   "description": {
     "__TYPE__": "FieldContent",
-    "value": "three",
+    "value": "is",
     "type": "Text"
+  },
+  "show_in_navigation": {
+    "__TYPE__": "BooleanContent",
+    "value": false
   },
   "slices": {
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "home_hero$bbfccbea-7eda-4b70-9f89-c5f8677418fa",
+        "key": "home_hero$992307a0-a9ef-4256-ada1-18e2969badb8",
         "name": "home_hero",
         "widget": {
           "__TYPE__": "SharedSliceContent",
           "variation": "default",
           "primary": {
-            "title": {
-              "__TYPE__": "StructuredTextContent",
-              "value": [
-                {
-                  "type": "heading1",
-                  "content": {
-                    "text": "Shadow"
-                  }
-                }
-              ]
+            "line_1": {
+              "__TYPE__": "FieldContent",
+              "value": "thick",
+              "type": "Text"
             },
-            "description": {
-              "__TYPE__": "StructuredTextContent",
-              "value": [
-                {
-                  "type": "paragraph",
-                  "content": {
-                    "text": "Cillum minim incididunt enim deserunt dolor est commodo deserunt culpa eu elit."
-                  }
-                }
-              ]
+            "line_2": {
+              "__TYPE__": "FieldContent",
+              "value": "coming",
+              "type": "Text"
+            },
+            "line_3": {
+              "__TYPE__": "FieldContent",
+              "value": "progress",
+              "type": "Text"
+            },
+            "background": {
+              "__TYPE__": "ImageContent",
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89",
+                "width": 3456,
+                "height": 3456
+              },
+              "url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89",
+              "width": 3456,
+              "height": 3456,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "thumbnails": {}
+            },
+            "book_trial": {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "DocumentLink",
+                "id": "mock_document_id"
+              }
+            },
+            "enrol_now": {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "DocumentLink",
+                "id": "mock_document_id"
+              }
             }
           },
           "items": [

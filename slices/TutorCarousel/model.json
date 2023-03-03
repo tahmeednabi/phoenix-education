@@ -1,0 +1,45 @@
+{
+  "id": "tutor_carousel",
+  "type": "SharedSlice",
+  "name": "TutorCarousel",
+  "description": "TutorCarousel",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "TutorCarousel",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "tutors_link": {
+          "type": "Link",
+          "config": {
+            "label": "Tutors Link",
+            "placeholder": "",
+            "select": null
+          }
+        }
+      },
+      "items": {
+        "tutor": {
+          "type": "Link",
+          "config": {
+            "label": "Tutor",
+            "select": "document",
+            "customtypes": [
+              "tutor"
+            ]
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

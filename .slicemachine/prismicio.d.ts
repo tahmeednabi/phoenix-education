@@ -46,7 +46,7 @@ interface HomeDocumentData {
  * Slice for *Home → Slice Zone*
  *
  */
-type HomeDocumentDataSlicesSlice = HomeHeroSlice;
+type HomeDocumentDataSlicesSlice = HomeHeroSlice | SellingPointsSlice | TutorCarouselSlice;
 /**
  * Home document from Prismic
  *
@@ -71,6 +71,17 @@ interface PageDocumentData {
      */
     title: prismicT.KeyTextField;
     /**
+     * Short Name field in *Page*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: page.short_name
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    short_name: prismicT.KeyTextField;
+    /**
      * Description field in *Page*
      *
      * - **Field Type**: Text
@@ -81,6 +92,18 @@ interface PageDocumentData {
      *
      */
     description: prismicT.KeyTextField;
+    /**
+     * Show in navigation field in *Page*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: page.show_in_navigation
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    show_in_navigation: prismicT.BooleanField;
     /**
      * Slice Zone field in *Page*
      *
@@ -108,7 +131,110 @@ type PageDocumentDataSlicesSlice = HomeHeroSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type PageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
-export type AllDocumentTypes = HomeDocument | PageDocument;
+/** Content for Selling Point documents */
+interface SellingPointDocumentData {
+    /**
+     * Title field in *Selling Point*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: selling_point.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Description field in *Selling Point*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: selling_point.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+    /**
+     * Image field in *Selling Point*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: selling_point.image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Selling Point document from Prismic
+ *
+ * - **API ID**: `selling_point`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SellingPointDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SellingPointDocumentData>, "selling_point", Lang>;
+/** Content for Tutor documents */
+interface TutorDocumentData {
+    /**
+     * Full Name field in *Tutor*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tutor.full_name
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    full_name: prismicT.KeyTextField;
+    /**
+     * Subtitle field in *Tutor*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tutor.subtitle
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    subtitle: prismicT.KeyTextField;
+    /**
+     * Image field in *Tutor*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tutor.image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * Bio field in *Tutor*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tutor.bio
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    bio: prismicT.RichTextField;
+}
+/**
+ * Tutor document from Prismic
+ *
+ * - **API ID**: `tutor`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TutorDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<TutorDocumentData>, "tutor", Lang>;
+export type AllDocumentTypes = HomeDocument | PageDocument | SellingPointDocument | TutorDocument;
 /**
  * Primary content in HomeHero → Primary
  *
@@ -154,6 +280,26 @@ interface HomeHeroSliceDefaultPrimary {
      *
      */
     background: prismicT.ImageField<never>;
+    /**
+     * Book Trial field in *HomeHero → Primary*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_hero.primary.book_trial
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    book_trial: prismicT.RelationField;
+    /**
+     * Enrol Now field in *HomeHero → Primary*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_hero.primary.enrol_now
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    enrol_now: prismicT.RelationField;
 }
 /**
  * Default variation for HomeHero Slice
@@ -178,11 +324,115 @@ type HomeHeroSliceVariation = HomeHeroSliceDefault;
  *
  */
 export type HomeHeroSlice = prismicT.SharedSlice<"home_hero", HomeHeroSliceVariation>;
+/**
+ * Item in SellingPoints → Items
+ *
+ */
+export interface SellingPointsSliceDefaultItem {
+    /**
+     * Selling Points field in *SellingPoints → Items*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: selling_points.items[].selling_points
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    selling_points: prismicT.RelationField<"selling_point">;
+}
+/**
+ * Default variation for SellingPoints Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `SellingPoints`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SellingPointsSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<SellingPointsSliceDefaultItem>>;
+/**
+ * Slice variation for *SellingPoints*
+ *
+ */
+type SellingPointsSliceVariation = SellingPointsSliceDefault;
+/**
+ * SellingPoints Shared Slice
+ *
+ * - **API ID**: `selling_points`
+ * - **Description**: `SellingPoints`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SellingPointsSlice = prismicT.SharedSlice<"selling_points", SellingPointsSliceVariation>;
+/**
+ * Primary content in TutorCarousel → Primary
+ *
+ */
+interface TutorCarouselSliceDefaultPrimary {
+    /**
+     * Title field in *TutorCarousel → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tutor_carousel.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Tutors Link field in *TutorCarousel → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tutor_carousel.primary.tutors_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    tutors_link: prismicT.LinkField;
+}
+/**
+ * Item in TutorCarousel → Items
+ *
+ */
+export interface TutorCarouselSliceDefaultItem {
+    /**
+     * Tutor field in *TutorCarousel → Items*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tutor_carousel.items[].tutor
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    tutor: prismicT.RelationField<"tutor">;
+}
+/**
+ * Default variation for TutorCarousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `TutorCarousel`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TutorCarouselSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TutorCarouselSliceDefaultPrimary>, Simplify<TutorCarouselSliceDefaultItem>>;
+/**
+ * Slice variation for *TutorCarousel*
+ *
+ */
+type TutorCarouselSliceVariation = TutorCarouselSliceDefault;
+/**
+ * TutorCarousel Shared Slice
+ *
+ * - **API ID**: `tutor_carousel`
+ * - **Description**: `TutorCarousel`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TutorCarouselSlice = prismicT.SharedSlice<"tutor_carousel", TutorCarouselSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, HomeHeroSliceDefaultPrimary, HomeHeroSliceDefault, HomeHeroSliceVariation, HomeHeroSlice };
+        export type { HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SellingPointDocumentData, SellingPointDocument, TutorDocumentData, TutorDocument, AllDocumentTypes, HomeHeroSliceDefaultPrimary, HomeHeroSliceDefault, HomeHeroSliceVariation, HomeHeroSlice, SellingPointsSliceDefaultItem, SellingPointsSliceDefault, SellingPointsSliceVariation, SellingPointsSlice, TutorCarouselSliceDefaultPrimary, TutorCarouselSliceDefaultItem, TutorCarouselSliceDefault, TutorCarouselSliceVariation, TutorCarouselSlice };
     }
 }

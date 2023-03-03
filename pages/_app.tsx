@@ -1,33 +1,31 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { PrismicProvider } from "@prismicio/react";
 import { PrismicPreview } from "@prismicio/next";
 import Link from "next/link";
 import { repositoryName } from "../prismicio";
+import { ColorScheme, MantineProvider } from "@mantine/core";
+import { getMantineTheme } from "../common/utils/mantine-theme";
+import { Header } from "../modules/header/Header";
 
 export default function App({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    const threeScript = document.createElement("script");
-    threeScript.setAttribute("id", "threeScript");
-    threeScript.setAttribute(
-      "src",
-      "https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"
-    );
-    document.getElementsByTagName("head")[0].appendChild(threeScript);
-
-    return () => {
-      if (threeScript) threeScript.remove();
-    };
-  }, []);
+  const [colorScheme] = useState<ColorScheme>("light");
 
   return (
     <>
-      <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
-        <PrismicPreview repositoryName={repositoryName}>
-          <Component {...pageProps} />
-        </PrismicPreview>
-      </PrismicProvider>
+      <MantineProvider
+        theme={getMantineTheme({ colorScheme })}
+        withGlobalStyles
+        withNormalizeCSS
+      >
+        <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
+          <PrismicPreview repositoryName={repositoryName}>
+            <Header />
+            <Component {...pageProps} />
+          </PrismicPreview>
+        </PrismicProvider>
+      </MantineProvider>
     </>
   );
 }
