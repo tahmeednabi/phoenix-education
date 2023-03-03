@@ -1,0 +1,13 @@
+{
+  "slices": {
+    "HomeHero": {
+      "default": {
+        "primary": {}
+      }
+    }
+  },
+  "_cts": {
+    "page": {},
+    "home": {}
+  }
+}

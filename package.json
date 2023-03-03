@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently --names \"client,slicemachine\" -c \"bgBlue.bold,bgGreen.bold\" \"next dev\" \"yarn slicemachine\"",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "slicemachine": "start-slicemachine"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -14,6 +15,11 @@
     "@mantine/core": "^5.10.0",
     "@mantine/hooks": "^5.10.0",
     "@next/font": "13.1.1",
+    "@prismicio/client": "^6.7.3",
+    "@prismicio/helpers": "^2.3.9",
+    "@prismicio/next": "^1.0.3",
+    "@prismicio/react": "^2.5.2",
+    "@prismicio/slice-simulator-react": "^0.2.3",
     "embla-carousel-react": "^7.0.5",
     "framer-motion": "^6.3.3",
     "lodash": "^4.17.21",
@@ -26,12 +32,13 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-intersection-observer": "^9.4.1",
-    "react-player": "^2.11.0",
+    "react-player": "^2.11.2",
     "swiper": "^8.2.3",
     "three": "^0.148.0",
     "vanta": "^0.5.24"
   },
   "devDependencies": {
+    "@prismicio/types": "^0.2.7",
     "@types/lodash": "^4.14.191",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
@@ -40,6 +47,7 @@
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "autoprefixer": "^10.4.13",
+    "concurrently": "^7.6.0",
     "eslint": "8.22.0",
     "eslint-config-next": "13.1.1",
     "eslint-config-prettier": "^8.3.0",
@@ -49,6 +57,7 @@
     "husky": "^8.0.3",
     "postcss": "^8.4.13",
     "prettier": "^2.6.2",
+    "slice-machine-ui": "^0.7.0",
     "tailwindcss": "^3.0.24",
     "tsconfig-paths": "^3.10.1",
     "typescript": "4.9.4"

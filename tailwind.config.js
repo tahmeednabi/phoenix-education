@@ -9,6 +9,7 @@ module.exports = {
     path.join(__dirname, './pages/**/*.{js,ts,jsx,tsx}'),
     path.join(__dirname, './components/**/*.{js,ts,jsx,tsx}'),
     path.join(__dirname, './modules/**/*.{js,ts,jsx,tsx}'),
+    path.join(__dirname, './slices/**/*.{js,ts,jsx,tsx}'),
   ],
   theme: {
     primaryColor: 'blue',

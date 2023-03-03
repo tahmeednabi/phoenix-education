@@ -1,22 +1,31 @@
-import dynamic from "next/dynamic";
+import { SliceZone } from "@prismicio/react";
+
+import { createClient } from "../prismicio";
+import { components } from "../slices";
+import { GetStaticPropsContext } from "next";
+import { AllDocumentTypes } from "../.slicemachine/prismicio";
 import Head from "next/head";
 
-const Body = dynamic(() => import("../modules/Body"), {
-  ssr: false,
-});
-
-export default function Home() {
+export default function Page({ page }: { page: AllDocumentTypes }) {
   return (
     <>
       <Head>
-        <title>Tahmeed Nabi - Full Stack Developer</title>
-        <meta
-          name="description"
-          content="I am a full-stack developer with a 5+ years experience working with javascript frameworks, like Next.js, React.js, Node.js, NestJS and more."
-        />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <title>{page.data.title}</title>
+        <meta name="description" content={page.data.description || ""} />
       </Head>
-      <Body />
+      <SliceZone slices={page.data.slices} components={components} />
     </>
   );
+}
+
+export async function getStaticProps({ previewData }: GetStaticPropsContext) {
+  const client = createClient({ previewData });
+
+  const page = await client.getSingle("home");
+
+  return {
+    props: {
+      page,
+    },
+  };
 }

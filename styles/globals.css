@@ -18,8 +18,8 @@ body {
 }
 
 body {
-  color: white;
-  background: black;
+  color: #212123;
+  background: #fafafa;
 }
 
 a {
@@ -41,8 +41,14 @@ a {
   }
 }
 
+@layer components {
+  .container {
+    @apply w-full px-6 py-2 max-w-[1920px]
+  }
+}
+
 .video > video {
-  width: auto !important;
+  width: 100% !important;
   @apply absolute top-10
   -m-[4rem] scale-110 opacity-40
   pointer-events-none

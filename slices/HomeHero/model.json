@@ -1,0 +1,48 @@
+{
+  "id": "home_hero",
+  "type": "SharedSlice",
+  "name": "HomeHero",
+  "description": "HomeHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "HomeHero",
+      "primary": {
+        "line_1": {
+          "type": "Text",
+          "config": {
+            "label": "Line 1",
+            "placeholder": ""
+          }
+        },
+        "line_2": {
+          "type": "Text",
+          "config": {
+            "label": "Line 2",
+            "placeholder": ""
+          }
+        },
+        "line_3": {
+          "type": "Text",
+          "config": {
+            "label": "Line 3",
+            "placeholder": ""
+          }
+        },
+        "background": {
+          "type": "Image",
+          "config": {
+            "label": "Background",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}
