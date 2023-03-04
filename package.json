@@ -6,7 +6,7 @@
     "dev": "concurrently --names \"client,slicemachine\" -c \"bgBlue.bold,bgGreen.bold\" \"next dev\" \"yarn slicemachine\"",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint && tsc --noEmit",
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {

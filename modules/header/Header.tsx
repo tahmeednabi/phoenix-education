@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
   return (
     <div
       style={{ background: color }}
-      className="fixed z-50 w-screen shadow-2xl shadow-[rgba(0,0,0,0.05)]"
+      className="fixed z-50 w-screen"
     >
       <div className="container flex items-center -my-2">
         <PhoenixSvg viewBox="0 0 234 69" className="w-40 mr-auto" />

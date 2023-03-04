@@ -31,16 +31,19 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
+        backgroundColor: slice.primary.background_color || undefined,
       }}
-      className="relative flex flex-col justify-center h-[48rem] pt-32 overflow-hidden"
+      className="relative flex flex-col justify-center pt-64 pb-32 overflow-hidden"
     >
-      <div
-        className="absolute top-10 left-0 w-full h-full z-[1] -m-[4rem] scale-110"
-        style={{
-          background:
-            "linear-gradient(to left, rgba(15, 19, 33, 0), rgba(15, 19, 33, 0.6))",
-        }}
-      />
+      {slice.primary.background_image.url && (
+        <div
+          className="absolute top-10 left-0 w-full h-full z-[1] -m-[4rem] scale-110"
+          style={{
+            background:
+              "linear-gradient(to left, rgba(15, 19, 33, 0), rgba(15, 19, 33, 0.6))",
+          }}
+        />
+      )}
 
       <div className="container flex flex-col text-white z-20 px-12">
         {slice.primary.line_1 && (

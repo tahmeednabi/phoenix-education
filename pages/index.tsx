@@ -18,11 +18,7 @@ export default function Page({ page }: { page: HomeDocument }) {
   );
 }
 
-export async function getStaticProps({ previewData }: GetStaticPropsContext) {
-  const client = createClient({ previewData });
-
-  const page = await client.getSingle("home", {
-    graphQuery: `
+export const homeGraphQuery = `
     {
       home {
         ...homeFields
@@ -70,7 +66,13 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
         }
       }
     }
-  `,
+  `;
+
+export async function getStaticProps({ previewData }: GetStaticPropsContext) {
+  const client = createClient({ previewData });
+
+  const page = await client.getSingle("home", {
+    graphQuery: homeGraphQuery,
   });
 
   return {
