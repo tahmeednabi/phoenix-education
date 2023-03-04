@@ -16,6 +16,11 @@
         "primary": {},
         "items": {}
       }
+    },
+    "Hero": {
+      "default": {
+        "primary": {}
+      }
     }
   },
   "_cts": {
@@ -23,5 +28,12 @@
     "home": {},
     "selling_point": {},
     "tutor": {}
+  },
+  "modules/slices/page": {
+    "Hero": {
+      "default": {
+        "primary": {}
+      }
+    }
   }
 }

@@ -1,9 +1,9 @@
 import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "../prismicio";
-import { components } from "../slices";
+import { components } from "../modules/slices/page";
 import { GetStaticPropsContext } from "next";
-import { HomeDocument } from "../.slicemachine/prismicio";
+import { HomeDocument } from "@slicemachine/prismicio";
 import Head from "next/head";
 
 export default function Page({ page }: { page: HomeDocument }) {
@@ -27,7 +27,7 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
       home {
         ...homeFields
         slices {
-          ... on home_hero {
+          ... on hero {
             variation {
               ... on default {
                 primary {

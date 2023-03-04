@@ -24,13 +24,13 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "home_hero": {
-              "type": "SharedSlice"
-            },
             "selling_points": {
               "type": "SharedSlice"
             },
             "tutor_carousel": {
+              "type": "SharedSlice"
+            },
+            "hero": {
               "type": "SharedSlice"
             }
           }

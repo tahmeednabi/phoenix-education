@@ -24,17 +24,29 @@ export const getOutlineTheme: Styles<"root", ButtonProps | ActionIconProps> = (
   theme: MantineTheme,
   props: Pick<ButtonProps | ActionIconProps, "color" | "variant">
 ) => {
-  if (props.variant !== "outline") return {};
-
-  return {
-    root: {
-      background: rgba(theme, 6, 0.4, props),
-      border: `none`,
-      "&:hover": {
-        background: rgba(theme, 6, 0.6, props),
+  if (props.variant === "subtle")
+    return {
+      root: {
+        background: rgba(theme, 6, 0, props),
+        border: `none`,
+        "&:hover": {
+          background: rgba(theme, 6, 0.1, props),
+        },
       },
-    },
-  };
+    };
+
+  if (props.variant === "outline")
+    return {
+      root: {
+        background: rgba(theme, 6, 0.4, props),
+        border: `none`,
+        "&:hover": {
+          background: rgba(theme, 6, 0.1, props),
+        },
+      },
+    };
+
+  return {};
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {

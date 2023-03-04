@@ -47,7 +47,7 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "home_hero": {
+            "hero": {
               "type": "SharedSlice"
             }
           }

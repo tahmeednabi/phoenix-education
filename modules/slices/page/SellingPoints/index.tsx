@@ -3,7 +3,7 @@ import { SliceComponentProps } from "@prismicio/react";
 import {
   SellingPointDocument,
   SellingPointsSlice,
-} from "../../.slicemachine/prismicio";
+} from "@slicemachine/prismicio";
 import { PrismicNextImage } from "@prismicio/next";
 import BgSvg1 from "@res/svgs/BgSvg1.svg";
 
@@ -35,7 +35,7 @@ const SellingPoints = ({ slice }: SliceComponentProps<SellingPointsSlice>) => (
           )}
 
           <div className="flex-1 max-w-[36rem] p-4">
-            <h1>{item.title}</h1>
+            <h2>{item.title}</h2>
             <p>{item.description}</p>
           </div>
         </div>

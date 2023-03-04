@@ -21,7 +21,11 @@
     "strictPropertyInitialization": false,
     "strictNullChecks": true,
     "paths": {
-      "@res/*": ["./res/*"]
+      "@res/*": ["./res/*"],
+      "@common/*": ["./common/*"],
+      "@modules/*": ["./common/*"],
+      "@slicemachine/*": ["./.slicemachine/*"],
+      "@components/*": ["./components/*"]
     }
   },
   "include": [

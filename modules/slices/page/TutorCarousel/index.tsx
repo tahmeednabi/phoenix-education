@@ -1,16 +1,13 @@
 import React from "react";
 import { SliceComponentProps } from "@prismicio/react";
-import {
-  TutorCarouselSlice,
-  TutorDocument,
-} from "../../.slicemachine/prismicio";
+import { TutorCarouselSlice, TutorDocument } from "@slicemachine/prismicio";
 import Marquee from "react-fast-marquee";
 import { PrismicNextImage } from "@prismicio/next";
-import { Button } from "../../components/Button";
+import { Button } from "@components/Button";
 import { ChevronRight } from "tabler-icons-react";
 
 const TutorCarousel = ({ slice }: SliceComponentProps<TutorCarouselSlice>) => (
-  <section className="bg-red-500 py-32">
+  <section className="bg-red-500 py-32 -px-32">
     <div className="container flex flex-col md:flex-row gap-6 justify-between md:items-end">
       {slice.primary.title && (
         <h1 className="text-white text-7xl md:text-9xl max-w-xl">

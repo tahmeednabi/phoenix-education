@@ -2,7 +2,8 @@
   "apiEndpoint": "https://phoenixedu.prismic.io/api/v2",
   "localSliceSimulatorURL": "http://localhost:3000/slice-simulator",
   "libraries": [
-    "@/slices"
+    "@/modules/slices/page",
+    "@/modules/slices/course"
   ],
   "_latest": "0.7.0"
 }

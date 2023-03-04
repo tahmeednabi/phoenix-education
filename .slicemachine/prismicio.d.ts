@@ -46,7 +46,7 @@ interface HomeDocumentData {
  * Slice for *Home → Slice Zone*
  *
  */
-type HomeDocumentDataSlicesSlice = HomeHeroSlice | SellingPointsSlice | TutorCarouselSlice;
+type HomeDocumentDataSlicesSlice = SellingPointsSlice | TutorCarouselSlice | HeroSlice;
 /**
  * Home document from Prismic
  *
@@ -120,7 +120,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HomeHeroSlice;
+type PageDocumentDataSlicesSlice = HeroSlice;
 /**
  * Page document from Prismic
  *
@@ -236,94 +236,124 @@ interface TutorDocumentData {
 export type TutorDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<TutorDocumentData>, "tutor", Lang>;
 export type AllDocumentTypes = HomeDocument | PageDocument | SellingPointDocument | TutorDocument;
 /**
- * Primary content in HomeHero → Primary
+ * Primary content in Hero → Primary
  *
  */
-interface HomeHeroSliceDefaultPrimary {
+interface HeroSliceDefaultPrimary {
     /**
-     * Line 1 field in *HomeHero → Primary*
+     * Line 1 field in *Hero → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.line_1
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    line_1: prismicT.RichTextField;
+    /**
+     * Line 2 field in *Hero → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.line_2
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    line_2: prismicT.RichTextField;
+    /**
+     * Line 3 field in *Hero → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.line_3
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    line_3: prismicT.RichTextField;
+    /**
+     * Button 1 Text field in *Hero → Primary*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: home_hero.primary.line_1
+     * - **API ID Path**: hero.primary.button_1_text
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    line_1: prismicT.KeyTextField;
+    button_1_text: prismicT.KeyTextField;
     /**
-     * Line 2 field in *HomeHero → Primary*
+     * Button 1 Link field in *Hero → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.button_1_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    button_1_link: prismicT.LinkField;
+    /**
+     * Button 2 Text field in *Hero → Primary*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: home_hero.primary.line_2
+     * - **API ID Path**: hero.primary.button_2_text
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    line_2: prismicT.KeyTextField;
+    button_2_text: prismicT.KeyTextField;
     /**
-     * Line 3 field in *HomeHero → Primary*
+     * Button 2 Link field in *Hero → Primary*
      *
-     * - **Field Type**: Text
+     * - **Field Type**: Link
      * - **Placeholder**: *None*
-     * - **API ID Path**: home_hero.primary.line_3
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     * - **API ID Path**: hero.primary.button_2_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
      *
      */
-    line_3: prismicT.KeyTextField;
+    button_2_link: prismicT.LinkField;
     /**
-     * Background field in *HomeHero → Primary*
+     * Background Image field in *Hero → Primary*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
-     * - **API ID Path**: home_hero.primary.background
+     * - **API ID Path**: hero.primary.background_image
      * - **Documentation**: https://prismic.io/docs/core-concepts/image
      *
      */
-    background: prismicT.ImageField<never>;
+    background_image: prismicT.ImageField<never>;
     /**
-     * Book Trial field in *HomeHero → Primary*
+     * Background Color field in *Hero → Primary*
      *
-     * - **Field Type**: Content Relationship
+     * - **Field Type**: Color
      * - **Placeholder**: *None*
-     * - **API ID Path**: home_hero.primary.book_trial
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     * - **API ID Path**: hero.primary.background_color
+     * - **Documentation**: https://prismic.io/docs/core-concepts/color
      *
      */
-    book_trial: prismicT.RelationField;
-    /**
-     * Enrol Now field in *HomeHero → Primary*
-     *
-     * - **Field Type**: Content Relationship
-     * - **Placeholder**: *None*
-     * - **API ID Path**: home_hero.primary.enrol_now
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-    enrol_now: prismicT.RelationField;
+    background_color: prismicT.ColorField;
 }
 /**
- * Default variation for HomeHero Slice
+ * Default variation for Hero Slice
  *
  * - **API ID**: `default`
- * - **Description**: `HomeHero`
+ * - **Description**: `Hero`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type HomeHeroSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<HomeHeroSliceDefaultPrimary>, never>;
+export type HeroSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<HeroSliceDefaultPrimary>, never>;
 /**
- * Slice variation for *HomeHero*
+ * Slice variation for *Hero*
  *
  */
-type HomeHeroSliceVariation = HomeHeroSliceDefault;
+type HeroSliceVariation = HeroSliceDefault;
 /**
- * HomeHero Shared Slice
+ * Hero Shared Slice
  *
- * - **API ID**: `home_hero`
- * - **Description**: `HomeHero`
+ * - **API ID**: `hero`
+ * - **Description**: `Hero`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type HomeHeroSlice = prismicT.SharedSlice<"home_hero", HomeHeroSliceVariation>;
+export type HeroSlice = prismicT.SharedSlice<"hero", HeroSliceVariation>;
 /**
  * Item in SellingPoints → Items
  *
@@ -433,6 +463,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SellingPointDocumentData, SellingPointDocument, TutorDocumentData, TutorDocument, AllDocumentTypes, HomeHeroSliceDefaultPrimary, HomeHeroSliceDefault, HomeHeroSliceVariation, HomeHeroSlice, SellingPointsSliceDefaultItem, SellingPointsSliceDefault, SellingPointsSliceVariation, SellingPointsSlice, TutorCarouselSliceDefaultPrimary, TutorCarouselSliceDefaultItem, TutorCarouselSliceDefault, TutorCarouselSliceVariation, TutorCarouselSlice };
+        export type { HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SellingPointDocumentData, SellingPointDocument, TutorDocumentData, TutorDocument, AllDocumentTypes, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, SellingPointsSliceDefaultItem, SellingPointsSliceDefault, SellingPointsSliceVariation, SellingPointsSlice, TutorCarouselSliceDefaultPrimary, TutorCarouselSliceDefaultItem, TutorCarouselSliceDefault, TutorCarouselSliceVariation, TutorCarouselSlice };
     }
 }

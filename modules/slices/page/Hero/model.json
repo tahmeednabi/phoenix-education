@@ -1,0 +1,91 @@
+{
+  "id": "hero",
+  "type": "SharedSlice",
+  "name": "Hero",
+  "description": "Hero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Hero",
+      "primary": {
+        "line_1": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Line 1",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "line_2": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Line 2",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "line_3": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Line 3",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "button_1_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button 1 Text",
+            "placeholder": ""
+          }
+        },
+        "button_1_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button 1 Link",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "button_2_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button 2 Text",
+            "placeholder": ""
+          }
+        },
+        "button_2_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button 2 Link",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "background_color": {
+          "type": "Color",
+          "config": {
+            "label": "Background Color",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}
