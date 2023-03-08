@@ -3,7 +3,8 @@
   "localSliceSimulatorURL": "http://localhost:3000/slice-simulator",
   "libraries": [
     "@/modules/slices/page",
-    "@/modules/slices/course"
+    "@/modules/slices/course",
+    "@/modules/slices/pricing"
   ],
   "_latest": "0.7.0"
 }

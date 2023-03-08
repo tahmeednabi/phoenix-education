@@ -4,6 +4,7 @@ import { GetStaticPropsContext } from "next";
 import { createClient } from "../prismicio";
 import { SliceZone } from "@prismicio/react";
 import { components } from "modules/slices/page";
+import { Enrol } from "../modules/enrol/Enrol";
 
 export default function Page({ page }: { page: PageDocument }) {
   return (
@@ -12,7 +13,10 @@ export default function Page({ page }: { page: PageDocument }) {
         <title>{page.data.title}</title>
         <meta name="description" content={page.data.description || ""} />
       </Head>
+
       <SliceZone slices={page.data.slices} components={components} />
+
+      <Enrol />
     </div>
   );
 }

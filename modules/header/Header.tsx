@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import PhoenixSvg from "@res/svgs/PhoenixSvg.svg";
 import { HeaderLink } from "./HeaderLink";
-import { ActionIcon, Drawer, useMantineTheme } from "@mantine/core";
+import { Drawer, useMantineTheme } from "@mantine/core";
 import { Menu2 } from "tabler-icons-react";
 import { useRouter } from "next/router";
+import { ActionIcon } from "@components/ActionIcon";
 
 export const Header: React.FC = () => {
   const [drawer, setDrawer] = useState(false);
@@ -17,13 +18,10 @@ export const Header: React.FC = () => {
   useEffect(() => {
     if (path.startsWith("/enrol")) document.body.className = "bg-slate-900";
     else document.body.className = "bg-white";
-  }, [router.pathname]);
+  }, [path]);
 
   return (
-    <div
-      style={{ background: color }}
-      className="fixed z-50 w-screen"
-    >
+    <div style={{ background: color }} className="fixed z-50 w-screen">
       <div className="container flex items-center -my-2">
         <PhoenixSvg viewBox="0 0 234 69" className="w-40 mr-auto" />
 
@@ -43,7 +41,12 @@ export const Header: React.FC = () => {
           </HeaderLink>
         </div>
 
-        <ActionIcon className="block md:hidden" onClick={() => setDrawer(true)}>
+        <ActionIcon
+          size="lg"
+          variant="transparent"
+          className="block md:hidden"
+          onClick={() => setDrawer(true)}
+        >
           <Menu2 />
         </ActionIcon>
       </div>
@@ -54,6 +57,8 @@ export const Header: React.FC = () => {
         opened={drawer}
         onClose={() => setDrawer(false)}
         position="right"
+        withCloseButton={false}
+        styles={{ drawer: { backgroundColor: color } }}
       >
         <div className="flex flex-col items-center gap-2">
           <HeaderLink href={"/"}>Home</HeaderLink>

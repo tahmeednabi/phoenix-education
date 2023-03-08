@@ -62,7 +62,7 @@ a {
   }
 
   p {
-    @apply text-2xl font-light
+    @apply font-light
   }
 }
 
