@@ -91,9 +91,11 @@ function Search<T>(props: SearchProps<T>) {
       }}
       searchable
       itemComponent={SelectableItem(renderOption)}
-      transition="fade"
-      transitionDuration={100}
-      transitionTimingFunction="ease"
+      transitionProps={{
+        transition: "fade",
+        duration: 100,
+        timingFunction: "ease",
+      }}
       withinPortal
       {...defaults}
       {..._props}

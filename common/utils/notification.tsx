@@ -46,7 +46,7 @@ export class notification {
       color: "gray",
       loading: true,
       autoClose: false,
-      disallowClose: true,
+      withCloseButton: false,
     });
   }
 

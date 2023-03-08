@@ -36,7 +36,7 @@ const SellingPoints = ({ slice }: SliceComponentProps<SellingPointsSlice>) => (
 
           <div className="flex-1 max-w-[36rem] p-4">
             <h2>{item.title}</h2>
-            <p>{item.description}</p>
+            <p className="text-xl">{item.description}</p>
           </div>
         </div>
       );

@@ -5,9 +5,9 @@ import {
   ButtonProps as MantineButtonProps,
   INPUT_SIZES,
   MantineTheme,
-  Styles,
 } from "@mantine/core";
 import { merge } from "lodash";
+import { CSSObject } from "@mantine/styles/lib/tss";
 
 export type ButtonProps = MantineButtonProps &
   React.ButtonHTMLAttributes<HTMLButtonElement>;
@@ -20,29 +20,29 @@ export const rgba = (
 ) =>
   theme.fn.rgba(theme.colors[props.color || theme.primaryColor][shade], alpha);
 
-export const getOutlineTheme: Styles<"root", ButtonProps | ActionIconProps> = (
+export const getStyle = (
   theme: MantineTheme,
   props: Pick<ButtonProps | ActionIconProps, "color" | "variant">
-) => {
+): Partial<Record<"root", CSSObject>> => {
   if (props.variant === "subtle")
     return {
       root: {
-        background: rgba(theme, 6, 0, props),
+        backgroundColor: rgba(theme, 6, 0, props),
         border: `none`,
-        "&:hover": {
-          background: rgba(theme, 6, 0.1, props),
-        },
+        "&:not([data-disabled])": theme.fn.hover({
+          backgroundColor: rgba(theme, 6, 0.1, props),
+        }),
       },
     };
 
   if (props.variant === "outline")
     return {
       root: {
-        background: rgba(theme, 6, 0.4, props),
-        border: `none`,
-        "&:hover": {
-          background: rgba(theme, 6, 0.1, props),
-        },
+        backgroundColor: rgba(theme, 6, 0.1, props),
+        border: `1px solid ${rgba(theme, 6, 0.8, props)}`,
+        "&:not([data-disabled])": theme.fn.hover({
+          backgroundColor: rgba(theme, 6, 0.2, props),
+        }),
       },
     };
 
@@ -53,7 +53,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { children, ..._props } = props;
 
   const className =
-    `font-normal tracking-wide transition border-none ${
+    `font-normal tracking-wide transition ${
       props.variant === "outline" ? `text-white text-opacity-80` : ""
     } ` + props.className;
 
@@ -68,7 +68,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         {
           rightIcon: { marginLeft: 6, marginRight: -6 },
           leftIcon: { marginRight: 6, marginLeft: -6 },
-          ...getOutlineTheme(theme, props),
+          ...getStyle(theme, props),
         },
         props.styles
       ),

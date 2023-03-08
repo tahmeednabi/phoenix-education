@@ -39,9 +39,9 @@ const TutorCarousel = ({ slice }: SliceComponentProps<TutorCarouselSlice>) => (
 
             <div className="flex flex-col items-center py-4">
               <p className="text-2xl">{tutor.data.full_name}</p>
-              <h5 className="text-lg font-bold text-red-700">
+              <p className="text-lg font-bold text-red-700">
                 {tutor.data.subtitle}
-              </h5>
+              </p>
             </div>
           </div>
         );

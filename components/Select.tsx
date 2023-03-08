@@ -22,9 +22,11 @@ function Select<T>(props: SelectProps<T>) {
 
   return (
     <MantineSelect
-      transition="fade"
-      transitionDuration={100}
-      transitionTimingFunction="ease"
+      transitionProps={{
+        transition: "fade",
+        duration: 100,
+        timingFunction: "ease",
+      }}
       itemComponent={SelectableItem(renderOption)}
       withinPortal
       {...defaults}
