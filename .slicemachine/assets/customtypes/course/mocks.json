@@ -1,0 +1,42 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "nose"
+  },
+  "title": {
+    "__TYPE__": "FieldContent",
+    "value": "basis",
+    "type": "Text"
+  },
+  "subject_name": {
+    "__TYPE__": "FieldContent",
+    "value": "danger",
+    "type": "Text"
+  },
+  "color": {
+    "__TYPE__": "FieldContent",
+    "value": "#f6a305",
+    "type": "Color"
+  },
+  "price_per_term": {
+    "__TYPE__": "FieldContent",
+    "value": "23",
+    "type": "Number"
+  },
+  "price_per_lesson": {
+    "__TYPE__": "FieldContent",
+    "value": "63",
+    "type": "Number"
+  },
+  "features": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Incididunt adipisicing velit ullamco ullamco quis minim elit Lorem."
+        }
+      }
+    ]
+  }
+}

@@ -29,11 +29,7 @@ a {
 }
 
 @layer base {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
+  h1, h2, h3, h4, h5, h6 {
     @apply font-medium m-0;
   }
 
@@ -58,7 +54,11 @@ a {
   }
 
   h5 {
-    @apply text-xl md:text-2xl my-4 !important
+    @apply text-xl md:text-2xl my-2 !important
+  }
+
+  h6 {
+    @apply text-lg md:text-xl my-2 !important
   }
 
   p {
@@ -78,3 +78,16 @@ a {
   -m-[4rem] scale-110 opacity-40
   pointer-events-none
 }
+
+.swiper-horizontal > * > * > .swiper-slide-shadow-top, .swiper-horizontal > * > * > .swiper-slide-shadow-bottom {
+  @apply hidden
+}
+
+.swiper-vertical > * > * > .swiper-slide-shadow-left, .swiper-vertical > * > * > .swiper-slide-shadow-right {
+  @apply hidden
+}
+
+.swiper-slide-shadow-top, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left, .swiper-slide-shadow-right {
+  @apply rounded-lg
+}
+

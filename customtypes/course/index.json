@@ -1,0 +1,63 @@
+{
+  "id": "course",
+  "label": "Course",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "Course UID",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "subject_name": {
+        "type": "Text",
+        "config": {
+          "label": "Subject name",
+          "placeholder": ""
+        }
+      },
+      "color": {
+        "type": "Color",
+        "config": {
+          "label": "Color",
+          "placeholder": ""
+        }
+      }
+    },
+    "Details": {
+      "price_per_term": {
+        "type": "Number",
+        "config": {
+          "label": "Price per term",
+          "placeholder": ""
+        }
+      },
+      "price_per_lesson": {
+        "type": "Number",
+        "config": {
+          "label": "Price per lesson",
+          "placeholder": ""
+        }
+      },
+      "features": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Features",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      }
+    }
+  }
+}

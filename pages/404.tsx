@@ -11,8 +11,8 @@ export default function Index() {
 
       <div className="flex items-center justify-center h-[calc(100vh-18rem)]">
         <div className="flex items-center divide-x divide-y-0 divide-solid divide-gray-400">
-          <h1 className="px-6">404</h1>
-          <h1 className="px-6 font-normal">Page not found</h1>
+          <h3 className="text-3xl px-6">404</h3>
+          <h3 className="text-3xl px-6 font-light">Page not found</h3>
         </div>
       </div>
     </div>

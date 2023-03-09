@@ -8,7 +8,7 @@
         "__TYPE__": "GroupItemContent",
         "value": [
           [
-            "selling_points",
+            "course",
             {
               "__TYPE__": "LinkContent",
               "value": {

@@ -6,6 +6,8 @@ export const linkResolver: LinkResolverFunction = (doc) => {
       return `/blog/${doc.uid}`;
     case "course":
       return `/course/${doc.uid}`;
+    case "home":
+      return "/";
     default:
       return `/${doc.uid}`;
   }

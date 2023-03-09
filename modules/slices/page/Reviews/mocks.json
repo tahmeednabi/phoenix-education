@@ -1,0 +1,87 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "Refer"
+            }
+          }
+        ]
+      },
+      "description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Minim ullamco cillum irure enim eiusmod esse voluptate exercitation irure. Minim laborum culpa ut qui dolore pariatur in do ut ullamco incididunt. Ad quis quis sit occaecat occaecat excepteur nostrud consectetur id esse ullamco nostrud et cupidatat sunt."
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "name",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "carry",
+              "type": "Text"
+            }
+          ],
+          [
+            "subtitle",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "nuts",
+              "type": "Text"
+            }
+          ],
+          [
+            "avatar",
+            {
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+                "width": 5243,
+                "height": 3495
+              },
+              "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+              "width": 5243,
+              "height": 3495,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "credits": null,
+              "alt": null,
+              "__TYPE__": "ImageContent",
+              "thumbnails": {}
+            }
+          ],
+          [
+            "body",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "traffic",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

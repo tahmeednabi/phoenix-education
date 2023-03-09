@@ -1,24 +1,24 @@
 {
-  "id": "selling_points",
+  "id": "pricing",
   "type": "SharedSlice",
-  "name": "SellingPoints",
-  "description": "SellingPoints",
+  "name": "Pricing",
+  "description": "Pricing",
   "variations": [
     {
       "id": "default",
       "name": "Default",
       "docURL": "...",
       "version": "sktwi1xtmkfgx8626",
-      "description": "SellingPoints",
+      "description": "Pricing",
       "primary": {},
       "items": {
-        "selling_points": {
+        "course": {
           "type": "Link",
           "config": {
-            "label": "Selling Points",
+            "label": "Course",
             "select": "document",
             "customtypes": [
-              "selling_point"
+              "course"
             ]
           }
         }

@@ -26,11 +26,33 @@
   "_cts": {
     "page": {},
     "home": {},
-    "selling_point": {},
-    "tutor": {}
+    "tutor": {},
+    "course": {}
   },
   "modules/slices/page": {
     "Hero": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "Pricing": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "Results": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "Content": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "Reviews": {
       "default": {
         "primary": {}
       }

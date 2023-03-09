@@ -18,6 +18,20 @@ export default function Page({ page }: { page: HomeDocument }) {
   );
 }
 
+export async function getStaticProps({ previewData }: GetStaticPropsContext) {
+  const client = createClient({ previewData });
+
+  const page = await client.getSingle("home", {
+    graphQuery: homeGraphQuery,
+  });
+
+  return {
+    props: {
+      page,
+    },
+  };
+}
+
 export const homeGraphQuery = `
     {
       home {
@@ -33,16 +47,14 @@ export const homeGraphQuery = `
             }
           }
           
-          ... on selling_points {
+          ... on content {
             variation {
               ... on default {
                 primary {
                   ...primaryFields
                 }
                 items {
-                  selling_points {
-                    ...selling_pointsFields
-                  }
+                  ...itemsFields
                 }
               }
             }
@@ -63,21 +75,48 @@ export const homeGraphQuery = `
             }
           }
           
+          ... on pricing {
+            variation {
+              ... on default {
+                primary {
+                  ...primaryFields
+                }
+                items {
+                  course {
+                    ...courseFields
+                  }
+                }
+              }
+            }
+          }
+          
+          ... on results {
+            variation {
+              ... on default {
+                primary {
+                  ...primaryFields
+                }
+                items {
+                  ...itemsFields
+                }
+              }
+            }
+          }
+          
+          ... on reviews {
+            variation {
+              ... on default {
+                primary {
+                  ...primaryFields
+                }
+                items {
+                  ...itemsFields
+                }
+              }
+            }
+          }
+          
         }
       }
     }
   `;
-
-export async function getStaticProps({ previewData }: GetStaticPropsContext) {
-  const client = createClient({ previewData });
-
-  const page = await client.getSingle("home", {
-    graphQuery: homeGraphQuery,
-  });
-
-  return {
-    props: {
-      page,
-    },
-  };
-}

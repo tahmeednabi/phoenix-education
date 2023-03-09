@@ -3,7 +3,6 @@ import {
   ActionIconProps,
   Button as MantineButton,
   ButtonProps as MantineButtonProps,
-  INPUT_SIZES,
   MantineTheme,
 } from "@mantine/core";
 import { merge } from "lodash";
@@ -60,7 +59,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const defaults: MantineButtonProps = {
     style: {
       opacity: props.disabled ? 0.5 : 1,
-      fontSize: INPUT_SIZES[props.size || "md"] / 2.2,
       ...props.style,
     },
     styles: (theme) =>

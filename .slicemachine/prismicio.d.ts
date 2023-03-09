@@ -6,6 +6,85 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for Course documents */
+interface CourseDocumentData {
+    /**
+     * Title field in *Course*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: course.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Subject name field in *Course*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: course.subject_name
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    subject_name: prismicT.KeyTextField;
+    /**
+     * Color field in *Course*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: course.color
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/color
+     *
+     */
+    color: prismicT.ColorField;
+    /**
+     * Price per term field in *Course*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: course.price_per_term
+     * - **Tab**: Details
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    price_per_term: prismicT.NumberField;
+    /**
+     * Price per lesson field in *Course*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: course.price_per_lesson
+     * - **Tab**: Details
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    price_per_lesson: prismicT.NumberField;
+    /**
+     * Features field in *Course*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: course.features
+     * - **Tab**: Details
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    features: prismicT.RichTextField;
+}
+/**
+ * Course document from Prismic
+ *
+ * - **API ID**: `course`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CourseDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<CourseDocumentData>, "course", Lang>;
 /** Content for Home documents */
 interface HomeDocumentData {
     /**
@@ -46,7 +125,7 @@ interface HomeDocumentData {
  * Slice for *Home → Slice Zone*
  *
  */
-type HomeDocumentDataSlicesSlice = SellingPointsSlice | TutorCarouselSlice | HeroSlice;
+type HomeDocumentDataSlicesSlice = PricingSlice | ResultsSlice | ContentSlice | HeroSlice | TutorCarouselSlice | ReviewsSlice;
 /**
  * Home document from Prismic
  *
@@ -120,7 +199,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSlice;
+type PageDocumentDataSlicesSlice = HeroSlice | PricingSlice | ContentSlice | ResultsSlice | ReviewsSlice | TutorCarouselSlice;
 /**
  * Page document from Prismic
  *
@@ -131,52 +210,6 @@ type PageDocumentDataSlicesSlice = HeroSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type PageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
-/** Content for Selling Point documents */
-interface SellingPointDocumentData {
-    /**
-     * Title field in *Selling Point*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: selling_point.title
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    title: prismicT.KeyTextField;
-    /**
-     * Description field in *Selling Point*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: selling_point.description
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    description: prismicT.KeyTextField;
-    /**
-     * Image field in *Selling Point*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: selling_point.image
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
-     *
-     */
-    image: prismicT.ImageField<never>;
-}
-/**
- * Selling Point document from Prismic
- *
- * - **API ID**: `selling_point`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type SellingPointDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SellingPointDocumentData>, "selling_point", Lang>;
 /** Content for Tutor documents */
 interface TutorDocumentData {
     /**
@@ -234,7 +267,154 @@ interface TutorDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type TutorDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<TutorDocumentData>, "tutor", Lang>;
-export type AllDocumentTypes = HomeDocument | PageDocument | SellingPointDocument | TutorDocument;
+export type AllDocumentTypes = CourseDocument | HomeDocument | PageDocument | TutorDocument;
+/**
+ * Primary content in Content → Primary
+ *
+ */
+interface ContentSliceDefaultPrimary {
+    /**
+     * UID field in *Content → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content.primary.uid
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    uid: prismicT.KeyTextField;
+    /**
+     * Title field in *Content → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: content.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *Content → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: content.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Background Graphic field in *Content → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: content.primary.background_graphic
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    background_graphic: prismicT.BooleanField;
+}
+/**
+ * Item in Content → Items
+ *
+ */
+export interface ContentSliceDefaultItem {
+    /**
+     * Heading field in *Content → Items*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content.items[].heading
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    heading: prismicT.TitleField;
+    /**
+     * Description field in *Content → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content.items[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Image field in *Content → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content.items[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * Video field in *Content → Items*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content.items[].video
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    video: prismicT.LinkToMediaField;
+    /**
+     * Background color field in *Content → Items*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content.items[].background_color
+     * - **Documentation**: https://prismic.io/docs/core-concepts/color
+     *
+     */
+    background_color: prismicT.ColorField;
+    /**
+     * Text color field in *Content → Items*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content.items[].text_color
+     * - **Documentation**: https://prismic.io/docs/core-concepts/color
+     *
+     */
+    text_color: prismicT.ColorField;
+    /**
+     * Reversed field in *Content → Items*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: content.items[].reversed
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    reversed: prismicT.BooleanField;
+}
+/**
+ * Default variation for Content Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Content`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContentSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ContentSliceDefaultPrimary>, Simplify<ContentSliceDefaultItem>>;
+/**
+ * Slice variation for *Content*
+ *
+ */
+type ContentSliceVariation = ContentSliceDefault;
+/**
+ * Content Shared Slice
+ *
+ * - **API ID**: `content`
+ * - **Description**: `Content`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContentSlice = prismicT.SharedSlice<"content", ContentSliceVariation>;
 /**
  * Primary content in Hero → Primary
  *
@@ -355,44 +535,204 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismicT.SharedSlice<"hero", HeroSliceVariation>;
 /**
- * Item in SellingPoints → Items
+ * Item in Pricing → Items
  *
  */
-export interface SellingPointsSliceDefaultItem {
+export interface PricingSliceDefaultItem {
     /**
-     * Selling Points field in *SellingPoints → Items*
+     * Course field in *Pricing → Items*
      *
      * - **Field Type**: Content Relationship
      * - **Placeholder**: *None*
-     * - **API ID Path**: selling_points.items[].selling_points
+     * - **API ID Path**: pricing.items[].course
      * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
      *
      */
-    selling_points: prismicT.RelationField<"selling_point">;
+    course: prismicT.RelationField<"course">;
 }
 /**
- * Default variation for SellingPoints Slice
+ * Default variation for Pricing Slice
  *
  * - **API ID**: `default`
- * - **Description**: `SellingPoints`
+ * - **Description**: `Pricing`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type SellingPointsSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<SellingPointsSliceDefaultItem>>;
+export type PricingSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<PricingSliceDefaultItem>>;
 /**
- * Slice variation for *SellingPoints*
+ * Slice variation for *Pricing*
  *
  */
-type SellingPointsSliceVariation = SellingPointsSliceDefault;
+type PricingSliceVariation = PricingSliceDefault;
 /**
- * SellingPoints Shared Slice
+ * Pricing Shared Slice
  *
- * - **API ID**: `selling_points`
- * - **Description**: `SellingPoints`
+ * - **API ID**: `pricing`
+ * - **Description**: `Pricing`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type SellingPointsSlice = prismicT.SharedSlice<"selling_points", SellingPointsSliceVariation>;
+export type PricingSlice = prismicT.SharedSlice<"pricing", PricingSliceVariation>;
+/**
+ * Primary content in Results → Primary
+ *
+ */
+interface ResultsSliceDefaultPrimary {
+    /**
+     * Title field in *Results → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: results.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+}
+/**
+ * Item in Results → Items
+ *
+ */
+export interface ResultsSliceDefaultItem {
+    /**
+     * Value field in *Results → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: results.items[].value
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    value: prismicT.KeyTextField;
+    /**
+     * Description field in *Results → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: results.items[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+}
+/**
+ * Default variation for Results Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Results`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ResultsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ResultsSliceDefaultPrimary>, Simplify<ResultsSliceDefaultItem>>;
+/**
+ * Slice variation for *Results*
+ *
+ */
+type ResultsSliceVariation = ResultsSliceDefault;
+/**
+ * Results Shared Slice
+ *
+ * - **API ID**: `results`
+ * - **Description**: `Results`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ResultsSlice = prismicT.SharedSlice<"results", ResultsSliceVariation>;
+/**
+ * Primary content in Reviews → Primary
+ *
+ */
+interface ReviewsSliceDefaultPrimary {
+    /**
+     * Title field in *Reviews → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: reviews.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *Reviews → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: reviews.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+}
+/**
+ * Item in Reviews → Items
+ *
+ */
+export interface ReviewsSliceDefaultItem {
+    /**
+     * Name field in *Reviews → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: reviews.items[].name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * Subtitle field in *Reviews → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: reviews.items[].subtitle
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    subtitle: prismicT.KeyTextField;
+    /**
+     * Avatar field in *Reviews → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: reviews.items[].avatar
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    avatar: prismicT.ImageField<never>;
+    /**
+     * Body field in *Reviews → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: reviews.items[].body
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    body: prismicT.KeyTextField;
+}
+/**
+ * Default variation for Reviews Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Reviews`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ReviewsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ReviewsSliceDefaultPrimary>, Simplify<ReviewsSliceDefaultItem>>;
+/**
+ * Slice variation for *Reviews*
+ *
+ */
+type ReviewsSliceVariation = ReviewsSliceDefault;
+/**
+ * Reviews Shared Slice
+ *
+ * - **API ID**: `reviews`
+ * - **Description**: `Reviews`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ReviewsSlice = prismicT.SharedSlice<"reviews", ReviewsSliceVariation>;
 /**
  * Primary content in TutorCarousel → Primary
  *
@@ -463,6 +803,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SellingPointDocumentData, SellingPointDocument, TutorDocumentData, TutorDocument, AllDocumentTypes, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, SellingPointsSliceDefaultItem, SellingPointsSliceDefault, SellingPointsSliceVariation, SellingPointsSlice, TutorCarouselSliceDefaultPrimary, TutorCarouselSliceDefaultItem, TutorCarouselSliceDefault, TutorCarouselSliceVariation, TutorCarouselSlice };
+        export type { CourseDocumentData, CourseDocument, HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, TutorDocumentData, TutorDocument, AllDocumentTypes, ContentSliceDefaultPrimary, ContentSliceDefaultItem, ContentSliceDefault, ContentSliceVariation, ContentSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, PricingSliceDefaultItem, PricingSliceDefault, PricingSliceVariation, PricingSlice, ResultsSliceDefaultPrimary, ResultsSliceDefaultItem, ResultsSliceDefault, ResultsSliceVariation, ResultsSlice, ReviewsSliceDefaultPrimary, ReviewsSliceDefaultItem, ReviewsSliceDefault, ReviewsSliceVariation, ReviewsSlice, TutorCarouselSliceDefaultPrimary, TutorCarouselSliceDefaultItem, TutorCarouselSliceDefault, TutorCarouselSliceVariation, TutorCarouselSlice };
     }
 }

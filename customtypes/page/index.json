@@ -49,6 +49,21 @@
           "choices": {
             "hero": {
               "type": "SharedSlice"
+            },
+            "pricing": {
+              "type": "SharedSlice"
+            },
+            "content": {
+              "type": "SharedSlice"
+            },
+            "results": {
+              "type": "SharedSlice"
+            },
+            "reviews": {
+              "type": "SharedSlice"
+            },
+            "tutor_carousel": {
+              "type": "SharedSlice"
             }
           }
         }
