@@ -27,7 +27,9 @@
     "page": {},
     "home": {},
     "tutor": {},
-    "course": {}
+    "course": {},
+    "footer": {},
+    "year": {}
   },
   "modules/slices/page": {
     "Hero": {
@@ -53,6 +55,34 @@
       }
     },
     "Reviews": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "Contact": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "Timeline": {
+      "default": {
+        "primary": {}
+      }
+    }
+  },
+  "modules/slices/course": {
+    "Resource": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "CourseTutors": {
+      "default": {
+        "items": {},
+        "primary": {}
+      }
+    },
+    "CourseClasses": {
       "default": {
         "primary": {}
       }

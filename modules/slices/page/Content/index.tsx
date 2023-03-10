@@ -8,12 +8,16 @@ import {
   JSXFunctionSerializer,
 } from "@prismicio/react";
 import { wrapMapSerializer } from "@prismicio/richtext";
+import { Button } from "@components/Button";
+import Link from "next/link";
+import { asLink } from "@prismicio/helpers";
+import { linkResolver } from "@common/utils";
+
+export const serializer: JSXFunctionSerializer = wrapMapSerializer({
+  paragraph: ({ text }) => <p className="text-2xl md:text-xl">{text}</p>,
+});
 
 const Content = ({ slice }: SliceComponentProps<ContentSlice>) => {
-  const serializer: JSXFunctionSerializer = wrapMapSerializer({
-    paragraph: ({ text }) => <p className="text-2xl md:text-xl">{text}</p>,
-  });
-
   return (
     <section id={slice.primary.uid || ""} className="relative py-24">
       {slice.primary.background_graphic && (
@@ -42,6 +46,13 @@ const Content = ({ slice }: SliceComponentProps<ContentSlice>) => {
           <div className="flex-1 max-w-[36rem] p-4 mt-8 md:mt-0">
             <PrismicRichText field={data.heading} />
             <PrismicRichText components={serializer} field={data.description} />
+            {data.button_text && (
+              <Link href={asLink(data.button_link, linkResolver) || ""}>
+                <Button size="lg" className="mt-4">
+                  {data.button_text}
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       ))}

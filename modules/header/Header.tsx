@@ -35,9 +35,9 @@ export const Header: React.FC = () => {
 
           <HeaderLink href={"/courses"}>Courses</HeaderLink>
 
-          <HeaderLink href={"/resources"}>Resources</HeaderLink>
+          {/*<HeaderLink href={"/resources"}>Resources</HeaderLink>*/}
 
-          <HeaderLink href={"/blog"}>Blog</HeaderLink>
+          {/*<HeaderLink href={"/blog"}>Blog</HeaderLink>*/}
 
           <HeaderLink href={"/enrol"} filled>
             Enrol
@@ -75,9 +75,9 @@ export const Header: React.FC = () => {
 
           <HeaderLink href={"/courses"}>Courses</HeaderLink>
 
-          <HeaderLink href={"/resources"}>Resources</HeaderLink>
+          {/*<HeaderLink href={"/resources"}>Resources</HeaderLink>*/}
 
-          <HeaderLink href={"/blog"}>Blog</HeaderLink>
+          {/*<HeaderLink href={"/blog"}>Blog</HeaderLink>*/}
 
           <HeaderLink href={"/enrol"} filled>
             Enrol

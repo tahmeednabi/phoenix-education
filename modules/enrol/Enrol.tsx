@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import useAsyncForm from "@common/utils/use-async-form";
 import { EnrolStudentDto } from "../../pages/api/enrol";
 import { MantineProvider, Stepper, useMantineTheme } from "@mantine/core";
-import { Books, Cash, Check, Users } from "tabler-icons-react";
+import { Books, Check, Users } from "tabler-icons-react";
 import { GraduationCap } from "phosphor-react";
 import { Button } from "@components/Button";
 import { GuardianDetails } from "./components/GuardianDetails";
@@ -11,7 +11,6 @@ import { getMantineTheme } from "@common/utils";
 import { Courses } from "./components/Courses";
 import { array, object, string } from "yup";
 import { isValidPhoneNumber } from "react-phone-number-input";
-import { Payment } from "./components/Payment";
 import { Summary } from "./components/Summary";
 import { Checkmark } from "@components/Checkmark";
 
@@ -48,15 +47,6 @@ export const Enrol: React.FC = () => {
           .test("phone-number-test", "Phone number is invalid", (value) =>
             value ? isValidPhoneNumber(value, "AU") : true
           ),
-        accountName: string().min(1, "Account name must be provided"),
-        bsb: string()
-          .transform((value) => (value === "" ? undefined : value))
-          .matches(/^\d+$/, "BSB can only consist of numbers ")
-          .length(6, "BSB must be 6 characters long "),
-        accountNo: string()
-          .transform((value) => (value === "" ? undefined : value))
-          .matches(/^\d+$/, "Account number can only consist of numbers ")
-          .max(14, "Account number cannot be longer than 14 characters "),
       }),
     }) as any,
   });
@@ -89,18 +79,11 @@ export const Enrol: React.FC = () => {
       case 2:
         error = await form.validateFieldsAsync(["subjects"]);
         break;
-      case 3:
-        error = await form.validateFieldsAsync([
-          "guardian.accountName",
-          "guardian.bsb",
-          "guardian.accountNo",
-        ]);
-        break;
       default:
     }
 
     if (error) return;
-    if (active >= 4) setSubmitted(true);
+    if (active >= 3) setSubmitted(true);
     return setActive(active + 1);
   }, [form, active]);
 
@@ -157,14 +140,6 @@ export const Enrol: React.FC = () => {
           <Courses form={form} />
         </Stepper.Step>
 
-        <Stepper.Step
-          label="Step 4"
-          description="Payment"
-          icon={<Cash className="w-4 h-4" />}
-        >
-          <Payment form={form} />
-        </Stepper.Step>
-
         <Stepper.Completed>
           <Summary form={form} />
         </Stepper.Completed>
@@ -176,7 +151,7 @@ export const Enrol: React.FC = () => {
         </Button>
 
         <Button color="blue" size="sm" onClick={handleNext}>
-          {active === 4 ? "Submit" : "Next"}
+          {active === 3 ? "Submit" : "Next"}
         </Button>
       </div>
     </div>

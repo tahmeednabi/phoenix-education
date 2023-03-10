@@ -1,0 +1,67 @@
+{
+  "phone": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Nulla cupidatat pariatur ullamco incididunt reprehenderit dolore aliqua enim eiusmod sint ad."
+        }
+      }
+    ]
+  },
+  "email": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Sint do tempor ullamco voluptate ut quis in sit non pariatur exercitation eiusmod. Commodo ut duis et deserunt sunt tempor irure tempor veniam. Nulla commodo mollit reprehenderit ex elit esse occaecat pariatur deserunt pariatur excepteur id quis."
+        }
+      }
+    ]
+  },
+  "address": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Consequat adipisicing consequat magna do sunt labore et nulla occaecat."
+        }
+      }
+    ]
+  },
+  "copyright": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Laboris culpa veniam esse velit. Incididunt aute reprehenderit laborum. Consequat reprehenderit et adipisicing sint sit aliqua aute consectetur fugiat irure."
+        }
+      }
+    ]
+  },
+  "facebook": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "ExternalLink",
+      "url": "https://slicemachine.dev"
+    }
+  },
+  "instagram": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "ExternalLink",
+      "url": "https://prismic.io"
+    }
+  },
+  "linked_in": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "ExternalLink",
+      "url": "https://slicemachine.dev"
+    }
+  }
+}

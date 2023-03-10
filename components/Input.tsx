@@ -36,8 +36,9 @@ export function getInputDefaults(
     ),
     classNames: {
       error: "text-sm",
-      label: "text-gray-300 text-sm",
+      label: "text-sm",
       description: "mb-[3px]",
+      input: "border-slate-300 dark:border-slate-800",
     },
   };
 }

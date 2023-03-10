@@ -72,7 +72,7 @@ export const Courses: React.FC<CourseProps> = ({ form }) => {
           <Checkbox
             key={index}
             size="lg"
-            className="border-solid border-slate-800 rounded w-fit px-3 pt-3 pb-1"
+            className="border-solid border-slate-800 rounded w-fit px-3 py-2"
             label={subject.name}
             checked={form.values.subjects?.some(({ id }) => subject.id === id)}
             onChange={({ target }) => handleChange(subject, target.checked)}

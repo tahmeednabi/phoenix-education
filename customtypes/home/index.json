@@ -41,6 +41,9 @@
             },
             "reviews": {
               "type": "SharedSlice"
+            },
+            "contact": {
+              "type": "SharedSlice"
             }
           }
         }

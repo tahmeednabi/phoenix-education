@@ -42,6 +42,28 @@ interface CourseDocumentData {
      */
     color: prismicT.ColorField;
     /**
+     * Year field in *Course*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: course.year
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    year: prismicT.RelationField<"year">;
+    /**
+     * Slice Zone field in *Course*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: course.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<CourseDocumentDataSlicesSlice>;
+    /**
      * Price per term field in *Course*
      *
      * - **Field Type**: Number
@@ -76,6 +98,11 @@ interface CourseDocumentData {
     features: prismicT.RichTextField;
 }
 /**
+ * Slice for *Course → Slice Zone*
+ *
+ */
+type CourseDocumentDataSlicesSlice = HeroSlice | ContentSlice | ContactSlice | ResultsSlice | ResourceSlice | ReviewsSlice | TimelineSlice | CourseClassesSlice | CourseTutorsSlice;
+/**
  * Course document from Prismic
  *
  * - **API ID**: `course`
@@ -85,6 +112,96 @@ interface CourseDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type CourseDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<CourseDocumentData>, "course", Lang>;
+/** Content for Footer documents */
+interface FooterDocumentData {
+    /**
+     * Phone field in *Footer*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.phone
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    phone: prismicT.RichTextField;
+    /**
+     * Email field in *Footer*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.email
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    email: prismicT.RichTextField;
+    /**
+     * Address field in *Footer*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.address
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    address: prismicT.RichTextField;
+    /**
+     * Copyright field in *Footer*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.copyright
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    copyright: prismicT.RichTextField;
+    /**
+     * Facebook field in *Footer*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.facebook
+     * - **Tab**: Socials
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    facebook: prismicT.LinkField;
+    /**
+     * Instagram field in *Footer*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.instagram
+     * - **Tab**: Socials
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    instagram: prismicT.LinkField;
+    /**
+     * Linked In field in *Footer*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.linked_in
+     * - **Tab**: Socials
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    linked_in: prismicT.LinkField;
+}
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, "footer", Lang>;
 /** Content for Home documents */
 interface HomeDocumentData {
     /**
@@ -125,7 +242,7 @@ interface HomeDocumentData {
  * Slice for *Home → Slice Zone*
  *
  */
-type HomeDocumentDataSlicesSlice = PricingSlice | ResultsSlice | ContentSlice | HeroSlice | TutorCarouselSlice | ReviewsSlice;
+type HomeDocumentDataSlicesSlice = PricingSlice | ResultsSlice | ContentSlice | HeroSlice | TutorCarouselSlice | ReviewsSlice | ContactSlice;
 /**
  * Home document from Prismic
  *
@@ -267,7 +384,106 @@ interface TutorDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type TutorDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<TutorDocumentData>, "tutor", Lang>;
-export type AllDocumentTypes = CourseDocument | HomeDocument | PageDocument | TutorDocument;
+/** Content for Year documents */
+interface YearDocumentData {
+    /**
+     * Name field in *Year*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: year.name
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *Year*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: year.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<YearDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Year → Slice Zone*
+ *
+ */
+type YearDocumentDataSlicesSlice = ContentSlice | ContactSlice | ReviewsSlice;
+/**
+ * Year document from Prismic
+ *
+ * - **API ID**: `year`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type YearDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<YearDocumentData>, "year", Lang>;
+export type AllDocumentTypes = CourseDocument | FooterDocument | HomeDocument | PageDocument | TutorDocument | YearDocument;
+/**
+ * Primary content in Contact → Primary
+ *
+ */
+interface ContactSliceDefaultPrimary {
+    /**
+     * Title field in *Contact → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: contact.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *Contact → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: contact.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Image field in *Contact → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.primary.image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for Contact Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Contact`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContactSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ContactSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *Contact*
+ *
+ */
+type ContactSliceVariation = ContactSliceDefault;
+/**
+ * Contact Shared Slice
+ *
+ * - **API ID**: `contact`
+ * - **Description**: `Contact`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContactSlice = prismicT.SharedSlice<"contact", ContactSliceVariation>;
 /**
  * Primary content in Content → Primary
  *
@@ -391,6 +607,26 @@ export interface ContentSliceDefaultItem {
      *
      */
     reversed: prismicT.BooleanField;
+    /**
+     * Button Text field in *Content → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content.items[].button_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    button_text: prismicT.KeyTextField;
+    /**
+     * Button Link field in *Content → Items*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content.items[].button_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    button_link: prismicT.LinkField;
 }
 /**
  * Default variation for Content Slice
@@ -549,6 +785,16 @@ export interface PricingSliceDefaultItem {
      *
      */
     course: prismicT.RelationField<"course">;
+    /**
+     * Year field in *Pricing → Items*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: pricing.items[].year
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    year: prismicT.RelationField<"year">;
 }
 /**
  * Default variation for Pricing Slice
@@ -734,6 +980,91 @@ type ReviewsSliceVariation = ReviewsSliceDefault;
  */
 export type ReviewsSlice = prismicT.SharedSlice<"reviews", ReviewsSliceVariation>;
 /**
+ * Primary content in Timeline → Primary
+ *
+ */
+interface TimelineSliceDefaultPrimary {
+    /**
+     * Title field in *Timeline → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: timeline.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *Timeline → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: timeline.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Active field in *Timeline → Primary*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: timeline.primary.active
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    active: prismicT.NumberField;
+}
+/**
+ * Item in Timeline → Items
+ *
+ */
+export interface TimelineSliceDefaultItem {
+    /**
+     * Heading field in *Timeline → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: timeline.items[].heading
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    heading: prismicT.KeyTextField;
+    /**
+     * Body field in *Timeline → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: timeline.items[].body
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    body: prismicT.RichTextField;
+}
+/**
+ * Default variation for Timeline Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Timeline`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TimelineSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TimelineSliceDefaultPrimary>, Simplify<TimelineSliceDefaultItem>>;
+/**
+ * Slice variation for *Timeline*
+ *
+ */
+type TimelineSliceVariation = TimelineSliceDefault;
+/**
+ * Timeline Shared Slice
+ *
+ * - **API ID**: `timeline`
+ * - **Description**: `Timeline`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TimelineSlice = prismicT.SharedSlice<"timeline", TimelineSliceVariation>;
+/**
  * Primary content in TutorCarousel → Primary
  *
  */
@@ -798,11 +1129,204 @@ type TutorCarouselSliceVariation = TutorCarouselSliceDefault;
  *
  */
 export type TutorCarouselSlice = prismicT.SharedSlice<"tutor_carousel", TutorCarouselSliceVariation>;
+/**
+ * Primary content in CourseClasses → Primary
+ *
+ */
+interface CourseClassesSliceDefaultPrimary {
+    /**
+     * Title field in *CourseClasses → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: course_classes.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *CourseClasses → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: course_classes.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+}
+/**
+ * Default variation for CourseClasses Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `CourseClasses`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type CourseClassesSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<CourseClassesSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *CourseClasses*
+ *
+ */
+type CourseClassesSliceVariation = CourseClassesSliceDefault;
+/**
+ * CourseClasses Shared Slice
+ *
+ * - **API ID**: `course_classes`
+ * - **Description**: `CourseClasses`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type CourseClassesSlice = prismicT.SharedSlice<"course_classes", CourseClassesSliceVariation>;
+/**
+ * Primary content in CourseTutors → Primary
+ *
+ */
+interface CourseTutorsSliceDefaultPrimary {
+    /**
+     * Title field in *CourseTutors → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: course_tutors.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *CourseTutors → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: course_tutors.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+}
+/**
+ * Item in CourseTutors → Items
+ *
+ */
+export interface CourseTutorsSliceDefaultItem {
+    /**
+     * Tutor field in *CourseTutors → Items*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: course_tutors.items[].tutor
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    tutor: prismicT.RelationField<"tutor">;
+}
+/**
+ * Default variation for CourseTutors Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `CourseTutors`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type CourseTutorsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<CourseTutorsSliceDefaultPrimary>, Simplify<CourseTutorsSliceDefaultItem>>;
+/**
+ * Slice variation for *CourseTutors*
+ *
+ */
+type CourseTutorsSliceVariation = CourseTutorsSliceDefault;
+/**
+ * CourseTutors Shared Slice
+ *
+ * - **API ID**: `course_tutors`
+ * - **Description**: `CourseTutors`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type CourseTutorsSlice = prismicT.SharedSlice<"course_tutors", CourseTutorsSliceVariation>;
+/**
+ * Primary content in Resource → Primary
+ *
+ */
+interface ResourceSliceDefaultPrimary {
+    /**
+     * Title field in *Resource → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: resource.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *Resource → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: resource.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Background color field in *Resource → Primary*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: resource.primary.background_color
+     * - **Documentation**: https://prismic.io/docs/core-concepts/color
+     *
+     */
+    background_color: prismicT.ColorField;
+    /**
+     * Image field in *Resource → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: resource.primary.image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * Link field in *Resource → Primary*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: resource.primary.link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkToMediaField;
+}
+/**
+ * Default variation for Resource Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Resource`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ResourceSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ResourceSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *Resource*
+ *
+ */
+type ResourceSliceVariation = ResourceSliceDefault;
+/**
+ * Resource Shared Slice
+ *
+ * - **API ID**: `resource`
+ * - **Description**: `Resource`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ResourceSlice = prismicT.SharedSlice<"resource", ResourceSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { CourseDocumentData, CourseDocument, HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, TutorDocumentData, TutorDocument, AllDocumentTypes, ContentSliceDefaultPrimary, ContentSliceDefaultItem, ContentSliceDefault, ContentSliceVariation, ContentSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, PricingSliceDefaultItem, PricingSliceDefault, PricingSliceVariation, PricingSlice, ResultsSliceDefaultPrimary, ResultsSliceDefaultItem, ResultsSliceDefault, ResultsSliceVariation, ResultsSlice, ReviewsSliceDefaultPrimary, ReviewsSliceDefaultItem, ReviewsSliceDefault, ReviewsSliceVariation, ReviewsSlice, TutorCarouselSliceDefaultPrimary, TutorCarouselSliceDefaultItem, TutorCarouselSliceDefault, TutorCarouselSliceVariation, TutorCarouselSlice };
+        export type { CourseDocumentData, CourseDocumentDataSlicesSlice, CourseDocument, FooterDocumentData, FooterDocument, HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, TutorDocumentData, TutorDocument, YearDocumentData, YearDocumentDataSlicesSlice, YearDocument, AllDocumentTypes, ContactSliceDefaultPrimary, ContactSliceDefault, ContactSliceVariation, ContactSlice, ContentSliceDefaultPrimary, ContentSliceDefaultItem, ContentSliceDefault, ContentSliceVariation, ContentSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, PricingSliceDefaultItem, PricingSliceDefault, PricingSliceVariation, PricingSlice, ResultsSliceDefaultPrimary, ResultsSliceDefaultItem, ResultsSliceDefault, ResultsSliceVariation, ResultsSlice, ReviewsSliceDefaultPrimary, ReviewsSliceDefaultItem, ReviewsSliceDefault, ReviewsSliceVariation, ReviewsSlice, TimelineSliceDefaultPrimary, TimelineSliceDefaultItem, TimelineSliceDefault, TimelineSliceVariation, TimelineSlice, TutorCarouselSliceDefaultPrimary, TutorCarouselSliceDefaultItem, TutorCarouselSliceDefault, TutorCarouselSliceVariation, TutorCarouselSlice, CourseClassesSliceDefaultPrimary, CourseClassesSliceDefault, CourseClassesSliceVariation, CourseClassesSlice, CourseTutorsSliceDefaultPrimary, CourseTutorsSliceDefaultItem, CourseTutorsSliceDefault, CourseTutorsSliceVariation, CourseTutorsSlice, ResourceSliceDefaultPrimary, ResourceSliceDefault, ResourceSliceVariation, ResourceSlice };
     }
 }

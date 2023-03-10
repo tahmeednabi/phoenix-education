@@ -129,6 +129,24 @@
               "__TYPE__": "BooleanContent",
               "value": false
             }
+          ],
+          [
+            "button_text",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "suggest",
+              "type": "Text"
+            }
+          ],
+          [
+            "button_link",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://slicemachine.dev"
+              }
+            }
           ]
         ]
       }

@@ -116,6 +116,16 @@ export const homeGraphQuery = `
             }
           }
           
+          ... on contact {
+            variation {
+              ... on default {
+                primary {
+                  ...primaryFields
+                }
+              }
+            }
+          }
+          
         }
       }
     }

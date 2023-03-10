@@ -9,7 +9,9 @@ import { merge } from "lodash";
 import { CSSObject } from "@mantine/styles/lib/tss";
 
 export type ButtonProps = MantineButtonProps &
-  React.ButtonHTMLAttributes<HTMLButtonElement>;
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    shade?: number;
+  };
 
 export const rgba = (
   theme: MantineTheme,
@@ -21,15 +23,17 @@ export const rgba = (
 
 export const getStyle = (
   theme: MantineTheme,
-  props: Pick<ButtonProps | ActionIconProps, "color" | "variant">
+  props: Pick<ButtonProps, "color" | "variant" | "shade">
 ): Partial<Record<"root", CSSObject>> => {
+  const shade = props.shade || 6;
+
   if (props.variant === "subtle")
     return {
       root: {
-        backgroundColor: rgba(theme, 6, 0, props),
+        backgroundColor: rgba(theme, shade, 0, props),
         border: `none`,
         "&:not([data-disabled])": theme.fn.hover({
-          backgroundColor: rgba(theme, 6, 0.1, props),
+          backgroundColor: rgba(theme, shade, 0.1, props),
         }),
       },
     };
@@ -37,10 +41,22 @@ export const getStyle = (
   if (props.variant === "outline")
     return {
       root: {
-        backgroundColor: rgba(theme, 6, 0.1, props),
-        border: `1px solid ${rgba(theme, 6, 0.8, props)}`,
+        color: rgba(theme, shade, 1, props),
+        backgroundColor: rgba(theme, shade, 0, props),
+        border: `2px solid ${rgba(theme, shade, 0.8, props)}`,
         "&:not([data-disabled])": theme.fn.hover({
-          backgroundColor: rgba(theme, 6, 0.2, props),
+          backgroundColor: rgba(theme, shade, 0.1, props),
+        }),
+      },
+    };
+
+  if (props.variant === "filled")
+    return {
+      root: {
+        backgroundColor: rgba(theme, shade, 1, props),
+        border: `none`,
+        "&:not([data-disabled])": theme.fn.hover({
+          backgroundColor: rgba(theme, shade + 1, 1, props),
         }),
       },
     };
@@ -51,25 +67,14 @@ export const getStyle = (
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { children, ..._props } = props;
 
-  const className =
-    `font-normal tracking-wide transition ${
-      props.variant === "outline" ? `text-white text-opacity-80` : ""
-    } ` + props.className;
+  const className = `font-normal tracking-wide transition ` + props.className;
 
   const defaults: MantineButtonProps = {
     style: {
       opacity: props.disabled ? 0.5 : 1,
       ...props.style,
     },
-    styles: (theme) =>
-      merge(
-        {
-          rightIcon: { marginLeft: 6, marginRight: -6 },
-          leftIcon: { marginRight: 6, marginLeft: -6 },
-          ...getStyle(theme, props),
-        },
-        props.styles
-      ),
+    styles: (theme) => merge(getStyle(theme, props), props.styles),
     radius: 4,
     color: props.variant === "outline" ? "gray" : props.color,
     gradient: { from: "#4b53e3", to: "#d33bde", deg: 100 },

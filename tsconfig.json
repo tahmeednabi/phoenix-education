@@ -23,7 +23,7 @@
     "paths": {
       "@res/*": ["./res/*"],
       "@common/*": ["./common/*"],
-      "@modules/*": ["./common/*"],
+      "@modules/*": ["./modules/*"],
       "@slicemachine/*": ["./.slicemachine/*"],
       "@components/*": ["./components/*"]
     }

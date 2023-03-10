@@ -8,7 +8,7 @@ import { Enrol } from "../modules/enrol/Enrol";
 
 export default function Page({ page }: { page: PageDocument }) {
   return (
-    <div>
+    <div className="dark">
       <Head>
         <title>{page.data.title}</title>
         <meta name="description" content={page.data.description || ""} />

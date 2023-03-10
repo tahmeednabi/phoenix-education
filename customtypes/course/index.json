@@ -32,6 +32,51 @@
           "label": "Color",
           "placeholder": ""
         }
+      },
+      "year": {
+        "type": "Link",
+        "config": {
+          "label": "Year",
+          "select": "document",
+          "customtypes": [
+            "year"
+          ]
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "hero": {
+              "type": "SharedSlice"
+            },
+            "content": {
+              "type": "SharedSlice"
+            },
+            "contact": {
+              "type": "SharedSlice"
+            },
+            "results": {
+              "type": "SharedSlice"
+            },
+            "resource": {
+              "type": "SharedSlice"
+            },
+            "reviews": {
+              "type": "SharedSlice"
+            },
+            "timeline": {
+              "type": "SharedSlice"
+            },
+            "course_classes": {
+              "type": "SharedSlice"
+            },
+            "course_tutors": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     },
     "Details": {

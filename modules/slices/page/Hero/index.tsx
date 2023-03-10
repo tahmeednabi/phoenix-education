@@ -79,7 +79,12 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
             <Link
               href={asLink(slice.primary.button_1_link, linkResolver) || ""}
             >
-              <Button variant="white" className="rounded-none" size="xl">
+              <Button
+                variant="white"
+                classNames={{ label: "font-medium" }}
+                className="rounded-none"
+                size="xl"
+              >
                 {slice.primary.button_1_text}
               </Button>
             </Link>
@@ -91,6 +96,7 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
             >
               <Button
                 className="rounded-none"
+                classNames={{ label: "font-medium" }}
                 size="xl"
                 rightIcon={<ChevronRight className="w-8 h-8" />}
               >

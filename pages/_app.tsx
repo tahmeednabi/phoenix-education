@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [colorScheme] = useState<ColorScheme>("light");
 
   return (
-    <>
+    <div className="-mb-8">
       <MantineProvider
         theme={getMantineTheme({ colorScheme })}
         withGlobalStyles
@@ -35,6 +35,6 @@ export default function App({ Component, pageProps }: AppProps) {
           </PrismicPreview>
         </PrismicProvider>
       </MantineProvider>
-    </>
+    </div>
   );
 }

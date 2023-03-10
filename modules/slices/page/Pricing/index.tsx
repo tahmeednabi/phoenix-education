@@ -1,10 +1,14 @@
 import React from "react";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
-import { CourseDocument, PricingSlice } from "@slicemachine/prismicio";
-import { uniq } from "lodash";
+import {
+  CourseDocument,
+  PricingSlice,
+  YearDocument,
+} from "@slicemachine/prismicio";
 import { Tabs, Card, useMantineTheme } from "@mantine/core";
 import { formatter } from "@common/utils";
 import Link from "next/link";
+import { uniqBy } from "lodash";
 
 const Pricing = ({ slice }: SliceComponentProps<PricingSlice>) => {
   const theme = useMantineTheme();
@@ -13,25 +17,32 @@ const Pricing = ({ slice }: SliceComponentProps<PricingSlice>) => {
     ({ course }) => course
   ) as unknown as CourseDocument[];
 
-  const years = uniq(courses.map((course) => course.tags).flat(1));
+  const years = uniqBy(
+    slice.items.map(({ year }) => year) as unknown as YearDocument[],
+    (year) => year.uid
+  );
 
   return (
-    <section className="p-8 md:p-12">
+    <section className="px-8 md:px-12 py-24">
       <div className="container max-w-5xl">
-        <Tabs defaultValue={years[0]} classNames={{ tabLabel: "text-lg" }}>
+        <Tabs defaultValue={years[0].uid} classNames={{ tabLabel: "text-lg" }}>
           <Tabs.List>
             {years.map((year, index) => (
-              <Tabs.Tab key={index} value={year}>
-                {year}
+              <Tabs.Tab key={index} value={year.uid}>
+                {year.data.name}
               </Tabs.Tab>
             ))}
           </Tabs.List>
 
           {years.map((year, index) => (
-            <Tabs.Panel key={index} value={year} pt={24}>
+            <Tabs.Panel key={index} value={year.uid} pt={24}>
               <div className="flex flex-wrap justify-center gap-4">
                 {courses
-                  .filter((course) => course.tags.some((tag) => tag === year))
+                  .filter(
+                    (course) =>
+                      (course.data.year as unknown as YearDocument).uid ===
+                      year.uid
+                  )
                   .map((course) => (
                     <Link key={course.uid} href={`/courses/${course.uid}`}>
                       <Card
