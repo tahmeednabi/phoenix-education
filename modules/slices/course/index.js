@@ -10,7 +10,7 @@ export {
 	Resource,
 };
 
-export const courseComponents = {
+export const components = {
 	course_classes: CourseClasses,
 	course_tutors: CourseTutors,
 	resource: Resource,

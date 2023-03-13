@@ -24,6 +24,11 @@
             }
           }
         ]
+      },
+      "subject_id": {
+        "__TYPE__": "FieldContent",
+        "value": "men",
+        "type": "Text"
       }
     },
     "items": [

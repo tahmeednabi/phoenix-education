@@ -1154,6 +1154,16 @@ interface CourseClassesSliceDefaultPrimary {
      *
      */
     description: prismicT.RichTextField;
+    /**
+     * Subject ID field in *CourseClasses → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Get the subject ID from PhoenixLMS
+     * - **API ID Path**: course_classes.primary.subject_id
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    subject_id: prismicT.KeyTextField;
 }
 /**
  * Default variation for CourseClasses Slice

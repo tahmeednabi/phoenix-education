@@ -1,6 +1,5 @@
 import { SliceZone } from "@prismicio/react";
-import { components } from "@modules/slices/page";
-import { courseComponents } from "@modules/slices/course";
+import { components } from "@modules/slices";
 import { GetStaticPropsContext } from "next";
 import { CourseDocument, YearDocument } from "@slicemachine/prismicio";
 import Head from "next/head";
@@ -31,10 +30,7 @@ export default function Page({
         courses={courses}
         course={course}
       />
-      <SliceZone
-        slices={course.data.slices}
-        components={{ ...components, ...courseComponents }}
-      />
+      <SliceZone slices={course.data.slices} components={components} />
     </div>
   );
 }
@@ -157,6 +153,9 @@ export const courseGraphQuery = `
               ... on default {
                 primary {
                   ...primaryFields
+                }
+                items {
+                  ...itemsFields
                 }
               }
             }
