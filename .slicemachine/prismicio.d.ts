@@ -316,7 +316,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSlice | PricingSlice | ContentSlice | ResultsSlice | ReviewsSlice | TutorCarouselSlice;
+type PageDocumentDataSlicesSlice = HeroSlice | PricingSlice | ContentSlice | ResultsSlice | ReviewsSlice | TutorCarouselSlice | DiscountsSlice | ContactSlice | TimelineSlice;
 /**
  * Page document from Prismic
  *
@@ -652,6 +652,91 @@ type ContentSliceVariation = ContentSliceDefault;
  */
 export type ContentSlice = prismicT.SharedSlice<"content", ContentSliceVariation>;
 /**
+ * Primary content in Discounts → Primary
+ *
+ */
+interface DiscountsSliceDefaultPrimary {
+    /**
+     * Title field in *Discounts → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: discounts.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *Discounts → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: discounts.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+}
+/**
+ * Item in Discounts → Items
+ *
+ */
+export interface DiscountsSliceDefaultItem {
+    /**
+     * Subjects field in *Discounts → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: discounts.items[].subjects
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    subjects: prismicT.KeyTextField;
+    /**
+     * Pricing field in *Discounts → Items*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: discounts.items[].pricing
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    pricing: prismicT.NumberField;
+    /**
+     * Savings field in *Discounts → Items*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: discounts.items[].savings
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    savings: prismicT.NumberField;
+}
+/**
+ * Default variation for Discounts Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Discounts`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type DiscountsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<DiscountsSliceDefaultPrimary>, Simplify<DiscountsSliceDefaultItem>>;
+/**
+ * Slice variation for *Discounts*
+ *
+ */
+type DiscountsSliceVariation = DiscountsSliceDefault;
+/**
+ * Discounts Shared Slice
+ *
+ * - **API ID**: `discounts`
+ * - **Description**: `Discounts`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type DiscountsSlice = prismicT.SharedSlice<"discounts", DiscountsSliceVariation>;
+/**
  * Primary content in Hero → Primary
  *
  */
@@ -757,10 +842,85 @@ interface HeroSliceDefaultPrimary {
  */
 export type HeroSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<HeroSliceDefaultPrimary>, never>;
 /**
+ * Primary content in Hero → Primary
+ *
+ */
+interface HeroSliceVideoBackgroundPrimary {
+    /**
+     * Title field in *Hero → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Subtitle field in *Hero → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    subtitle: prismicT.RichTextField;
+    /**
+     * Text Color field in *Hero → Primary*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.text_color
+     * - **Documentation**: https://prismic.io/docs/core-concepts/color
+     *
+     */
+    text_color: prismicT.ColorField;
+    /**
+     * Background Video field in *Hero → Primary*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.background_video
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    background_video: prismicT.LinkToMediaField;
+    /**
+     * Button Text field in *Hero → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.button_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    button_text: prismicT.KeyTextField;
+    /**
+     * Button Link field in *Hero → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.button_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    button_link: prismicT.LinkField;
+}
+/**
+ * Video Background variation for Hero Slice
+ *
+ * - **API ID**: `videoBackground`
+ * - **Description**: `Hero`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type HeroSliceVideoBackground = prismicT.SharedSliceVariation<"videoBackground", Simplify<HeroSliceVideoBackgroundPrimary>, never>;
+/**
  * Slice variation for *Hero*
  *
  */
-type HeroSliceVariation = HeroSliceDefault;
+type HeroSliceVariation = HeroSliceDefault | HeroSliceVideoBackground;
 /**
  * Hero Shared Slice
  *
@@ -1337,6 +1497,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { CourseDocumentData, CourseDocumentDataSlicesSlice, CourseDocument, FooterDocumentData, FooterDocument, HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, TutorDocumentData, TutorDocument, YearDocumentData, YearDocumentDataSlicesSlice, YearDocument, AllDocumentTypes, ContactSliceDefaultPrimary, ContactSliceDefault, ContactSliceVariation, ContactSlice, ContentSliceDefaultPrimary, ContentSliceDefaultItem, ContentSliceDefault, ContentSliceVariation, ContentSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVariation, HeroSlice, PricingSliceDefaultItem, PricingSliceDefault, PricingSliceVariation, PricingSlice, ResultsSliceDefaultPrimary, ResultsSliceDefaultItem, ResultsSliceDefault, ResultsSliceVariation, ResultsSlice, ReviewsSliceDefaultPrimary, ReviewsSliceDefaultItem, ReviewsSliceDefault, ReviewsSliceVariation, ReviewsSlice, TimelineSliceDefaultPrimary, TimelineSliceDefaultItem, TimelineSliceDefault, TimelineSliceVariation, TimelineSlice, TutorCarouselSliceDefaultPrimary, TutorCarouselSliceDefaultItem, TutorCarouselSliceDefault, TutorCarouselSliceVariation, TutorCarouselSlice, CourseClassesSliceDefaultPrimary, CourseClassesSliceDefault, CourseClassesSliceVariation, CourseClassesSlice, CourseTutorsSliceDefaultPrimary, CourseTutorsSliceDefaultItem, CourseTutorsSliceDefault, CourseTutorsSliceVariation, CourseTutorsSlice, ResourceSliceDefaultPrimary, ResourceSliceDefault, ResourceSliceVariation, ResourceSlice };
+        export type { CourseDocumentData, CourseDocumentDataSlicesSlice, CourseDocument, FooterDocumentData, FooterDocument, HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, TutorDocumentData, TutorDocument, YearDocumentData, YearDocumentDataSlicesSlice, YearDocument, AllDocumentTypes, ContactSliceDefaultPrimary, ContactSliceDefault, ContactSliceVariation, ContactSlice, ContentSliceDefaultPrimary, ContentSliceDefaultItem, ContentSliceDefault, ContentSliceVariation, ContentSlice, DiscountsSliceDefaultPrimary, DiscountsSliceDefaultItem, DiscountsSliceDefault, DiscountsSliceVariation, DiscountsSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVideoBackgroundPrimary, HeroSliceVideoBackground, HeroSliceVariation, HeroSlice, PricingSliceDefaultItem, PricingSliceDefault, PricingSliceVariation, PricingSlice, ResultsSliceDefaultPrimary, ResultsSliceDefaultItem, ResultsSliceDefault, ResultsSliceVariation, ResultsSlice, ReviewsSliceDefaultPrimary, ReviewsSliceDefaultItem, ReviewsSliceDefault, ReviewsSliceVariation, ReviewsSlice, TimelineSliceDefaultPrimary, TimelineSliceDefaultItem, TimelineSliceDefault, TimelineSliceVariation, TimelineSlice, TutorCarouselSliceDefaultPrimary, TutorCarouselSliceDefaultItem, TutorCarouselSliceDefault, TutorCarouselSliceVariation, TutorCarouselSlice, CourseClassesSliceDefaultPrimary, CourseClassesSliceDefault, CourseClassesSliceVariation, CourseClassesSlice, CourseTutorsSliceDefaultPrimary, CourseTutorsSliceDefaultItem, CourseTutorsSliceDefault, CourseTutorsSliceVariation, CourseTutorsSlice, ResourceSliceDefaultPrimary, ResourceSliceDefault, ResourceSliceVariation, ResourceSlice };
     }
 }

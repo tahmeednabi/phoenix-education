@@ -64,6 +64,15 @@
             },
             "tutor_carousel": {
               "type": "SharedSlice"
+            },
+            "discounts": {
+              "type": "SharedSlice"
+            },
+            "contact": {
+              "type": "SharedSlice"
+            },
+            "timeline": {
+              "type": "SharedSlice"
             }
           }
         }

@@ -5,13 +5,20 @@ import Head from "next/head";
 import { SliceZone } from "@prismicio/react";
 import { components } from "modules/slices/page";
 import { CoursePicker } from "@modules/courses/CoursePicker";
+import {
+  Footer,
+  FooterProps,
+  getFooterProps,
+} from "../../modules/footer/Footer";
 
 export default function Page({
   page,
   years,
+  footer,
 }: {
   page?: PageDocument;
   years: YearDocument[];
+  footer: FooterProps;
 }) {
   return (
     <div>
@@ -21,6 +28,7 @@ export default function Page({
       </Head>
       <CoursePicker years={years} />
       <SliceZone slices={page?.data.slices} components={components} />
+      <Footer {...footer} />
     </div>
   );
 }
@@ -29,13 +37,14 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
   const client = createClient({ previewData });
 
   const page = await client.getByUID("page", "courses");
-
   const years = await client.getAllByType("year");
+  const footer = await getFooterProps(client);
 
   return {
     props: {
       page,
       years,
+      footer,
     },
   };
 }

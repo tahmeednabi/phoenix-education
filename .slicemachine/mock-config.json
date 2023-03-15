@@ -35,6 +35,9 @@
     "Hero": {
       "default": {
         "primary": {}
+      },
+      "videoBackground": {
+        "primary": {}
       }
     },
     "Pricing": {
@@ -65,6 +68,11 @@
       }
     },
     "Timeline": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "Discounts": {
       "default": {
         "primary": {}
       }

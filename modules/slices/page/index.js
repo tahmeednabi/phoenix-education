@@ -2,6 +2,7 @@
 
 import Contact from './Contact';
 import Content from './Content';
+import Discounts from './Discounts';
 import Hero from './Hero';
 import Pricing from './Pricing';
 import Results from './Results';
@@ -12,6 +13,7 @@ import TutorCarousel from './TutorCarousel';
 export {
 	Contact,
 	Content,
+	Discounts,
 	Hero,
 	Pricing,
 	Results,
@@ -23,6 +25,7 @@ export {
 export const components = {
 	contact: Contact,
 	content: Content,
+	discounts: Discounts,
 	hero: Hero,
 	pricing: Pricing,
 	results: Results,

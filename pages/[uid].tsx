@@ -6,8 +6,15 @@ import { linkResolver } from "@common/utils";
 import Head from "next/head";
 import { SliceZone } from "@prismicio/react";
 import { components } from "modules/slices/page";
+import { Footer, FooterProps, getFooterProps } from "@modules/footer/Footer";
 
-export default function Page({ page }: { page?: PageDocument }) {
+export default function Page({
+  page,
+  footer,
+}: {
+  page?: PageDocument;
+  footer: FooterProps;
+}) {
   return (
     <div>
       <Head>
@@ -15,6 +22,7 @@ export default function Page({ page }: { page?: PageDocument }) {
         <meta name="description" content={page?.data.description || ""} />
       </Head>
       <SliceZone slices={page?.data.slices} components={components} />
+      <Footer {...footer} />
     </div>
   );
 }
@@ -29,9 +37,12 @@ export async function getStaticProps({
     graphQuery: pageGraphQuery,
   });
 
+  const footer = await getFooterProps(client);
+
   return {
     props: {
       page,
+      footer,
     },
   };
 }
@@ -63,6 +74,12 @@ export const pageGraphQuery = `
                   ...primaryFields
                 }
               }
+              
+              ... on videoBackground {
+                primary {
+                  ...primaryFields
+                }
+              }
             }
           }
           
@@ -79,6 +96,45 @@ export const pageGraphQuery = `
                   year {
                     ...yearFields
                   }
+                }
+              }
+            }
+          }
+          
+          ... on content {
+            variation {
+              ... on default {
+                primary {
+                  ...primaryFields
+                }
+                items {
+                  ...itemsFields
+                }
+              }
+            }
+          }
+          
+          ... on discounts {
+            variation {
+              ... on default {
+                primary {
+                  ...primaryFields
+                }
+                items {
+                  ...itemsFields
+                }
+              }
+            }
+          }
+          
+          ... on timeline {
+            variation {
+              ... on default {
+                primary {
+                  ...primaryFields
+                }
+                items {
+                  ...itemsFields
                 }
               }
             }

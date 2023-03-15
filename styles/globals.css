@@ -74,9 +74,17 @@ a {
 
 .video > video {
   width: 100% !important;
-  @apply absolute top-10
-  -m-[4rem] scale-110 opacity-40
+  height: auto !important;
+  @apply absolute top-1/2 -translate-y-1/2
+  -m-[4rem] scale-110
   pointer-events-none
+}
+
+@media screen and (max-width: 1024px) {
+  .video > video {
+    width: auto !important;
+    height: 100% !important;
+  }
 }
 
 .swiper-horizontal > * > * > .swiper-slide-shadow-top, .swiper-horizontal > * > * > .swiper-slide-shadow-bottom {

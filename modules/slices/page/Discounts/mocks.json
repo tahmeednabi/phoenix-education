@@ -1,0 +1,61 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "Speak"
+            }
+          }
+        ]
+      },
+      "description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Ex excepteur dolore non elit consequat magna."
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "subjects",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "nearby",
+              "type": "Text"
+            }
+          ],
+          [
+            "pricing",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "76",
+              "type": "Number"
+            }
+          ],
+          [
+            "savings",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "16",
+              "type": "Number"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

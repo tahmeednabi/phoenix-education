@@ -5,15 +5,25 @@ import { components } from "../modules/slices/page";
 import { GetStaticPropsContext } from "next";
 import { HomeDocument } from "@slicemachine/prismicio";
 import Head from "next/head";
+import { Footer, getFooterProps, FooterProps } from "@modules/footer/Footer";
 
-export default function Page({ page }: { page: HomeDocument }) {
+export default function Page({
+  page,
+  footer,
+}: {
+  page: HomeDocument;
+  footer: FooterProps;
+}) {
   return (
     <div>
       <Head>
         <title>{page.data.title}</title>
         <meta name="description" content={page.data.description || ""} />
       </Head>
+
       <SliceZone slices={page.data.slices} components={components} />
+
+      <Footer {...footer} />
     </div>
   );
 }
@@ -25,9 +35,12 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
     graphQuery: homeGraphQuery,
   });
 
+  const footer = await getFooterProps(client);
+
   return {
     props: {
       page,
+      footer,
     },
   };
 }
@@ -40,6 +53,12 @@ export const homeGraphQuery = `
           ... on hero {
             variation {
               ... on default {
+                primary {
+                  ...primaryFields
+                }
+              }
+              
+              ... on videoBackground {
                 primary {
                   ...primaryFields
                 }

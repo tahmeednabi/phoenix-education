@@ -1,53 +1,53 @@
 @font-face {
   font-family: Inter;
-  src: url('InterDisplay-Thin.otf');
+  src: url('InterDisplay-Thin.otf') format('opentype');
   font-weight: 100;
 }
 
 @font-face {
   font-family: Inter;
-  src: url('InterDisplay-ExtraLight.otf');
+  src: url('InterDisplay-ExtraLight.otf') format('opentype');
   font-weight: 200;
 }
 
 @font-face {
   font-family: Inter;
-  src: url('InterDisplay-Light.otf');
+  src: url('InterDisplay-Light.otf') format('opentype');
   font-weight: 300;
 }
 
 @font-face {
   font-family: Inter;
-  src: url('InterDisplay-Regular.otf');
+  src: url('InterDisplay-Regular.otf') format('opentype');
   font-weight: 400;
 }
 
 @font-face {
   font-family: Inter;
-  src: url('InterDisplay-Medium.otf');
+  src: url('InterDisplay-Medium.otf') format('opentype');
   font-weight: 500;
 }
 
 @font-face {
   font-family: Inter;
-  src: url('InterDisplay-SemiBold.otf');
+  src: url('InterDisplay-SemiBold.otf') format('opentype');
   font-weight: 600;
 }
 
 @font-face {
   font-family: Inter;
-  src: url('InterDisplay-Bold.otf');
+  src: url('InterDisplay-Bold.otf') format('opentype');
   font-weight: 700;
 }
 
 @font-face {
   font-family: Inter;
-  src: url('InterDisplay-ExtraBold.otf');
+  src: url('InterDisplay-ExtraBold.otf') format('opentype');
   font-weight: 800;
 }
 
 @font-face {
   font-family: Inter;
-  src: url('InterDisplay-Black.otf');
+  src: url('InterDisplay-Black.otf') format('opentype');
   font-weight: 900;
 }

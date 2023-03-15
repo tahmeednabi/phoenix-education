@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { notification, UseAsyncFormReturnType } from "@common/utils";
 import { Class, EnrolStudentDto, Subject } from "../../../pages/api/enrol";
-import { Checkbox, Divider, Loader } from "@mantine/core";
+import { Alert, Checkbox, Divider, Loader } from "@mantine/core";
 import { getClasses, useSubjects } from "../../../requests/course";
 import { ClassCard } from "./ClassCard";
 import { ChooseLessonCard } from "./ChooseLessonCard";
 import { useDidUpdate } from "@mantine/hooks";
+import { AlertTriangle } from "tabler-icons-react";
 
 interface CourseProps {
   form: UseAsyncFormReturnType<EnrolStudentDto>;
@@ -41,7 +42,13 @@ export const Courses: React.FC<CourseProps> = ({ form }) => {
     getClasses({
       subjectIds: form.values.subjects.map((subject) => subject.id),
     })
-      .then(({ data }) => data && setClasses(data))
+      .then(
+        ({ data }) =>
+          data &&
+          setClasses(
+            data.filter((cls) => !cls.subject.name.includes("Accelerated"))
+          )
+      )
       .catch((err) => notification.error(err));
   }, [form.values.subjects]);
 
@@ -79,6 +86,20 @@ export const Courses: React.FC<CourseProps> = ({ form }) => {
           />
         ))}
       </div>
+
+      {form.values.subjects.filter((sub) => sub.name.includes("Accelerated"))
+        .length > 0 && (
+        <Alert
+          className="animate-opacity mt-6 max-w-md mx-auto"
+          variant="light"
+          icon={<AlertTriangle />}
+          color="yellow"
+          title="Warning"
+        >
+          You must go through an entrance exam before you enrol in Accelerated
+          classes. Reach out to us for more information.
+        </Alert>
+      )}
 
       {form.values.subjects?.length > 0 && (
         <div className="mt-8">

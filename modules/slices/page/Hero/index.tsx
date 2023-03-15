@@ -11,6 +11,7 @@ import { linkResolver } from "@common/utils/link-resolver";
 import { Button } from "@components/Button";
 import { ChevronRight } from "tabler-icons-react";
 import { wrapMapSerializer } from "@prismicio/richtext";
+import ReactPlayer from "react-player";
 
 const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
   const serializer: JSXFunctionSerializer = wrapMapSerializer({
@@ -22,7 +23,67 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
     heading4: ({ text }) => (
       <h4 className="text-4xl md:text-5xl font-light">{text}</h4>
     ),
+    paragraph: ({ text }) => (
+      <p className="text-2xl md:text-3xl font-light">{text}</p>
+    ),
   });
+
+  if (slice.variation === "videoBackground")
+    return (
+      <section className="relative flex flex-col justify-center pt-64 pb-32 overflow-hidden">
+        {asLink(slice.primary.background_video) && (
+          <ReactPlayer
+            url={asLink(slice.primary.background_video) || ""}
+            loop
+            playing
+            muted
+            height={600}
+            wrapper={({ children }) => (
+              <div className="absolute -z-20 w-full h-full video">
+                {children}
+              </div>
+            )}
+          />
+        )}
+
+        {asLink(slice.primary.background_video) && (
+          <div
+            className="absolute top-10 left-0 w-full h-full -z-10 -m-[4rem] scale-110"
+            style={{
+              background:
+                "linear-gradient(to left, rgba(15, 19, 33, 0), rgba(15, 17, 24, 0.8))",
+            }}
+          />
+        )}
+
+        <div
+          className="container"
+          style={{ color: slice.primary.text_color || "" }}
+        >
+          {slice.primary.title && (
+            <div className="w-fit">
+              <div className="relative w-fit z-50">
+                <PrismicRichText
+                  components={serializer}
+                  field={slice.primary.title}
+                />
+              </div>
+
+              <div className="w-full h-4 bg-red-500 -translate-y-4 -z-[5]" />
+            </div>
+          )}
+
+          {slice.primary.subtitle && (
+            <div className="max-w-2xl mt-4">
+              <PrismicRichText
+                components={serializer}
+                field={slice.primary.subtitle}
+              />
+            </div>
+          )}
+        </div>
+      </section>
+    );
 
   return (
     <section

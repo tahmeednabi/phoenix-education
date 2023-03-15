@@ -6,17 +6,20 @@ import Head from "next/head";
 import { createClient } from "../../prismicio";
 import { CoursePicker } from "@modules/courses/CoursePicker";
 import { predicate } from "@prismicio/client";
+import { Footer, FooterProps, getFooterProps } from "@modules/footer/Footer";
 
 export default function Page({
   course,
   courses,
   year,
   years,
+  footer,
 }: {
   course: CourseDocument;
   courses: CourseDocument[];
   year: YearDocument;
   years: YearDocument[];
+  footer: FooterProps;
 }) {
   return (
     <div>
@@ -31,6 +34,7 @@ export default function Page({
         course={course}
       />
       <SliceZone slices={course.data.slices} components={components} />
+      <Footer {...footer} />
     </div>
   );
 }
@@ -49,6 +53,7 @@ export async function getStaticProps({
   const courses = await client.getAllByType("course", {
     predicates: [predicate.at("my.course.year", year.id)],
   });
+  const footer = await getFooterProps(client);
 
   return {
     props: {
@@ -56,6 +61,7 @@ export async function getStaticProps({
       year,
       courses,
       course,
+      footer,
     },
   };
 }
