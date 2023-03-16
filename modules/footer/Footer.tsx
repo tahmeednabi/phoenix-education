@@ -27,6 +27,7 @@ export const getFooterProps = async (
     "pricing",
     "courses",
     "timetable",
+    "tutors",
     "enrol",
   ]);
 

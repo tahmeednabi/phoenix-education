@@ -12,7 +12,7 @@ export default function Page({ page }: { page: PageDocument }) {
   return (
     <div className="dark">
       <Head>
-        <title>{page.data.title}</title>
+        <title>{`${page.data.title || ""} | Phoenix Education`}</title>
         <meta name="description" content={page.data.description || ""} />
       </Head>
 

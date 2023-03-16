@@ -73,6 +73,12 @@
             },
             "timeline": {
               "type": "SharedSlice"
+            },
+            "course_tutors": {
+              "type": "SharedSlice"
+            },
+            "resource": {
+              "type": "SharedSlice"
             }
           }
         }

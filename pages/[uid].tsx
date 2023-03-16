@@ -5,7 +5,7 @@ import { asLink } from "@prismicio/helpers";
 import { linkResolver } from "@common/utils";
 import Head from "next/head";
 import { SliceZone } from "@prismicio/react";
-import { components } from "modules/slices/page";
+import { components } from "modules/slices";
 import { getFooterProps } from "@modules/footer/Footer";
 
 export default function Page({ page }: { page?: PageDocument }) {
@@ -128,6 +128,31 @@ export const pageGraphQuery = `
                 }
                 items {
                   ...itemsFields
+                }
+              }
+            }
+          }
+          
+          ... on course_tutors {
+            variation {
+              ... on default {
+                primary {
+                  ...primaryFields
+                }
+                items {
+                  tutor {
+                    ...tutorFields
+                  }
+                }
+              }
+            }
+          }
+          
+          ... on resource {
+            variation {
+              ... on default {
+                primary {
+                  ...primaryFields
                 }
               }
             }

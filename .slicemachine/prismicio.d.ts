@@ -316,7 +316,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSlice | PricingSlice | ContentSlice | ResultsSlice | ReviewsSlice | TutorCarouselSlice | DiscountsSlice | ContactSlice | TimelineSlice;
+type PageDocumentDataSlicesSlice = HeroSlice | PricingSlice | ContentSlice | ResultsSlice | ReviewsSlice | TutorCarouselSlice | DiscountsSlice | ContactSlice | TimelineSlice | CourseTutorsSlice | ResourceSlice;
 /**
  * Page document from Prismic
  *
