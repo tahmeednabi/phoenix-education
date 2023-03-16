@@ -5,16 +5,10 @@ import { createClient } from "../prismicio";
 import { SliceZone } from "@prismicio/react";
 import { components } from "modules/slices/page";
 import { Enrol } from "../modules/enrol/Enrol";
-import { Footer, FooterProps, getFooterProps } from "@modules/footer/Footer";
+import { getFooterProps } from "@modules/footer/Footer";
 import { pageGraphQuery } from "./[uid]";
 
-export default function Page({
-  page,
-  footer,
-}: {
-  page: PageDocument;
-  footer: FooterProps;
-}) {
+export default function Page({ page }: { page: PageDocument }) {
   return (
     <div className="dark">
       <Head>
@@ -25,8 +19,6 @@ export default function Page({
       <SliceZone slices={page.data.slices} components={components} />
 
       <Enrol />
-
-      <Footer {...footer} />
     </div>
   );
 }

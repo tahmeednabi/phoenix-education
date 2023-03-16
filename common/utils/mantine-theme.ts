@@ -28,7 +28,7 @@ export function getMantineTheme(
   const colors = tailwindColorMapping(tailwindConfig);
   return {
     colorScheme: "light",
-    fontFamily: "Inter",
+    fontFamily: "var(--font-inter)",
     primaryColor: tailwindConfig.theme?.primaryColor || "red",
     primaryShade: 5,
     colors,

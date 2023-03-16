@@ -6,15 +6,9 @@ import { linkResolver } from "@common/utils";
 import Head from "next/head";
 import { SliceZone } from "@prismicio/react";
 import { components } from "modules/slices/page";
-import { Footer, FooterProps, getFooterProps } from "@modules/footer/Footer";
+import { getFooterProps } from "@modules/footer/Footer";
 
-export default function Page({
-  page,
-  footer,
-}: {
-  page?: PageDocument;
-  footer: FooterProps;
-}) {
+export default function Page({ page }: { page?: PageDocument }) {
   return (
     <div>
       <Head>
@@ -22,7 +16,6 @@ export default function Page({
         <meta name="description" content={page?.data.description || ""} />
       </Head>
       <SliceZone slices={page?.data.slices} components={components} />
-      <Footer {...footer} />
     </div>
   );
 }

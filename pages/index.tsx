@@ -5,11 +5,10 @@ import { components } from "../modules/slices/page";
 import { GetStaticPropsContext } from "next";
 import { HomeDocument } from "@slicemachine/prismicio";
 import Head from "next/head";
-import { Footer, getFooterProps, FooterProps } from "@modules/footer/Footer";
+import { getFooterProps, FooterProps } from "@modules/footer/Footer";
 
 export default function Page({
   page,
-  footer,
 }: {
   page: HomeDocument;
   footer: FooterProps;
@@ -22,8 +21,6 @@ export default function Page({
       </Head>
 
       <SliceZone slices={page.data.slices} components={components} />
-
-      <Footer {...footer} />
     </div>
   );
 }

@@ -5,20 +5,14 @@ import Head from "next/head";
 import { SliceZone } from "@prismicio/react";
 import { components } from "modules/slices/page";
 import { CoursePicker } from "@modules/courses/CoursePicker";
-import {
-  Footer,
-  FooterProps,
-  getFooterProps,
-} from "../../modules/footer/Footer";
+import { getFooterProps } from "../../modules/footer/Footer";
 
 export default function Page({
   page,
   years,
-  footer,
 }: {
   page?: PageDocument;
   years: YearDocument[];
-  footer: FooterProps;
 }) {
   return (
     <div>
@@ -28,7 +22,6 @@ export default function Page({
       </Head>
       <CoursePicker years={years} />
       <SliceZone slices={page?.data.slices} components={components} />
-      <Footer {...footer} />
     </div>
   );
 }

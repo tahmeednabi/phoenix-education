@@ -1,4 +1,4 @@
-@import '../res/fonts/Inter/index.css';
+/*@import '../res/fonts/Inter/index.css';*/
 
 @tailwind base;
 @tailwind components;
@@ -13,7 +13,6 @@
 
 html,
 body {
-  font-family: Inter, sans-serif;
   max-width: 100vw;
   overflow-x: hidden;
 }

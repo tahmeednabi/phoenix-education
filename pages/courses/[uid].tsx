@@ -6,25 +6,23 @@ import Head from "next/head";
 import { createClient } from "../../prismicio";
 import { CoursePicker } from "@modules/courses/CoursePicker";
 import { predicate } from "@prismicio/client";
-import { Footer, FooterProps, getFooterProps } from "@modules/footer/Footer";
+import { getFooterProps } from "@modules/footer/Footer";
 
 export default function Page({
   course,
   courses,
   year,
   years,
-  footer,
 }: {
   course: CourseDocument;
   courses: CourseDocument[];
   year: YearDocument;
   years: YearDocument[];
-  footer: FooterProps;
 }) {
   return (
     <div>
       <Head>
-        <title>{course.data.title}</title>
+        <title>{`${course.data.title || ""} | Phoenix Education`}</title>
         <meta name="description" content={course.data.subject_name || ""} />
       </Head>
       <CoursePicker
@@ -34,7 +32,6 @@ export default function Page({
         course={course}
       />
       <SliceZone slices={course.data.slices} components={components} />
-      <Footer {...footer} />
     </div>
   );
 }
