@@ -16,16 +16,6 @@
                 "id": "mock_document_id"
               }
             }
-          ],
-          [
-            "year",
-            {
-              "__TYPE__": "LinkContent",
-              "value": {
-                "__TYPE__": "DocumentLink",
-                "id": "mock_document_id"
-              }
-            }
           ]
         ]
       }

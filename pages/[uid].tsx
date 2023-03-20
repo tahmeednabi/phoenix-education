@@ -85,9 +85,9 @@ export const pageGraphQuery = `
                 items {
                   course {
                     ...courseFields
-                  }
-                  year {
-                    ...yearFields
+                    year {
+                      ...yearFields
+                    }
                   }
                 }
               }

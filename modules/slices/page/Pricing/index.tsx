@@ -18,7 +18,7 @@ const Pricing = ({ slice }: SliceComponentProps<PricingSlice>) => {
   ) as unknown as CourseDocument[];
 
   const years = uniqBy(
-    slice.items.map(({ year }) => year) as unknown as YearDocument[],
+    courses.map((course) => course.data.year) as unknown as YearDocument[],
     (year) => year.uid
   );
 

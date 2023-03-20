@@ -965,16 +965,6 @@ export interface PricingSliceDefaultItem {
      *
      */
     course: prismicT.RelationField<"course">;
-    /**
-     * Year field in *Pricing → Items*
-     *
-     * - **Field Type**: Content Relationship
-     * - **Placeholder**: *None*
-     * - **API ID Path**: pricing.items[].year
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-    year: prismicT.RelationField<"year">;
 }
 /**
  * Default variation for Pricing Slice
