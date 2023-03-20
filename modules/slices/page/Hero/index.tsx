@@ -30,7 +30,19 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
 
   if (slice.variation === "videoBackground")
     return (
-      <section className="relative flex flex-col justify-center pt-64 pb-32 overflow-hidden">
+      <section
+        style={
+          slice.primary.background_image
+            ? {
+                background: `url(${slice.primary.background_image.url})`,
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+              }
+            : {}
+        }
+        className="relative flex flex-col justify-center pt-64 pb-32 overflow-hidden -z-20"
+      >
         {asLink(slice.primary.background_video) && (
           <ReactPlayer
             url={asLink(slice.primary.background_video) || ""}
@@ -46,19 +58,30 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
           />
         )}
 
-        {asLink(slice.primary.background_video) && (
+        {(asLink(slice.primary.background_video) ||
+          slice.primary.background_image) && (
           <div
             className="absolute top-10 left-0 w-full h-full -z-10 -m-[4rem] scale-110"
             style={{
-              background:
-                "linear-gradient(to left, rgba(15, 19, 33, 0), rgba(15, 17, 24, 0.8))",
+              background: `linear-gradient(to ${
+                slice.primary.text_align || "left"
+              }, rgba(${
+                slice.primary.text_color === "black" ? "255,255,255" : "0,0,0"
+              }, 0), rgba(${
+                slice.primary.text_color === "black" ? "255,255,255" : "0,0,0"
+              }, 0.7))`,
             }}
           />
         )}
 
         <div
-          className="container"
-          style={{ color: slice.primary.text_color || "" }}
+          className="container flex flex-col"
+          style={{
+            color: slice.primary.text_color || "",
+            textAlign: slice.primary.text_align || "left",
+            alignItems:
+              slice.primary.text_align === "right" ? "flex-end" : "flex-start",
+          }}
         >
           {slice.primary.title && (
             <div className="w-fit">

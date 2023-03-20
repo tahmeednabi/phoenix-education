@@ -1,5 +1,5 @@
 import { SliceZone } from "@prismicio/react";
-import { components } from "@modules/slices/page";
+import { components } from "@modules/slices";
 import { GetStaticPropsContext } from "next";
 import { CourseDocument, YearDocument } from "@slicemachine/prismicio";
 import Head from "next/head";
@@ -7,6 +7,7 @@ import { createClient } from "../../prismicio";
 import { CoursePicker } from "@modules/courses/CoursePicker";
 import { predicate } from "@prismicio/client";
 import { getFooterProps } from "@modules/footer/Footer";
+import { courseSlicesGraphQuery } from "../courses/[uid]";
 
 export default function Page({
   year,
@@ -34,7 +35,9 @@ export async function getStaticProps({
 }: GetStaticPropsContext) {
   const client = createClient({ previewData });
 
-  const year = await client.getByUID("year", params?.uid as string);
+  const year = await client.getByUID("year", params?.uid as string, {
+    graphQuery: yearGraphQuery,
+  });
   const years = await client.getAllByType("year");
   const courses = await client.getAllByType("course", {
     predicates: [predicate.at("my.course.year", year.id)],
@@ -61,3 +64,14 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+
+export const yearGraphQuery = `
+    {
+      year {
+        ...yearFields
+        slices {
+          ${courseSlicesGraphQuery}
+        }
+      }
+    }
+  `;

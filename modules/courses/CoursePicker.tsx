@@ -43,7 +43,7 @@ export const CoursePicker: React.FC<CoursePickerProps> = ({
           ))}
       </div>
 
-      <div className="flex items-center gap-4 mt-6">
+      <div className="flex flex-wrap items-center gap-4 mt-6">
         {courses
           ?.sort((a, b) => String(a.uid).localeCompare(b.uid))
           .map((_course) => (

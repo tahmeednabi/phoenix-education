@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { ReviewsSlice } from "@slicemachine/prismicio";
-import { Avatar, Card, Divider } from "@mantine/core";
+import { Card, Divider } from "@mantine/core";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Swiper as SwiperClass,
@@ -10,6 +10,7 @@ import {
   Mousewheel,
 } from "swiper";
 import { useViewportSize } from "@mantine/hooks";
+import { PrismicNextImage } from "@prismicio/next";
 
 const Reviews = ({ slice }: SliceComponentProps<ReviewsSlice>) => {
   const { width } = useViewportSize();
@@ -39,12 +40,12 @@ const Reviews = ({ slice }: SliceComponentProps<ReviewsSlice>) => {
           )}
         </div>
 
-        <div className="md:h-[40rem] translate-x-44 md:translate-x-0 md:-translate-y-32">
+        <div className="md:h-[40rem] translate-x-1/4 md:translate-x-0 md:-translate-y-32">
           <Swiper
             grabCursor
             centeredSlides
             mousewheel
-            height={1000}
+            height={1100}
             width={950}
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             effect={"coverflow"}
@@ -68,7 +69,12 @@ const Reviews = ({ slice }: SliceComponentProps<ReviewsSlice>) => {
                   <Divider className="border-gray-200" />
 
                   <div className="flex items-center gap-4 mt-6">
-                    <Avatar src={item.avatar.url} size="lg" radius="xl" />
+                    <PrismicNextImage
+                      className="object-cover content-center rounded-full"
+                      field={item.avatar}
+                      width={52}
+                      height={52}
+                    />
 
                     <div className="leading-tight">
                       <p className="font-medium">{item.name}</p>

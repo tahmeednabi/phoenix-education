@@ -32,6 +32,24 @@
             },
             "reviews": {
               "type": "SharedSlice"
+            },
+            "hero": {
+              "type": "SharedSlice"
+            },
+            "timeline": {
+              "type": "SharedSlice"
+            },
+            "course_classes": {
+              "type": "SharedSlice"
+            },
+            "course_tutors": {
+              "type": "SharedSlice"
+            },
+            "resource": {
+              "type": "SharedSlice"
+            },
+            "results": {
+              "type": "SharedSlice"
             }
           }
         }

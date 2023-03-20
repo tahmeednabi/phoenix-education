@@ -32,7 +32,10 @@ const Resource = ({ slice }: SliceComponentProps<ResourceSlice>) => {
           </div>
 
           {asLink(slice.primary.link, linkResolver) && (
-            <Link href={asLink(slice.primary.link, linkResolver) || ""}>
+            <Link
+              href={asLink(slice.primary.link, linkResolver) || ""}
+              target="_blank"
+            >
               <Button
                 size="lg"
                 className="mt-6 bg-black bg-opacity-40 hover:bg-opacity-50"

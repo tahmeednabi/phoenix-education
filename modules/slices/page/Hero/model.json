@@ -113,10 +113,33 @@
           }
         },
         "text_color": {
-          "type": "Color",
+          "type": "Select",
           "config": {
             "label": "Text Color",
-            "placeholder": ""
+            "placeholder": "",
+            "options": [
+              "white",
+              "black"
+            ]
+          }
+        },
+        "text_align": {
+          "type": "Select",
+          "config": {
+            "label": "Text Align",
+            "placeholder": "",
+            "options": [
+              "left",
+              "right"
+            ]
+          }
+        },
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image",
+            "constraint": {},
+            "thumbnails": []
           }
         },
         "background_video": {

@@ -74,15 +74,7 @@ export async function getStaticPaths() {
   };
 }
 
-export const courseGraphQuery = `
-    {
-      course {
-        ...courseFields
-        year {
-          ...yearFields
-        }
-        slices {
-          ... on hero {
+export const courseSlicesGraphQuery = `... on hero {
             variation {
               ... on default {
                 primary {
@@ -188,7 +180,17 @@ export const courseGraphQuery = `
               }
             }
           }
-          
+`;
+
+export const courseGraphQuery = `
+    {
+      course {
+        ...courseFields
+        year {
+          ...yearFields
+        }
+        slices {
+          ${courseSlicesGraphQuery}
         }
       }
     }

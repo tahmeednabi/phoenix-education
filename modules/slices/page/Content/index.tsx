@@ -39,6 +39,8 @@ const Content = ({ slice }: SliceComponentProps<ContentSlice>) => {
               <PrismicNextImage
                 className="w-full max-w-[36rem] h-auto rounded-3xl shadow-2xl"
                 field={data.image}
+                width={640}
+                height={360}
               />
             </div>
           )}

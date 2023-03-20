@@ -413,7 +413,7 @@ interface YearDocumentData {
  * Slice for *Year → Slice Zone*
  *
  */
-type YearDocumentDataSlicesSlice = ContentSlice | ContactSlice | ReviewsSlice;
+type YearDocumentDataSlicesSlice = ContentSlice | ContactSlice | ReviewsSlice | HeroSlice | TimelineSlice | CourseClassesSlice | CourseTutorsSlice | ResourceSlice | ResultsSlice;
 /**
  * Year document from Prismic
  *
@@ -869,13 +869,33 @@ interface HeroSliceVideoBackgroundPrimary {
     /**
      * Text Color field in *Hero → Primary*
      *
-     * - **Field Type**: Color
+     * - **Field Type**: Select
      * - **Placeholder**: *None*
      * - **API ID Path**: hero.primary.text_color
-     * - **Documentation**: https://prismic.io/docs/core-concepts/color
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
      *
      */
-    text_color: prismicT.ColorField;
+    text_color: prismicT.SelectField<"white" | "black">;
+    /**
+     * Text Align field in *Hero → Primary*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.text_align
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    text_align: prismicT.SelectField<"left" | "right">;
+    /**
+     * Background Image field in *Hero → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.background_image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    background_image: prismicT.ImageField<never>;
     /**
      * Background Video field in *Hero → Primary*
      *

@@ -24,10 +24,12 @@ const CourseClasses = ({ slice }: SliceComponentProps<CourseClassesSlice>) => {
       .catch(() => setLoading(false));
   }, [slice.primary.subject_id]);
 
+  if (classes.length === 0 && !loading) return <></>;
+
   return (
     <section>
       <div className="container py-24">
-        <div className="text-right">
+        <div className="text-left">
           <PrismicRichText field={slice.primary.title} />
           <PrismicRichText field={slice.primary.description} />
         </div>
