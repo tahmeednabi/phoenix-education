@@ -5,18 +5,16 @@ export const config = {
   runtime: "edge",
 };
 
-const font = fetch(
-  // @ts-ignore
-  new URL("../fonts/Inter-DisplayBold.woff2", import.meta.url)
-).then((res) => res.arrayBuffer());
-
 export default async function handler(req: NextApiRequest) {
-  const fontData = await font;
-  const { searchParams } = new URL(req.url || "");
+  const url = new URL(req.url || "");
 
-  const hasTitle = searchParams.has("title");
+  const fontData = await fetch(`${url.origin}/InterDisplay-SemiBold.otf`).then(
+    (res) => res.arrayBuffer()
+  );
+
+  const hasTitle = url.searchParams.has("title");
   const title = hasTitle
-    ? searchParams.get("title")?.slice(0, 100)
+    ? url.searchParams.get("title")?.slice(0, 100)
     : "Phoenix Education";
 
   return new ImageResponse(
