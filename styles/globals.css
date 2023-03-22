@@ -74,12 +74,12 @@ a {
 .video > video {
   width: 100% !important;
   height: auto !important;
-  @apply absolute top-1/2 -translate-y-1/2
+  @apply absolute top-1/2 -translate-y-1/2 left-0 animate-opacity
   -m-[4rem] scale-110
   pointer-events-none
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1366px) {
   .video > video {
     width: auto !important;
     height: 100% !important;
