@@ -822,6 +822,16 @@ interface HeroSliceDefaultPrimary {
      */
     background_image: prismicT.ImageField<never>;
     /**
+     * Background Video field in *Hero → Primary*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero.primary.background_video
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    background_video: prismicT.LinkToMediaField;
+    /**
      * Background Color field in *Hero → Primary*
      *
      * - **Field Type**: Color

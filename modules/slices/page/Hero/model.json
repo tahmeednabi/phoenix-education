@@ -76,6 +76,14 @@
             "thumbnails": []
           }
         },
+        "background_video": {
+          "type": "Link",
+          "config": {
+            "label": "Background Video",
+            "placeholder": "",
+            "select": "media"
+          }
+        },
         "background_color": {
           "type": "Color",
           "config": {

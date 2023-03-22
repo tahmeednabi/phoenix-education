@@ -50,6 +50,7 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
             playing
             muted
             height={600}
+            playsinline
             wrapper={({ children }) => (
               <div className="absolute -z-20 w-full h-full video">
                 {children}
@@ -110,16 +111,37 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
 
   return (
     <section
-      style={{
-        background: `url(${slice.primary.background_image.url})`,
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundColor: slice.primary.background_color || undefined,
-      }}
-      className="relative flex flex-col justify-center pt-64 pb-32 overflow-hidden"
+      style={
+        slice.primary.background_image
+          ? {
+              background: `url(${slice.primary.background_image.url})`,
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundColor: slice.primary.background_color || undefined,
+            }
+          : {
+              backgroundColor: slice.primary.background_color || undefined,
+            }
+      }
+      className="relative flex flex-col justify-center pt-64 pb-32 overflow-hidden -z-20"
     >
-      {slice.primary.background_image.url && (
+      {asLink(slice.primary.background_video) && (
+        <ReactPlayer
+          url={asLink(slice.primary.background_video) || ""}
+          loop
+          playing
+          muted
+          height={720}
+          playsinline
+          wrapper={({ children }) => (
+            <div className="absolute -z-20 w-full h-full video">{children}</div>
+          )}
+        />
+      )}
+
+      {(slice.primary.background_image.url ||
+        asLink(slice.primary.background_video)) && (
         <div
           className="absolute top-10 left-0 w-full h-full z-[1] -m-[4rem] scale-110"
           style={{

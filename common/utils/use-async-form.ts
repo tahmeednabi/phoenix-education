@@ -73,6 +73,7 @@ export default function useAsyncForm<T extends { [key: string]: any }>({
       ?.validate(form.values, { abortEarly: false })
       .then(() => {
         form.setErrors({});
+        setLoading(false);
         return false;
       })
       .catch((err: ValidationError) => {

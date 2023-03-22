@@ -45,7 +45,7 @@ const Reviews = ({ slice }: SliceComponentProps<ReviewsSlice>) => {
             grabCursor
             centeredSlides
             mousewheel
-            height={1100}
+            height={1000}
             width={950}
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             effect={"coverflow"}
@@ -58,7 +58,7 @@ const Reviews = ({ slice }: SliceComponentProps<ReviewsSlice>) => {
             modules={[Autoplay, EffectCoverflow, Mousewheel]}
             direction="vertical"
             slidesPerView={3}
-            spaceBetween={32}
+            spaceBetween={24}
             onSwiper={setSwiper}
           >
             {slice.items.map((item, index) => (
