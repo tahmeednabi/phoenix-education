@@ -2,12 +2,12 @@ import { SliceZone } from "@prismicio/react";
 import { components } from "@modules/slices";
 import { GetStaticPropsContext } from "next";
 import { CourseDocument, YearDocument } from "@slicemachine/prismicio";
-import Head from "next/head";
 import { createClient } from "../../prismicio";
 import { CoursePicker } from "@modules/courses/CoursePicker";
 import { predicate } from "@prismicio/client";
 import { getFooterProps } from "@modules/footer/Footer";
 import { courseSlicesGraphQuery } from "../courses/[uid]";
+import { NextSeo } from "next-seo";
 
 export default function Page({
   year,
@@ -20,9 +20,24 @@ export default function Page({
 }) {
   return (
     <div>
-      <Head>
-        <title>{`${year.data.name || ""} Tutoring | Phoenix Education`}</title>
-      </Head>
+      <NextSeo
+        title={`${year.data.name || ""} Tutoring | Phoenix Education`}
+        description={`Check out our ${year.data.name} courses.`}
+        openGraph={{
+          images: [
+            {
+              url: `/api/og?title=${encodeURIComponent(
+                year?.data.name || "Phoenix Education"
+              )}`,
+              width: 1280,
+              height: 720,
+              alt: year?.data.name || "og-alt",
+              type: "image/jpeg",
+            },
+          ],
+          siteName: "Phoenix Education",
+        }}
+      />
       <CoursePicker year={year} years={years} courses={courses} />
       <SliceZone slices={year.data.slices} components={components} />
     </div>

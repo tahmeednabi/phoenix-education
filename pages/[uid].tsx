@@ -19,7 +19,9 @@ export default function Page({ page }: { page?: PageDocument }) {
           description: page?.data.description || "",
           images: [
             {
-              url: `/api/og?title=${page?.data.title || "Phoenix Education"}`,
+              url: `/api/og?title=${encodeURIComponent(
+                page?.data.title || "Phoenix Education"
+              )}`,
               width: 1280,
               height: 720,
               alt: page?.data.title || "og-alt",
