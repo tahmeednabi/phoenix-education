@@ -27,7 +27,7 @@ export default function Page({
           images: [
             {
               url: `/api/og?title=${encodeURIComponent(
-                year?.data.name || "Phoenix Education"
+                `${year.data.name || "HSC"} Tutoring`
               )}`,
               width: 1280,
               height: 720,

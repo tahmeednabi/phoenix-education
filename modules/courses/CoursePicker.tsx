@@ -27,7 +27,11 @@ export const CoursePicker: React.FC<CoursePickerProps> = ({
 
       <div className="flex items-center gap-4 mt-6">
         {years
-          .sort((a, b) => String(a.uid).localeCompare(b.uid))
+          .sort((a, b) =>
+            String(a.data.name).localeCompare(String(b.data.name), "en", {
+              numeric: true,
+            })
+          )
           .map((_year) => (
             <Link key={_year.uid} href={asLink(_year, linkResolver) || ""}>
               <Button

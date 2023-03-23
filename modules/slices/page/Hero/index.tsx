@@ -68,11 +68,11 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
             style={{
               background: `linear-gradient(to ${
                 slice.primary.text_align || "left"
-              }, rgba(${
-                slice.primary.text_color === "black" ? "255,255,255" : "0,0,0"
-              }, 0), rgba(${
-                slice.primary.text_color === "black" ? "255,255,255" : "0,0,0"
-              }, 0.7))`,
+              }, ${
+                slice.primary.text_color === "black"
+                  ? "rgba(255,255,255,0), rgba(255,255,255,0.8))"
+                  : "rgba(0,0,0,0), rgba(0,0,0, 0.6))"
+              }`,
             }}
           />
         )}
