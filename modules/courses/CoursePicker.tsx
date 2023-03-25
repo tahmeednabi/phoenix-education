@@ -25,14 +25,16 @@ export const CoursePicker: React.FC<CoursePickerProps> = ({
         <div className="w-full h-4 mt-4 bg-red-400" />
       </h2>
 
-      <div className="flex items-center gap-4 mt-6">
+      <div className="flex flex-wrap items-center gap-4 mt-6">
         {years
-          .sort((a, b) => String(a.uid).localeCompare(b.uid))
+          .sort((a, b) =>
+            new Intl.Collator([], { numeric: true }).compare(a.uid, b.uid)
+          )
           .map((_year) => (
             <Link key={_year.uid} href={asLink(_year, linkResolver) || ""}>
               <Button
                 size="lg"
-                color="slate"
+                color="red"
                 shade={7}
                 variant={_year.uid === year?.uid ? "filled" : "outline"}
                 radius={0}

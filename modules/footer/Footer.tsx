@@ -99,7 +99,9 @@ export const Footer: React.FC<FooterProps> = ({ years, home, pages }) => {
             <p className="text-slate-300 font-medium">Courses</p>
 
             {years
-              .sort((a, b) => String(a.uid).localeCompare(b.uid))
+              .sort((a, b) =>
+                new Intl.Collator([], { numeric: true }).compare(a.uid, b.uid)
+              )
               .map((year) => (
                 <Link key={year.uid} href={asLink(year, linkResolver) || ""}>
                   <p>{year.data.name} Courses</p>
