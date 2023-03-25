@@ -20,6 +20,8 @@ const Pricing = ({ slice }: SliceComponentProps<PricingSlice>) => {
   const years = uniqBy(
     courses.map((course) => course.data.year) as unknown as YearDocument[],
     (year) => year.uid
+  ).sort((a, b) =>
+    new Intl.Collator([], { numeric: true }).compare(a.uid, b.uid)
   );
 
   return (
