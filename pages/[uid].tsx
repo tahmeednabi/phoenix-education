@@ -3,18 +3,35 @@ import { GetStaticPropsContext } from "next";
 import { PageDocument } from "@slicemachine/prismicio";
 import { asLink } from "@prismicio/helpers";
 import { linkResolver } from "@common/utils";
-import Head from "next/head";
 import { SliceZone } from "@prismicio/react";
 import { components } from "modules/slices";
 import { getFooterProps } from "@modules/footer/Footer";
+import { NextSeo } from "next-seo";
 
 export default function Page({ page }: { page?: PageDocument }) {
   return (
     <div>
-      <Head>
-        <title>{(page?.data.title || "") + " | Phoenix Education"}</title>
-        <meta name="description" content={page?.data.description || ""} />
-      </Head>
+      <NextSeo
+        title={(page?.data.title || "") + " | Phoenix Education"}
+        description={page?.data.description || ""}
+        openGraph={{
+          title: (page?.data.title || "") + " | Phoenix Education",
+          description: page?.data.description || "",
+          images: [
+            {
+              url: `/api/og?title=${encodeURIComponent(
+                page?.data.title || "Phoenix Education"
+              )}`,
+              width: 1280,
+              height: 720,
+              alt: page?.data.title || "og-alt",
+              type: "image/jpeg",
+            },
+          ],
+          siteName: "Phoenix Education",
+        }}
+      />
+
       <SliceZone slices={page?.data.slices} components={components} />
     </div>
   );

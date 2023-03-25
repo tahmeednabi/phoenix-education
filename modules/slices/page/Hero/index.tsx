@@ -11,7 +11,7 @@ import { linkResolver } from "@common/utils/link-resolver";
 import { Button } from "@components/Button";
 import { ChevronRight } from "tabler-icons-react";
 import { wrapMapSerializer } from "@prismicio/richtext";
-import ReactPlayer from "react-player";
+import { ReactPlayer } from "@components/ReactPlayer";
 
 const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
   const serializer: JSXFunctionSerializer = wrapMapSerializer({
@@ -52,8 +52,10 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
             height={600}
             playsinline
             wrapper={({ children }) => (
-              <div className="absolute -z-20 w-full h-full video">
-                {children}
+              <div className="absolute -z-20 w-full h-full">
+                <div className="relative w-full h-full video -translate-x-1/2 md:translate-x-0">
+                  {children}
+                </div>
               </div>
             )}
           />
@@ -66,11 +68,11 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
             style={{
               background: `linear-gradient(to ${
                 slice.primary.text_align || "left"
-              }, rgba(${
-                slice.primary.text_color === "black" ? "255,255,255" : "0,0,0"
-              }, 0), rgba(${
-                slice.primary.text_color === "black" ? "255,255,255" : "0,0,0"
-              }, 0.7))`,
+              }, ${
+                slice.primary.text_color === "black"
+                  ? "rgba(255,255,255,0), rgba(255,255,255,0.8))"
+                  : "rgba(0,0,0,0), rgba(0,0,0, 0.6))"
+              }`,
             }}
           />
         )}
@@ -118,13 +120,10 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
-              backgroundColor: slice.primary.background_color || undefined,
             }
-          : {
-              backgroundColor: slice.primary.background_color || undefined,
-            }
+          : {}
       }
-      className="relative flex flex-col justify-center pt-64 pb-32 overflow-hidden -z-20"
+      className="relative flex flex-col justify-center pt-64 pb-32 overflow-hidden"
     >
       {asLink(slice.primary.background_video) && (
         <ReactPlayer
@@ -135,7 +134,11 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
           height={720}
           playsinline
           wrapper={({ children }) => (
-            <div className="absolute -z-20 w-full h-full video">{children}</div>
+            <div className="absolute -z-20 w-full h-full">
+              <div className="relative w-full h-full video -translate-x-1/2 md:translate-x-0">
+                {children}
+              </div>
+            </div>
           )}
         />
       )}
@@ -143,7 +146,7 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
       {(slice.primary.background_image.url ||
         asLink(slice.primary.background_video)) && (
         <div
-          className="absolute top-10 left-0 w-full h-full z-[1] -m-[4rem] scale-110"
+          className="absolute top-10 left-0 w-full h-full z-[1] -m-[4rem] scale-110 animate-opacity"
           style={{
             background:
               "linear-gradient(to left, rgba(15, 19, 33, 0), rgba(15, 19, 33, 0.6))",

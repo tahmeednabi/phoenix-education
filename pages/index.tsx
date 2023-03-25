@@ -4,8 +4,8 @@ import { createClient } from "../prismicio";
 import { components } from "../modules/slices/page";
 import { GetStaticPropsContext } from "next";
 import { HomeDocument } from "@slicemachine/prismicio";
-import Head from "next/head";
 import { getFooterProps, FooterProps } from "@modules/footer/Footer";
+import { NextSeo } from "next-seo";
 
 export default function Page({
   page,
@@ -15,10 +15,24 @@ export default function Page({
 }) {
   return (
     <div>
-      <Head>
-        <title>{page.data.title}</title>
-        <meta name="description" content={page.data.description || ""} />
-      </Head>
+      <NextSeo
+        title={page.data.title || "Phoenix Education"}
+        description={page.data.description || ""}
+        openGraph={{
+          title: page.data.title || "",
+          description: page.data.description || "",
+          images: [
+            {
+              url: "/home-og.jpg",
+              width: 1280,
+              height: 720,
+              alt: "Home",
+              type: "image/jpeg",
+            },
+          ],
+          siteName: "Phoenix Education",
+        }}
+      />
 
       <SliceZone slices={page.data.slices} components={components} />
     </div>
