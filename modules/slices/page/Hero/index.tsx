@@ -1,3 +1,4 @@
+import { AnimatedPhoenix } from "@modules/slices/page/Hero/AnimatedPhoenix";
 import React from "react";
 import {
   SliceComponentProps,
@@ -154,65 +155,74 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
         />
       )}
 
-      <div className="container flex flex-col text-white z-20 px-12">
-        {slice.primary.line_1 && (
-          <div className="-mb-4">
-            <PrismicRichText
-              components={serializer}
-              field={slice.primary.line_1}
-            />
-          </div>
-        )}
-
-        {slice.primary.line_2 && (
-          <div className="relative w-fit">
-            <PrismicRichText
-              components={serializer}
-              field={slice.primary.line_2}
-            />
-            <div className="absolute scale-110 left-1 -bottom-0 -z-10 bg-red-500 w-full h-10" />
-          </div>
-        )}
-
-        {slice.primary.line_3 && (
-          <div className="md:ml-48 mb-4">
-            <PrismicRichText
-              components={serializer}
-              field={slice.primary.line_3}
-            />
-          </div>
-        )}
-
-        <div className="flex flex-col md:flex-row gap-4 md:ml-80">
-          {slice.primary.button_1_link && slice.primary.button_1_text && (
-            <Link
-              href={asLink(slice.primary.button_1_link, linkResolver) || ""}
-            >
-              <Button
-                variant="white"
-                classNames={{ label: "font-medium" }}
-                className="rounded-none"
-                size="xl"
-              >
-                {slice.primary.button_1_text}
-              </Button>
-            </Link>
+      <div className="container flex items-center justify-between text-white z-20 px-12">
+        <div className="flex flex-col">
+          {slice.primary.line_1 && (
+            <div className="-mb-4">
+              <PrismicRichText
+                components={serializer}
+                field={slice.primary.line_1}
+              />
+            </div>
           )}
 
-          {slice.primary.button_2_link && slice.primary.button_2_text && (
-            <Link
-              href={asLink(slice.primary.button_2_link, linkResolver) || ""}
-            >
-              <Button
-                className="rounded-none"
-                classNames={{ label: "font-medium" }}
-                size="xl"
-                rightIcon={<ChevronRight className="w-8 h-8" />}
-              >
-                {slice.primary.button_2_text}
-              </Button>
-            </Link>
+          {slice.primary.line_2 && (
+            <div className="relative w-fit">
+              <PrismicRichText
+                components={serializer}
+                field={slice.primary.line_2}
+              />
+              <div className="absolute scale-110 left-1 -bottom-0 -z-10 bg-red-500 w-full h-10" />
+            </div>
           )}
+
+          {slice.primary.line_3 && (
+            <div className="md:ml-48 mb-4">
+              <PrismicRichText
+                components={serializer}
+                field={slice.primary.line_3}
+              />
+            </div>
+          )}
+
+          <div className="flex flex-col md:flex-row gap-4 md:ml-80">
+            {slice.primary.button_1_link && slice.primary.button_1_text && (
+              <Link
+                href={asLink(slice.primary.button_1_link, linkResolver) || ""}
+              >
+                <Button
+                  variant="white"
+                  classNames={{ label: "font-medium" }}
+                  className="rounded-none"
+                  size="xl"
+                >
+                  {slice.primary.button_1_text}
+                </Button>
+              </Link>
+            )}
+
+            {slice.primary.button_2_link && slice.primary.button_2_text && (
+              <Link
+                href={asLink(slice.primary.button_2_link, linkResolver) || ""}
+              >
+                <Button
+                  className="rounded-none"
+                  classNames={{ label: "font-medium" }}
+                  size="xl"
+                  rightIcon={<ChevronRight className="w-8 h-8" />}
+                >
+                  {slice.primary.button_2_text}
+                </Button>
+              </Link>
+            )}
+          </div>
+        </div>
+
+        <div
+          className="w-[24rem] absolute left-1/2 -translate-x-1/2 opacity-50
+        lg:w-[24rem] lg:relative lg:left-0 lg:translate-x-0 lg:top-1/2 lg:opacity-100 -z-20"
+        >
+          <AnimatedPhoenix />
         </div>
       </div>
     </section>
