@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { notification, UseAsyncFormReturnType } from "@common/utils";
-import { Class, EnrolStudentDto, Subject } from "../../../pages/api/enrol";
+import { EnrolStudentDto } from "../../../pages/api/enrol";
 import { Alert, Checkbox, Divider, Loader } from "@mantine/core";
 import { getClasses, useSubjects } from "../../../requests/course";
 import { ClassCard } from "./ClassCard";
 import { ChooseLessonCard } from "./ChooseLessonCard";
 import { useDidUpdate } from "@mantine/hooks";
 import { AlertTriangle } from "tabler-icons-react";
+import {Class, Subject} from "@common/utils/types";
 
 interface CourseProps {
   form: UseAsyncFormReturnType<EnrolStudentDto>;

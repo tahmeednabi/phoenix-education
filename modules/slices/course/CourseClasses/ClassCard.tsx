@@ -1,8 +1,8 @@
 import { Badge, Card } from "@mantine/core";
 import React from "react";
-import { Class } from "../../../../pages/api/enrol";
 import { DAYS } from "@common/constants";
 import dayjs from "dayjs";
+import {Class} from "@common/utils/types";
 
 interface ClassCardProps {
   cls: Class;

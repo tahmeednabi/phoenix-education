@@ -1,5 +1,5 @@
-import { Class, Subject } from "pages/api/enrol";
 import { useGet, useStickyStaleSWR } from "@common/utils";
+import { Class, Subject } from "@common/utils/types";
 
 class QuerySubjectDto {
   limit?: number;
@@ -11,12 +11,12 @@ class QueryClassDto {
 
 export const useSubjects = (query?: QuerySubjectDto) =>
   useStickyStaleSWR<{ subjects: Subject[]; count: number }>(
-    "https://dev.phoenixlms.com/api/v1/subject/public/44f57b66-a26f-461c-891b-ccafaff04df5",
+    `${process.env.NEXT_PUBLIC_PHOENIXLMS_ENDPOINT}/api/v1/subject/public/${process.env.NEXT_PUBLIC_WORKSPACE_ID}`,
     query
   );
 
 export const getClasses = (query?: QueryClassDto) =>
   useGet<Class[]>(
-    "https://dev.phoenixlms.com/api/v1/class/public/44f57b66-a26f-461c-891b-ccafaff04df5",
+    `${process.env.NEXT_PUBLIC_PHOENIXLMS_ENDPOINT}/api/v1/class/public/${process.env.NEXT_PUBLIC_WORKSPACE_ID}`,
     query
   );

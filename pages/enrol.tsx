@@ -4,7 +4,7 @@ import { GetStaticPropsContext } from "next";
 import { createClient } from "../prismicio";
 import { SliceZone } from "@prismicio/react";
 import { components } from "modules/slices/page";
-import { Enrol } from "../modules/enrol/Enrol";
+import { Enrol } from "@modules/enrol/Enrol";
 import { getFooterProps } from "@modules/footer/Footer";
 import { pageGraphQuery } from "./[uid]";
 

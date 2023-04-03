@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { CourseClassesSlice } from "@slicemachine/prismicio";
-import { Class } from "../../../../pages/api/enrol";
 import { getClasses } from "../../../../requests/course";
 import { ClassCard } from "./ClassCard";
 import { ScrollArea } from "@mantine/core";
+import {Class} from "@common/utils/types";
 
 const CourseClasses = ({ slice }: SliceComponentProps<CourseClassesSlice>) => {
   const [loading, setLoading] = useState(true);

@@ -1,13 +1,18 @@
 import React, { useCallback, useState } from "react";
 import useAsyncForm from "@common/utils/use-async-form";
 import { EnrolStudentDto } from "../../pages/api/enrol";
-import { MantineProvider, Stepper, useMantineTheme } from "@mantine/core";
+import {
+  MantineProvider,
+  Stepper,
+  ThemeIcon,
+  useMantineTheme,
+} from "@mantine/core";
 import { Books, Check, Users } from "tabler-icons-react";
-import { GraduationCap } from "phosphor-react";
+import { GraduationCap, Warning } from "phosphor-react";
 import { Button } from "@components/Button";
 import { GuardianDetails } from "./components/GuardianDetails";
 import { StudentDetails } from "./components/StudentDetails";
-import { getMantineTheme } from "@common/utils";
+import { getMantineTheme, usePost } from "@common/utils";
 import { Courses } from "./components/Courses";
 import { array, object, string } from "yup";
 import { isValidPhoneNumber } from "react-phone-number-input";
@@ -18,6 +23,7 @@ export const Enrol: React.FC = () => {
   const theme = useMantineTheme();
   const [active, setActive] = useState<number>(0);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const form = useAsyncForm<EnrolStudentDto>({
     initialValues: {
@@ -55,6 +61,15 @@ export const Enrol: React.FC = () => {
     setActive((active) => (active === 0 ? 0 : active - 1));
   };
 
+  const handleSubmit = async () => {
+    setSubmitted(true);
+    const { error } = await form.sendForm((values) =>
+      usePost("/api/enrol", values)
+    );
+
+    if (error) setError(error.message);
+  };
+
   const handleNext = useCallback(async () => {
     let error = false;
     switch (active) {
@@ -83,7 +98,7 @@ export const Enrol: React.FC = () => {
     }
 
     if (error) return;
-    if (active >= 3) setSubmitted(true);
+    if (active >= 3) return handleSubmit();
     return setActive(active + 1);
   }, [form, active]);
 
@@ -161,14 +176,21 @@ export const Enrol: React.FC = () => {
     body = (
       <div className="border-solid border-gray-500 border-opacity-30 rounded p-16">
         <div className="flex flex-col justify-center items-center gap-2 my-6">
-          <Checkmark loading={form.loading} />
+          {error ? (
+            <ThemeIcon size="xl" radius="xl" color="red">
+              <Warning className="w-6 h-6" />
+            </ThemeIcon>
+          ) : (
+            <Checkmark loading={form.loading} />
+          )}
 
           {!form.loading && (
             <div className="max-w-md text-center animate-opacity">
-              <h4>Thank you!</h4>
+              <h4>{error ? "Sorry, something went wrong!" : "Thank you!"}</h4>
               <p className="text-gray-400 text-xl">
-                Our team will reach out to you with more information about your
-                enrolment.
+                {error ||
+                  `Our team will reach out to you with more information about your
+                enrolment.`}
               </p>
             </div>
           )}

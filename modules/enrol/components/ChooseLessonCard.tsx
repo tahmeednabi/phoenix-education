@@ -1,8 +1,9 @@
 import React from "react";
-import { Class, EnrolStudentDto, Lesson } from "../../../pages/api/enrol";
+import { EnrolStudentDto } from "../../../pages/api/enrol";
 import { Chip } from "@mantine/core";
 import dayjs from "dayjs";
 import { UseAsyncFormReturnType } from "@common/utils";
+import {Class, Lesson} from "@common/utils/types";
 
 interface ChooseLessonCardProps {
   form: UseAsyncFormReturnType<EnrolStudentDto>;
