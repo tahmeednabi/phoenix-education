@@ -36,13 +36,10 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
           slice.primary.background_image
             ? {
                 background: `url(${slice.primary.background_image.url})`,
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
               }
             : {}
         }
-        className="relative flex flex-col justify-center pt-64 pb-32 overflow-hidden -z-20"
+        className="relative flex flex-col justify-center pt-64 pb-32 overflow-hidden -z-20 bg-cover bg-center bg-no-repeat"
       >
         {asLink(slice.primary.background_video) && (
           <ReactPlayer
@@ -118,13 +115,10 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
         slice.primary.background_image
           ? {
               background: `url(${slice.primary.background_image.url})`,
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
             }
           : {}
       }
-      className="relative flex flex-col justify-center pt-64 pb-32 overflow-hidden"
+      className="relative flex flex-col justify-center pt-64 pb-32 overflow-hidden bg-cover bg-center bg-no-repeat"
     >
       {asLink(slice.primary.background_video) && (
         <ReactPlayer
