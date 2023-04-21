@@ -14,6 +14,8 @@ export const TutorCard: React.FC<TutorCardProps> = ({ tutor }) => {
       <div className="relative w-56 h-72 rounded-3xl overflow-hidden bg-slate-700">
         <PrismicNextImage
           className="absolute w-auto h-full -translate-x-1/2 left-1/2"
+          width={224}
+          height={288}
           field={tutor.data.image}
         />
       </div>
