@@ -69,12 +69,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Footer } from "@modules/footer/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [colorScheme] = useState<ColorScheme>("light");
 
   return (
     <main className={`${inter.variable} font-sans -mb-8`}>
+      <Analytics />
       <MantineProvider
         theme={getMantineTheme({ colorScheme })}
         withGlobalStyles
