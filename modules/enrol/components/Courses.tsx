@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { notification, UseAsyncFormReturnType } from "@common/utils";
 import { EnrolStudentDto } from "../../../pages/api/enrol";
-import { Alert, Checkbox, Divider, Loader } from "@mantine/core";
+import { Alert, Card, Checkbox, Divider, Loader } from "@mantine/core";
 import { getClasses, useSubjects } from "../../../requests/course";
 import { ClassCard } from "./ClassCard";
 import { ChooseLessonCard } from "./ChooseLessonCard";
 import { useDidUpdate } from "@mantine/hooks";
 import { AlertTriangle } from "tabler-icons-react";
-import {Class, Subject} from "@common/utils/types";
+import { Class, Subject } from "@common/utils/types";
+import { AvailabilitySlot } from "@modules/enrol/components/AvailabilitySlot";
+
+export const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+export const weekends = ["Sat", "Sun"];
+export const weekdaySlots = ["4:30 PM - 6:30 PM", "6:30 PM - 8:30 PM"];
+export const weekendSlots = [
+  "10:00 AM - 12:00 PM",
+  "12:00 PM - 2:00 PM",
+  "2:00 PM - 4:00 PM",
+  "4:00 PM - 6:00 PM",
+];
 
 interface CourseProps {
   form: UseAsyncFormReturnType<EnrolStudentDto>;
@@ -15,10 +26,19 @@ interface CourseProps {
 
 export const Courses: React.FC<CourseProps> = ({ form }) => {
   const [classes, setClasses] = useState<Class[]>([]);
-  const { data, isValidating: loading } = useSubjects({
+  const {
+    data,
+    isValidating: loading,
+    error,
+  } = useSubjects({
     year: form.values.year,
     limit: 50,
   });
+
+  const waitingListSubjects = form.values.subjects.filter(
+    (subject) =>
+      !form.values.classes.some((cls) => cls.subject.id === subject.id)
+  );
 
   const handleChange = (subject: Subject, checked: boolean) => {
     form.setValues(({ subjects }) => ({
@@ -68,6 +88,13 @@ export const Courses: React.FC<CourseProps> = ({ form }) => {
       <div className="flex flex-col items-center justify-center">
         <Loader strokeWidth={2} />
         <p className="mt-4 animate-opacity">Fetching subjects...</p>
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="flex flex-col items-center justify-center">
+        <p className="max-w-xs text-center text-lg mt-4 animate-opacity">{`Sorry we're having some technical issues! Please try again later`}</p>
       </div>
     );
 
@@ -132,6 +159,52 @@ export const Courses: React.FC<CourseProps> = ({ form }) => {
               <ChooseLessonCard key={cls.id} form={form} cls={cls} />
             ))}
           </div>
+        </div>
+      )}
+
+      {waitingListSubjects.length > 0 && (
+        <div className="mt-8">
+          <p className="font-normal text-xl text-gray-300">
+            Select times that you are unavailable
+          </p>
+          <Divider color="gray" className="opacity-50 my-4" />
+          <Card withBorder className="overflow-x-auto">
+            <div className="flex items-start gap-2">
+              {weekdays?.map((day) => (
+                <div
+                  className="flex flex-col items-stretch text-center gap-2"
+                  key={day}
+                >
+                  <b>{day}</b>
+                  {weekdaySlots.map((slot) => (
+                    <AvailabilitySlot
+                      key={slot}
+                      form={form}
+                      day={day}
+                      slot={slot}
+                    />
+                  ))}
+                </div>
+              ))}
+
+              {weekends?.map((day) => (
+                <div
+                  className="flex flex-col items-stretch text-center gap-2"
+                  key={day}
+                >
+                  <b>{day}</b>
+                  {weekendSlots.map((slot) => (
+                    <AvailabilitySlot
+                      key={slot}
+                      form={form}
+                      day={day}
+                      slot={slot}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
+          </Card>
         </div>
       )}
     </div>

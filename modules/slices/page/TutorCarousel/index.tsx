@@ -35,7 +35,7 @@ const TutorCarousel = ({ slice }: SliceComponentProps<TutorCarouselSlice>) => (
         return (
           <div key={index} className="mx-8 rounded-xl overflow-hidden bg-white">
             <PrismicNextImage
-              className="w-72 h-96 object-cover rounded-xl"
+              className="w-80 h-96 object-cover rounded-xl"
               field={tutor.data.image}
             />
 

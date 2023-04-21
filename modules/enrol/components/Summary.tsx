@@ -85,6 +85,23 @@ export const Summary: React.FC<SummaryProps> = ({ form }) => {
             </div>
           </>
         )}
+
+        {waitingListSubjects.length > 0 && (
+          <>
+            <p className="font-medium text-gray-400">Unavailable</p>
+
+            <div className="col-span-2">
+              {form.values.unavailability
+                .filter((u) => u.slots.length !== 0)
+                .map((u) => (
+                  <div key={u.day} className="mb-1">
+                    <p className="text-sm text-gray-500">{u.day}</p>
+                    <p className="text-sm">{u.slots.join(", ")}</p>
+                  </div>
+                ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

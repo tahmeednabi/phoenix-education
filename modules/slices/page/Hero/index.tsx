@@ -71,8 +71,8 @@ const Hero = ({ slice }: SliceComponentProps<HeroSlice>) => {
                 slice.primary.text_align || "left"
               }, ${
                 slice.primary.text_color === "black"
-                  ? "rgba(255,255,255,0), rgba(255,255,255,0.8))"
-                  : "rgba(0,0,0,0), rgba(0,0,0, 0.6))"
+                  ? "rgba(255,255,255,0), rgba(255,255,255,0.6))"
+                  : "rgba(0,0,0,0), rgba(0,0,0,0.2), rgba(0,0,0, 0.6))"
               }`,
             }}
           />

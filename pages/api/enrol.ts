@@ -1,9 +1,14 @@
 import { Class, Lesson, Subject } from "@common/utils/types";
 import { NextApiRequest, NextApiResponse } from "next";
 import dayjs from "dayjs";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { HttpExceptionClient } from "@common/utils";
 import { Mailgun } from "@common/utils/mailgun";
+
+export type Unavailability = {
+  day: string;
+  slots: string[];
+};
 
 export class EnrolStudentDto {
   firstName: string;
@@ -21,9 +26,21 @@ export class EnrolStudentDto {
     bsb?: string;
     accountNo?: string;
   };
+  unavailability: Unavailability[];
   subjects: Subject[];
   classes: Class[];
   lessons: Lesson[];
+}
+
+function removeEmptyString(obj) {
+  return Object.fromEntries(
+    Object.entries(obj)
+      .filter(([_, v]) => v !== null && String(v).trim() !== "")
+      .map(([k, v]) => [
+        k,
+        typeof v === "object" && !Array.isArray(v) ? removeEmptyString(v) : v,
+      ])
+  );
 }
 
 export default async function handler(
@@ -44,55 +61,59 @@ export default async function handler(
     guardianName: body.guardian.firstName + " " + body.guardian.lastName,
     guardianEmail: body.guardian.email,
     guardianPhone: body.guardian.phoneNumber,
-    classes: body.classes
-      .map(
-        (cls) =>
-          `${cls.code} (${dayjs(
-            cls.lessons.find((lesson) => lesson.selected)?.date
-          ).format("D/M/YY")})`
-      )
-      .join(", "),
-    waitingList: body.subjects.map((sub) => sub.name).join(", "),
+    classes:
+      body.classes
+        .map(
+          (cls) =>
+            `${cls.code} (${dayjs(
+              cls.lessons.find((lesson) => lesson.selected)?.date
+            ).format("D/M/YY")})`
+        )
+        .join(", ") || "-",
+    waitingList: body.subjects.map((sub) => sub.name).join(", ") || "-",
+    unavailability:
+      body.unavailability
+        .filter((u) => u.slots.length !== 0)
+        .map((u) => `${u.day}: ${u.slots.join(", ")}\n`)
+        .join("\n") || "-",
   };
 
-  // Auto response email
-  await Mailgun.send({
-    template: "enrolment.autoresponse",
-    subject: "Thank you for signing up!",
-    to: body.guardian.email || body.email,
-    variables,
-  });
-
-  // Email to admin
-  await Mailgun.send({
-    template: "enrolment",
-    subject: `${body.firstName} ${body.lastName} has enrolled`,
-    to: "studentregistrations@phoenixedu.com.au",
-    variables,
-  });
-
-  const {
-    classes: _,
-    lessons: __,
-    subjects: ___,
-    guardian: ____,
-    ..._body
-  } = body;
+  const { classes: _, lessons: __, subjects: ___, ..._body } = body;
 
   // Send to PhoenixLMS
   try {
     const { data } = await axios.post(
       `${process.env.NEXT_PUBLIC_PHOENIXLMS_ENDPOINT}/api/v1/student/public/${process.env.NEXT_PUBLIC_WORKSPACE_ID}`,
-      {
+      removeEmptyString({
         ..._body,
         waitingList: body.subjects.map((sub) => ({ id: sub.id })),
+        notes: variables.unavailability,
         status: "new",
-      }
+      })
     );
+
+    // Auto response email
+    await Mailgun.send({
+      template: "enrolment.autoresponse",
+      subject: "Thank you for signing up!",
+      to: body.guardian.email || body.email,
+      variables,
+    });
+
+    // Email to admin
+    await Mailgun.send({
+      template: "enrolment",
+      subject: `${body.firstName} ${body.lastName} has enrolled`,
+      to: "studentregistrations@phoenixedu.com.au",
+      variables,
+    });
+
     return res.status(200).send(data);
-  } catch (e: any) {
+  } catch (e: unknown) {
+    const ex = e as AxiosError<any>;
+    console.error(ex.response?.data);
     return res.status(500).send({
-      message: String(e.response?.data?.response?.message || e.message),
+      message: String(ex.response?.data?.response?.message || ex.message),
     } as HttpExceptionClient);
   }
 }

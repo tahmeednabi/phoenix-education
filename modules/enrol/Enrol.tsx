@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import useAsyncForm from "@common/utils/use-async-form";
-import { EnrolStudentDto } from "../../pages/api/enrol";
+import { Unavailability, EnrolStudentDto } from "../../pages/api/enrol";
 import {
   MantineProvider,
   Stepper,
@@ -13,11 +13,12 @@ import { Button } from "@components/Button";
 import { GuardianDetails } from "./components/GuardianDetails";
 import { StudentDetails } from "./components/StudentDetails";
 import { getMantineTheme, usePost } from "@common/utils";
-import { Courses } from "./components/Courses";
+import { Courses, weekdays, weekends } from "./components/Courses";
 import { array, object, string } from "yup";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import { Summary } from "./components/Summary";
 import { Checkmark } from "@components/Checkmark";
+import { Class, Lesson, Subject } from "@common/utils/types";
 
 export const Enrol: React.FC = () => {
   const theme = useMantineTheme();
@@ -27,11 +28,15 @@ export const Enrol: React.FC = () => {
 
   const form = useAsyncForm<EnrolStudentDto>({
     initialValues: {
-      guardian: {},
-      subjects: [],
-      classes: [],
-      lessons: [],
-    } as unknown as EnrolStudentDto,
+      guardian: {} as EnrolStudentDto["guardian"],
+      subjects: [] as Subject[],
+      classes: [] as Class[],
+      lessons: [] as Lesson[],
+      unavailability: [
+        ...weekdays.map((day) => ({ day, slots: [] })),
+        ...weekends.map((day) => ({ day, slots: [] })),
+      ] as Unavailability[],
+    } as EnrolStudentDto,
     schema: object({
       firstName: string().required("First name is required"),
       lastName: string().required("Last name is required"),
