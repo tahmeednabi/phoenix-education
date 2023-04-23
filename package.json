@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "concurrently --names \"client,slicemachine\" -c \"bgBlue.bold,bgGreen.bold\" \"next dev\" \"yarn slicemachine\"",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint --fix && (tsc -p tsconfig.lint.json --noEmit)",
     "slicemachine": "start-slicemachine"
@@ -37,6 +38,7 @@
     "next-compose-plugins": "^2.2.1",
     "next-fonts": "^1.5.1",
     "next-seo": "^5.15.0",
+    "next-sitemap": "^4.0.7",
     "next-svgr": "^0.0.2",
     "p5": "^1.5.0",
     "phosphor-react": "^1.4.1",
