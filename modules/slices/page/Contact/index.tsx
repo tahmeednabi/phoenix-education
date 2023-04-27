@@ -25,7 +25,7 @@ const Contact = ({ slice }: SliceComponentProps<ContactSlice>) => {
     await form.sendForm((values) => usePost("/api/contact", values), {
       message: "Your message has been sent!",
     });
-    await form.reset();
+    form.reset();
   };
 
   return (

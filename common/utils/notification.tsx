@@ -1,46 +1,26 @@
-import {
-  showNotification,
-  updateNotification,
-  cleanNotifications,
-} from "@mantine/notifications";
+import { cleanNotifications, notifications } from "@mantine/notifications";
 import { Check, ExclamationMark } from "tabler-icons-react";
-
-const notificationSuccess = (message: string) => {
-  showNotification({
-    message: message,
-    color: "gray",
-    icon: <Check />,
-  });
-};
-
-const notificationError = (message: string) => {
-  showNotification({
-    message: message,
-    color: "red",
-    icon: <ExclamationMark />,
-  });
-};
 
 export class notification {
   public static success(message: string) {
-    return showNotification({
+    return notifications.show({
       message: message,
-      color: "gray",
-      icon: <Check />,
+      color: "green",
+      icon: <Check className="w-4 h-4" />,
     });
   }
 
   public static error(message?: string) {
     cleanNotifications();
-    return showNotification({
+    return notifications.show({
       message: message || "An error occured",
       color: "red",
-      icon: <ExclamationMark />,
+      icon: <ExclamationMark className="w-4 h-4" />,
     });
   }
 
   public static loading(message: string) {
-    return showNotification({
+    return notifications.show({
       id: "loading-notification",
       message: message,
       color: "gray",
@@ -51,14 +31,12 @@ export class notification {
   }
 
   public static done(message: string) {
-    return updateNotification({
+    return notifications.update({
       id: "loading-notification",
       message: message,
       color: "gray",
-      icon: <Check />,
+      icon: <Check className="w-4 h-4" />,
       autoClose: 2000,
     });
   }
 }
-
-export { notificationError, notificationSuccess };

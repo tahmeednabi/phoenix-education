@@ -1,4 +1,4 @@
-import { notificationSuccess } from "@common/utils/notification";
+import { notification } from "@common/utils/notification";
 import { FormErrors, useForm, UseFormReturnType } from "@mantine/form";
 import { LooseKeys, UseFormInput } from "@mantine/form/lib/types";
 import { useState } from "react";
@@ -128,7 +128,7 @@ export default function useAsyncForm<T extends { [key: string]: any }>({
     if (res.error) form.setErrors(mapErrors(res.error));
     else {
       form.setErrors({});
-      if (opts?.message) notificationSuccess(opts.message);
+      if (opts?.message) notification.success(opts.message);
     }
     setLoading(false);
     if (opts?.resetInitial) setInitialValues(form.values);
@@ -144,7 +144,7 @@ export default function useAsyncForm<T extends { [key: string]: any }>({
   }
 
   function reset() {
-    form.setValues(_initialValues);
+    form.reset();
   }
 
   function resetInitial() {

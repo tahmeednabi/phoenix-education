@@ -70,6 +70,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Footer } from "@modules/footer/Footer";
 import { Analytics } from "@vercel/analytics/react";
+import { Notifications } from "@mantine/notifications";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [colorScheme] = useState<ColorScheme>("light");
@@ -82,6 +83,7 @@ export default function App({ Component, pageProps }: AppProps) {
         withGlobalStyles
         withNormalizeCSS
       >
+        <Notifications position="top-center" />
         <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
           <PrismicPreview repositoryName={repositoryName}>
             <div className="flex flex-col h-screen">

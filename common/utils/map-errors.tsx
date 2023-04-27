@@ -1,10 +1,10 @@
 import { FormErrors } from "@mantine/form";
 import { HttpExceptionClient } from "./fetch-methods";
-import { notificationError } from "./notification";
+import { notification } from "@common/utils/notification";
 
 export function mapErrors(exception: HttpExceptionClient): FormErrors {
   if (!Array.isArray(exception.errors)) {
-    notificationError(exception.message);
+    notification.error(exception.message);
     return {};
   }
   const error: FormErrors = {};
