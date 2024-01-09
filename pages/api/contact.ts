@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { Mailgun } from "@common/utils/mailgun";
+import { EmailClient } from "@common/utils/emailClient";
 
 export type ContactDto = {
   name: string;
@@ -16,14 +16,14 @@ export default async function handler(
   const body: ContactDto = req.body;
 
   // Auto response email
-  await Mailgun.send({
+  await EmailClient.send({
     template: "contact.autoresponse",
     subject: "Thank you for reaching out",
     to: body.email,
     variables: body,
   });
 
-  const data = await Mailgun.send({
+  const data = await EmailClient.send({
     template: "contact",
     subject: "New message",
     to: "info@phoenixedu.com.au",

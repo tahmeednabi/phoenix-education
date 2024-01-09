@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import dayjs from "dayjs";
 import axios, { AxiosError } from "axios";
 import { HttpExceptionClient } from "@common/utils";
-import { Mailgun } from "@common/utils/mailgun";
+import { EmailClient } from "@common/utils/emailClient";
 
 export type Unavailability = {
   day: string;
@@ -93,16 +93,16 @@ export default async function handler(
     );
 
     // Auto response email
-    await Mailgun.send({
-      template: "enrolment.autoresponse",
-      subject: "Thank you for signing up!",
+    await EmailClient.send({
+      template: "d-07c15dc9f6bc4199b9bef1e187b736ea",
+      subject: "Thank you for enrolling!",
       to: body.guardian.email || body.email,
       variables,
     });
 
     // Email to admin
-    await Mailgun.send({
-      template: "enrolment",
+    await EmailClient.send({
+      template: "d-0ec2855fabe148bf923d0ca4d71e7020",
       subject: `${body.firstName} ${body.lastName} has enrolled`,
       to: "studentregistrations@phoenixedu.com.au",
       variables,
