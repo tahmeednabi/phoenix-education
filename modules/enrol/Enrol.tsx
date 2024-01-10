@@ -52,7 +52,7 @@ export const Enrol: React.FC = () => {
       guardian: object({
         firstName: string().required("First name is required"),
         lastName: string().required("Last name is required"),
-        email: string().required().email("Invalid email"),
+        email: string().email("Invalid email"),
         phoneNumber: string()
           .required("Phone number is required")
           .test("phone-number-test", "Phone number is invalid", (value) =>
