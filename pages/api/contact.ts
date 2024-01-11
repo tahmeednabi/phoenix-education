@@ -17,15 +17,13 @@ export default async function handler(
 
   // Auto response email
   await EmailClient.send({
-    template: "contact.autoresponse",
-    subject: "Thank you for reaching out",
+    template: "d-621e0d68852b46b3a16a44bba1cad3f0",
     to: body.email,
     variables: body,
   });
 
   const data = await EmailClient.send({
-    template: "contact",
-    subject: "New message",
+    template: "d-060f41b78e504d1db4fe4d5aa3afacf1",
     to: "info@phoenixedu.com.au",
     variables: body,
   });

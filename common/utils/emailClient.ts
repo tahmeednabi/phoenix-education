@@ -11,7 +11,7 @@ export class EmailClient {
     variables = {},
   }: {
     template: string;
-    subject: string;
+    subject?: string;
     to: string;
     from?: string;
     variables?: object;
