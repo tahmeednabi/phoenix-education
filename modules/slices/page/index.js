@@ -6,6 +6,7 @@ import Discounts from './Discounts';
 import Hero from './Hero';
 import Pricing from './Pricing';
 import Results from './Results';
+import ResultsList from './ResultsList';
 import Reviews from './Reviews';
 import Timeline from './Timeline';
 import TutorCarousel from './TutorCarousel';
@@ -17,6 +18,7 @@ export {
 	Hero,
 	Pricing,
 	Results,
+	ResultsList,
 	Reviews,
 	Timeline,
 	TutorCarousel,
@@ -29,6 +31,7 @@ export const components = {
 	hero: Hero,
 	pricing: Pricing,
 	results: Results,
+	results_list: ResultsList,
 	reviews: Reviews,
 	timeline: Timeline,
 	tutor_carousel: TutorCarousel,

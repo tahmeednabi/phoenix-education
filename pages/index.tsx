@@ -156,6 +156,18 @@ export const homeGraphQuery = `
             }
           }
           
+          ... on results_list {
+            variation {
+              ... on default {
+                primary {
+                  ...primaryFields
+                }
+                items {
+                  ...itemsFields
+                }
+              }
+            }
+          }
         }
       }
     }

@@ -79,6 +79,9 @@
             },
             "resource": {
               "type": "SharedSlice"
+            },
+            "results_list": {
+              "type": "SharedSlice"
             }
           }
         }

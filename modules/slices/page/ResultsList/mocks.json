@@ -1,0 +1,81 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "Clock"
+            }
+          }
+        ]
+      },
+      "description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Commodo dolore eiusmod adipisicing sint mollit."
+            }
+          }
+        ]
+      },
+      "button_text": {
+        "__TYPE__": "FieldContent",
+        "value": "corner",
+        "type": "Text"
+      },
+      "button_link": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "ExternalLink",
+          "url": "http://google.com"
+        }
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "student_name",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "wherever",
+              "type": "Text"
+            }
+          ],
+          [
+            "school",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "damage",
+              "type": "Text"
+            }
+          ],
+          [
+            "atar",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "85",
+              "type": "Number"
+            }
+          ],
+          [
+            "year",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "season",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

@@ -175,6 +175,18 @@ export const pageGraphQuery = `
             }
           }
           
+          ... on results_list {
+            variation {
+              ... on default {
+                primary {
+                  ...primaryFields
+                }
+                items {
+                  ...itemsFields
+                }
+              }
+            }
+          }
         }
       }
     }

@@ -76,6 +76,11 @@
       "default": {
         "primary": {}
       }
+    },
+    "ResultsList": {
+      "default": {
+        "primary": {}
+      }
     }
   },
   "modules/slices/course": {

@@ -242,7 +242,7 @@ interface HomeDocumentData {
  * Slice for *Home → Slice Zone*
  *
  */
-type HomeDocumentDataSlicesSlice = PricingSlice | ResultsSlice | ContentSlice | HeroSlice | TutorCarouselSlice | ReviewsSlice | ContactSlice;
+type HomeDocumentDataSlicesSlice = PricingSlice | ResultsSlice | ContentSlice | HeroSlice | TutorCarouselSlice | ReviewsSlice | ContactSlice | ResultsListSlice;
 /**
  * Home document from Prismic
  *
@@ -316,7 +316,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSlice | PricingSlice | ContentSlice | ResultsSlice | ReviewsSlice | TutorCarouselSlice | DiscountsSlice | ContactSlice | TimelineSlice | CourseTutorsSlice | ResourceSlice;
+type PageDocumentDataSlicesSlice = HeroSlice | PricingSlice | ContentSlice | ResultsSlice | ReviewsSlice | TutorCarouselSlice | DiscountsSlice | ContactSlice | TimelineSlice | CourseTutorsSlice | ResourceSlice | ResultsListSlice;
 /**
  * Page document from Prismic
  *
@@ -1065,6 +1065,121 @@ type ResultsSliceVariation = ResultsSliceDefault;
  */
 export type ResultsSlice = prismicT.SharedSlice<"results", ResultsSliceVariation>;
 /**
+ * Primary content in ResultsList → Primary
+ *
+ */
+interface ResultsListSliceDefaultPrimary {
+    /**
+     * Title field in *ResultsList → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: results_list.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *ResultsList → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: results_list.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Button Text field in *ResultsList → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: results_list.primary.button_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    button_text: prismicT.KeyTextField;
+    /**
+     * Button Link field in *ResultsList → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: results_list.primary.button_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    button_link: prismicT.LinkField;
+}
+/**
+ * Item in ResultsList → Items
+ *
+ */
+export interface ResultsListSliceDefaultItem {
+    /**
+     * Student Name field in *ResultsList → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: results_list.items[].student_name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    student_name: prismicT.KeyTextField;
+    /**
+     * School field in *ResultsList → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: results_list.items[].school
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    school: prismicT.KeyTextField;
+    /**
+     * ATAR field in *ResultsList → Items*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: results_list.items[].atar
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    atar: prismicT.NumberField;
+    /**
+     * Year field in *ResultsList → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: results_list.items[].year
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    year: prismicT.KeyTextField;
+}
+/**
+ * Default variation for ResultsList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `ResultsList`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ResultsListSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ResultsListSliceDefaultPrimary>, Simplify<ResultsListSliceDefaultItem>>;
+/**
+ * Slice variation for *ResultsList*
+ *
+ */
+type ResultsListSliceVariation = ResultsListSliceDefault;
+/**
+ * ResultsList Shared Slice
+ *
+ * - **API ID**: `results_list`
+ * - **Description**: `ResultsList`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ResultsListSlice = prismicT.SharedSlice<"results_list", ResultsListSliceVariation>;
+/**
  * Primary content in Reviews → Primary
  *
  */
@@ -1517,6 +1632,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { CourseDocumentData, CourseDocumentDataSlicesSlice, CourseDocument, FooterDocumentData, FooterDocument, HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, TutorDocumentData, TutorDocument, YearDocumentData, YearDocumentDataSlicesSlice, YearDocument, AllDocumentTypes, ContactSliceDefaultPrimary, ContactSliceDefault, ContactSliceVariation, ContactSlice, ContentSliceDefaultPrimary, ContentSliceDefaultItem, ContentSliceDefault, ContentSliceVariation, ContentSlice, DiscountsSliceDefaultPrimary, DiscountsSliceDefaultItem, DiscountsSliceDefault, DiscountsSliceVariation, DiscountsSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVideoBackgroundPrimary, HeroSliceVideoBackground, HeroSliceVariation, HeroSlice, PricingSliceDefaultItem, PricingSliceDefault, PricingSliceVariation, PricingSlice, ResultsSliceDefaultPrimary, ResultsSliceDefaultItem, ResultsSliceDefault, ResultsSliceVariation, ResultsSlice, ReviewsSliceDefaultPrimary, ReviewsSliceDefaultItem, ReviewsSliceDefault, ReviewsSliceVariation, ReviewsSlice, TimelineSliceDefaultPrimary, TimelineSliceDefaultItem, TimelineSliceDefault, TimelineSliceVariation, TimelineSlice, TutorCarouselSliceDefaultPrimary, TutorCarouselSliceDefaultItem, TutorCarouselSliceDefault, TutorCarouselSliceVariation, TutorCarouselSlice, CourseClassesSliceDefaultPrimary, CourseClassesSliceDefault, CourseClassesSliceVariation, CourseClassesSlice, CourseTutorsSliceDefaultPrimary, CourseTutorsSliceDefaultItem, CourseTutorsSliceDefault, CourseTutorsSliceVariation, CourseTutorsSlice, ResourceSliceDefaultPrimary, ResourceSliceDefault, ResourceSliceVariation, ResourceSlice };
+        export type { CourseDocumentData, CourseDocumentDataSlicesSlice, CourseDocument, FooterDocumentData, FooterDocument, HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, TutorDocumentData, TutorDocument, YearDocumentData, YearDocumentDataSlicesSlice, YearDocument, AllDocumentTypes, ContactSliceDefaultPrimary, ContactSliceDefault, ContactSliceVariation, ContactSlice, ContentSliceDefaultPrimary, ContentSliceDefaultItem, ContentSliceDefault, ContentSliceVariation, ContentSlice, DiscountsSliceDefaultPrimary, DiscountsSliceDefaultItem, DiscountsSliceDefault, DiscountsSliceVariation, DiscountsSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVideoBackgroundPrimary, HeroSliceVideoBackground, HeroSliceVariation, HeroSlice, PricingSliceDefaultItem, PricingSliceDefault, PricingSliceVariation, PricingSlice, ResultsSliceDefaultPrimary, ResultsSliceDefaultItem, ResultsSliceDefault, ResultsSliceVariation, ResultsSlice, ResultsListSliceDefaultPrimary, ResultsListSliceDefaultItem, ResultsListSliceDefault, ResultsListSliceVariation, ResultsListSlice, ReviewsSliceDefaultPrimary, ReviewsSliceDefaultItem, ReviewsSliceDefault, ReviewsSliceVariation, ReviewsSlice, TimelineSliceDefaultPrimary, TimelineSliceDefaultItem, TimelineSliceDefault, TimelineSliceVariation, TimelineSlice, TutorCarouselSliceDefaultPrimary, TutorCarouselSliceDefaultItem, TutorCarouselSliceDefault, TutorCarouselSliceVariation, TutorCarouselSlice, CourseClassesSliceDefaultPrimary, CourseClassesSliceDefault, CourseClassesSliceVariation, CourseClassesSlice, CourseTutorsSliceDefaultPrimary, CourseTutorsSliceDefaultItem, CourseTutorsSliceDefault, CourseTutorsSliceVariation, CourseTutorsSlice, ResourceSliceDefaultPrimary, ResourceSliceDefault, ResourceSliceVariation, ResourceSlice };
     }
 }

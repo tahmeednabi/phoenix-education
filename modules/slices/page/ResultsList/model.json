@@ -1,0 +1,80 @@
+{
+  "id": "results_list",
+  "type": "SharedSlice",
+  "name": "ResultsList",
+  "description": "ResultsList",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "ResultsList",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "This is where it all begins...",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2,heading3"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph",
+            "label": "Description",
+            "placeholder": "A nice description of your feature"
+          }
+        },
+        "button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button Text",
+            "placeholder": ""
+          }
+        },
+        "button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button Link",
+            "placeholder": "",
+            "select": null
+          }
+        }
+      },
+      "items": {
+        "student_name": {
+          "type": "Text",
+          "config": {
+            "label": "Student Name",
+            "placeholder": ""
+          }
+        },
+        "school": {
+          "type": "Text",
+          "config": {
+            "label": "School",
+            "placeholder": ""
+          }
+        },
+        "atar": {
+          "type": "Number",
+          "config": {
+            "label": "ATAR",
+            "placeholder": ""
+          }
+        },
+        "year": {
+          "type": "Text",
+          "config": {
+            "label": "Year",
+            "placeholder": ""
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}
