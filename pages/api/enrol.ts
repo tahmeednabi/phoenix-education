@@ -92,13 +92,15 @@ export default async function handler(
       })
     );
 
-    // Auto response email
-    await EmailClient.send({
-      template: "d-07c15dc9f6bc4199b9bef1e187b736ea",
-      subject: "Thank you for enrolling!",
-      to: body.guardian.email || body.email,
-      variables,
-    });
+    if (body.guardian.email || body.email) {
+      // Auto response email
+      await EmailClient.send({
+        template: "d-07c15dc9f6bc4199b9bef1e187b736ea",
+        subject: "Thank you for enrolling!",
+        to: body.guardian.email || body.email,
+        variables,
+      });
+    }
 
     // Email to admin
     await EmailClient.send({
