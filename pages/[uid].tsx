@@ -7,16 +7,19 @@ import { SliceZone } from "@prismicio/react";
 import { components } from "modules/slices";
 import { getFooterProps } from "@modules/footer/Footer";
 import { NextSeo } from "next-seo";
+import { JsonLd, createWebPageLd, organizationLd } from "@components/JsonLd";
 
 export default function Page({ page }: { page?: PageDocument }) {
   return (
     <div>
       <NextSeo
-        title={(page?.data.title || "") + " | Phoenix Education"}
+        title={page?.data.title || ""}
         description={page?.data.description || ""}
+        canonical={`https://www.phoenixedu.com.au/${page?.uid}`}
         openGraph={{
-          title: (page?.data.title || "") + " | Phoenix Education",
+          title: page?.data.title || "",
           description: page?.data.description || "",
+          url: `https://www.phoenixedu.com.au/${page?.uid}`,
           images: [
             {
               url: `/api/og?title=${encodeURIComponent(
@@ -28,9 +31,25 @@ export default function Page({ page }: { page?: PageDocument }) {
               type: "image/jpeg",
             },
           ],
-          siteName: "Phoenix Education",
         }}
+        additionalMetaTags={[
+          {
+            name: "keywords",
+            content: `${
+              page?.data.title
+            }, Phoenix Education, tutoring, education, ${
+              page?.data.description?.substring(0, 50) || ""
+            }`,
+          },
+        ]}
       />
+
+      {page && (
+        <>
+          <JsonLd data={createWebPageLd(page)} />
+          <JsonLd data={organizationLd} />
+        </>
+      )}
 
       <SliceZone slices={page?.data.slices} components={components} />
     </div>

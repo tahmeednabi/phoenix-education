@@ -8,6 +8,7 @@ import { predicate } from "@prismicio/client";
 import { getFooterProps } from "@modules/footer/Footer";
 import { courseSlicesGraphQuery } from "../courses/[uid]";
 import { NextSeo } from "next-seo";
+import { JsonLd, createWebPageLd, organizationLd } from "@components/JsonLd";
 
 export default function Page({
   year,
@@ -22,8 +23,17 @@ export default function Page({
     <div>
       <NextSeo
         title={`${year.data.name || ""} Tutoring | Phoenix Education`}
-        description={`Check out our ${year.data.name} courses.`}
+        description={`Check out the courses for ${
+          year.data.name || ""
+        } at Phoenix Education. Our experienced tutors help students achieve their academic goals with personalized instruction and proven teaching methods.`}
+        canonical={`https://www.phoenixedu.com.au/years/${year.uid}`}
         openGraph={{
+          title: `${year.data.name || ""} Tutoring | Phoenix Education`,
+          description: `Expert ${
+            year.data.name || ""
+          } tutoring at Phoenix Education. Our experienced tutors help students achieve their academic goals with personalized instruction and proven teaching methods.`,
+          url: `https://www.phoenixedu.com.au/years/${year.uid}`,
+          type: "website",
           images: [
             {
               url: `/api/og?title=${encodeURIComponent(
@@ -35,9 +45,28 @@ export default function Page({
               type: "image/jpeg",
             },
           ],
-          siteName: "Phoenix Education",
         }}
+        additionalMetaTags={[
+          {
+            name: "keywords",
+            content: `${year.data.name} tutoring, ${year.data.name} courses, Phoenix Education, education, academic support, tutoring services, Australia`,
+          },
+        ]}
       />
+
+      <JsonLd
+        data={createWebPageLd({
+          uid: year.uid,
+          data: {
+            title: `${year.data.name || ""} Tutoring`,
+            description: `Expert ${
+              year.data.name || ""
+            } tutoring at Phoenix Education.`,
+          },
+        })}
+      />
+      <JsonLd data={organizationLd} />
+
       <CoursePicker year={year} years={years} courses={courses} />
       <SliceZone slices={year.data.slices} components={components} />
     </div>

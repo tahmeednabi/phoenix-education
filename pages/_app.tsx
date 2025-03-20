@@ -13,6 +13,9 @@ import duration from "dayjs/plugin/duration";
 dayjs.extend(LocalizedFormat);
 dayjs.extend(duration);
 import localFont from "@next/font/local";
+import { DefaultSeo } from "next-seo";
+import SEO from "../next-seo.config";
+
 const inter = localFont({
   src: [
     {
@@ -77,6 +80,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <main className={`${inter.variable} font-sans -mb-8`}>
+      <DefaultSeo {...SEO} />
       <Analytics />
       <MantineProvider
         theme={getMantineTheme({ colorScheme })}

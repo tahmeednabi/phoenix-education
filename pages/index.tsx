@@ -6,6 +6,7 @@ import { GetStaticPropsContext } from "next";
 import { HomeDocument } from "@slicemachine/prismicio";
 import { getFooterProps, FooterProps } from "@modules/footer/Footer";
 import { NextSeo } from "next-seo";
+import { JsonLd, organizationLd } from "@components/JsonLd";
 
 export default function Page({
   page,
@@ -18,9 +19,12 @@ export default function Page({
       <NextSeo
         title={page.data.title || "Phoenix Education"}
         description={page.data.description || ""}
+        canonical="https://www.phoenixedu.com.au"
         openGraph={{
           title: page.data.title || "",
           description: page.data.description || "",
+          url: "https://www.phoenixedu.com.au",
+          type: "website",
           images: [
             {
               url: "/home-og.jpg",
@@ -30,9 +34,17 @@ export default function Page({
               type: "image/jpeg",
             },
           ],
-          siteName: "Phoenix Education",
         }}
+        additionalMetaTags={[
+          {
+            name: "keywords",
+            content:
+              "Phoenix Education, tutoring, education, courses, learning, academic, school, university, HSC, VCE, QCE, ATAR, Australia",
+          },
+        ]}
       />
+
+      <JsonLd data={organizationLd} />
 
       <SliceZone slices={page.data.slices} components={components} />
     </div>

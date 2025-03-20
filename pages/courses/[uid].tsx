@@ -8,6 +8,7 @@ import { predicate } from "@prismicio/client";
 import { getFooterProps } from "@modules/footer/Footer";
 import { NextSeo } from "next-seo";
 import { formatter } from "@common/utils";
+import { JsonLd, createCourseLd, organizationLd } from "@components/JsonLd";
 
 export default function Page({
   course,
@@ -27,7 +28,13 @@ export default function Page({
         description={`Now enrolling at ${formatter.price(
           course.data.price_per_term || 500
         )} per term. Read more about ${course.data.subject_name}`}
+        canonical={`https://www.phoenixedu.com.au/courses/${course.uid}`}
         openGraph={{
+          title: `${course.data.title || ""} | Phoenix Education`,
+          description: `Now enrolling at ${formatter.price(
+            course.data.price_per_term || 500
+          )} per term. Read more about ${course.data.subject_name}`,
+          url: `https://www.phoenixedu.com.au/courses/${course.uid}`,
           images: [
             {
               url: `/api/og?title=${encodeURIComponent(
@@ -39,9 +46,22 @@ export default function Page({
               type: "image/jpeg",
             },
           ],
-          siteName: "Phoenix Education",
+          type: "product",
         }}
+        additionalMetaTags={[
+          {
+            name: "keywords",
+            content: `${course.data.title}, ${
+              course.data.subject_name
+            }, Phoenix Education, tutoring, education, course, ${
+              year.data.name || ""
+            }`,
+          },
+        ]}
       />
+
+      <JsonLd data={createCourseLd(course)} />
+      <JsonLd data={organizationLd} />
 
       <CoursePicker
         years={years}

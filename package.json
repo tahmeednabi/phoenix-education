@@ -8,7 +8,9 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint --fix && (tsc -p tsconfig.lint.json --noEmit)",
-    "slicemachine": "start-slicemachine"
+    "slicemachine": "start-slicemachine",
+    "check-links": "node scripts/check-links.js",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
