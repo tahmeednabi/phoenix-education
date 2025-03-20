@@ -8,6 +8,7 @@ import Pricing from './Pricing';
 import Results from './Results';
 import ResultsList from './ResultsList';
 import Reviews from './Reviews';
+import RichTextContent from './RichTextContent';
 import Timeline from './Timeline';
 import TutorCarousel from './TutorCarousel';
 
@@ -20,6 +21,7 @@ export {
 	Results,
 	ResultsList,
 	Reviews,
+	RichTextContent,
 	Timeline,
 	TutorCarousel,
 };
@@ -33,6 +35,7 @@ export const components = {
 	results: Results,
 	results_list: ResultsList,
 	reviews: Reviews,
+	rich_text_content: RichTextContent,
 	timeline: Timeline,
 	tutor_carousel: TutorCarousel,
 };

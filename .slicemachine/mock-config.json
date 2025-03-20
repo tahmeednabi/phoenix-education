@@ -29,7 +29,8 @@
     "tutor": {},
     "course": {},
     "footer": {},
-    "year": {}
+    "year": {},
+    "blog": {}
   },
   "modules/slices/page": {
     "Hero": {
@@ -80,6 +81,12 @@
     "ResultsList": {
       "default": {
         "primary": {}
+      }
+    },
+    "RichTextContent": {
+      "default": {
+        "primary": {},
+        "items": {}
       }
     }
   },

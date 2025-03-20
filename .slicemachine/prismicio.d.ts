@@ -6,6 +6,186 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for Blog documents */
+interface BlogDocumentData {
+    /**
+     * Title field in *Blog*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Featured Image field in *Blog*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.featured_image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    featured_image: prismicT.ImageField<never>;
+    /**
+     * Author field in *Blog*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.author[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    author: prismicT.GroupField<Simplify<BlogDocumentDataAuthorItem>>;
+    /**
+     * Slice Zone field in *Blog*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<BlogDocumentDataSlicesSlice>;
+    /**
+     * SEO Title field in *Blog*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.seo_title
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    seo_title: prismicT.KeyTextField;
+    /**
+     * SEO Description field in *Blog*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.seo_description
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    seo_description: prismicT.KeyTextField;
+    /**
+     * SEO Keywords field in *Blog*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.seo_keywords
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    seo_keywords: prismicT.KeyTextField;
+    /**
+     * Canonical URL field in *Blog*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.canonical_url
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    canonical_url: prismicT.LinkField;
+    /**
+     * Word Count field in *Blog*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.word_count
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    word_count: prismicT.NumberField;
+    /**
+     * Reading Time field in *Blog*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.reading_time
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    reading_time: prismicT.NumberField;
+    /**
+     * Slice Zone field in *Blog*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.slices1[]
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices1: prismicT.SliceZone<BlogDocumentDataSlices1Slice>;
+}
+/**
+ * Item in Blog → Author
+ *
+ */
+export interface BlogDocumentDataAuthorItem {
+    /**
+     * Name field in *Blog → Author*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.author[].name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * Role field in *Blog → Author*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.author[].role
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    role: prismicT.KeyTextField;
+    /**
+     * Image field in *Blog → Author*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blog.author[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Slice for *Blog → Slice Zone*
+ *
+ */
+type BlogDocumentDataSlicesSlice = RichTextContentSlice;
+/**
+ * Slice for *Blog → Slice Zone*
+ *
+ */
+type BlogDocumentDataSlices1Slice = RichTextContentSlice;
+/**
+ * Blog document from Prismic
+ *
+ * - **API ID**: `blog`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<BlogDocumentData>, "blog", Lang>;
 /** Content for Course documents */
 interface CourseDocumentData {
     /**
@@ -424,7 +604,7 @@ type YearDocumentDataSlicesSlice = ContentSlice | ContactSlice | ReviewsSlice | 
  * @typeParam Lang - Language API ID of the document.
  */
 export type YearDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<YearDocumentData>, "year", Lang>;
-export type AllDocumentTypes = CourseDocument | FooterDocument | HomeDocument | PageDocument | TutorDocument | YearDocument;
+export type AllDocumentTypes = BlogDocument | CourseDocument | FooterDocument | HomeDocument | PageDocument | TutorDocument | YearDocument;
 /**
  * Primary content in Contact → Primary
  *
@@ -1275,6 +1455,45 @@ type ReviewsSliceVariation = ReviewsSliceDefault;
  */
 export type ReviewsSlice = prismicT.SharedSlice<"reviews", ReviewsSliceVariation>;
 /**
+ * Item in RichTextContent → Items
+ *
+ */
+export interface RichTextContentSliceDefaultItem {
+    /**
+     * Text field in *RichTextContent → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: rich_text_content.items[].text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    text: prismicT.RichTextField;
+}
+/**
+ * Default variation for RichTextContent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `RichTextContent`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type RichTextContentSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<RichTextContentSliceDefaultItem>>;
+/**
+ * Slice variation for *RichTextContent*
+ *
+ */
+type RichTextContentSliceVariation = RichTextContentSliceDefault;
+/**
+ * RichTextContent Shared Slice
+ *
+ * - **API ID**: `rich_text_content`
+ * - **Description**: `RichTextContent`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type RichTextContentSlice = prismicT.SharedSlice<"rich_text_content", RichTextContentSliceVariation>;
+/**
  * Primary content in Timeline → Primary
  *
  */
@@ -1632,6 +1851,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { CourseDocumentData, CourseDocumentDataSlicesSlice, CourseDocument, FooterDocumentData, FooterDocument, HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, TutorDocumentData, TutorDocument, YearDocumentData, YearDocumentDataSlicesSlice, YearDocument, AllDocumentTypes, ContactSliceDefaultPrimary, ContactSliceDefault, ContactSliceVariation, ContactSlice, ContentSliceDefaultPrimary, ContentSliceDefaultItem, ContentSliceDefault, ContentSliceVariation, ContentSlice, DiscountsSliceDefaultPrimary, DiscountsSliceDefaultItem, DiscountsSliceDefault, DiscountsSliceVariation, DiscountsSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVideoBackgroundPrimary, HeroSliceVideoBackground, HeroSliceVariation, HeroSlice, PricingSliceDefaultItem, PricingSliceDefault, PricingSliceVariation, PricingSlice, ResultsSliceDefaultPrimary, ResultsSliceDefaultItem, ResultsSliceDefault, ResultsSliceVariation, ResultsSlice, ResultsListSliceDefaultPrimary, ResultsListSliceDefaultItem, ResultsListSliceDefault, ResultsListSliceVariation, ResultsListSlice, ReviewsSliceDefaultPrimary, ReviewsSliceDefaultItem, ReviewsSliceDefault, ReviewsSliceVariation, ReviewsSlice, TimelineSliceDefaultPrimary, TimelineSliceDefaultItem, TimelineSliceDefault, TimelineSliceVariation, TimelineSlice, TutorCarouselSliceDefaultPrimary, TutorCarouselSliceDefaultItem, TutorCarouselSliceDefault, TutorCarouselSliceVariation, TutorCarouselSlice, CourseClassesSliceDefaultPrimary, CourseClassesSliceDefault, CourseClassesSliceVariation, CourseClassesSlice, CourseTutorsSliceDefaultPrimary, CourseTutorsSliceDefaultItem, CourseTutorsSliceDefault, CourseTutorsSliceVariation, CourseTutorsSlice, ResourceSliceDefaultPrimary, ResourceSliceDefault, ResourceSliceVariation, ResourceSlice };
+        export type { BlogDocumentData, BlogDocumentDataAuthorItem, BlogDocumentDataSlicesSlice, BlogDocumentDataSlices1Slice, BlogDocument, CourseDocumentData, CourseDocumentDataSlicesSlice, CourseDocument, FooterDocumentData, FooterDocument, HomeDocumentData, HomeDocumentDataSlicesSlice, HomeDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, TutorDocumentData, TutorDocument, YearDocumentData, YearDocumentDataSlicesSlice, YearDocument, AllDocumentTypes, ContactSliceDefaultPrimary, ContactSliceDefault, ContactSliceVariation, ContactSlice, ContentSliceDefaultPrimary, ContentSliceDefaultItem, ContentSliceDefault, ContentSliceVariation, ContentSlice, DiscountsSliceDefaultPrimary, DiscountsSliceDefaultItem, DiscountsSliceDefault, DiscountsSliceVariation, DiscountsSlice, HeroSliceDefaultPrimary, HeroSliceDefault, HeroSliceVideoBackgroundPrimary, HeroSliceVideoBackground, HeroSliceVariation, HeroSlice, PricingSliceDefaultItem, PricingSliceDefault, PricingSliceVariation, PricingSlice, ResultsSliceDefaultPrimary, ResultsSliceDefaultItem, ResultsSliceDefault, ResultsSliceVariation, ResultsSlice, ResultsListSliceDefaultPrimary, ResultsListSliceDefaultItem, ResultsListSliceDefault, ResultsListSliceVariation, ResultsListSlice, ReviewsSliceDefaultPrimary, ReviewsSliceDefaultItem, ReviewsSliceDefault, ReviewsSliceVariation, ReviewsSlice, RichTextContentSliceDefaultItem, RichTextContentSliceDefault, RichTextContentSliceVariation, RichTextContentSlice, TimelineSliceDefaultPrimary, TimelineSliceDefaultItem, TimelineSliceDefault, TimelineSliceVariation, TimelineSlice, TutorCarouselSliceDefaultPrimary, TutorCarouselSliceDefaultItem, TutorCarouselSliceDefault, TutorCarouselSliceVariation, TutorCarouselSlice, CourseClassesSliceDefaultPrimary, CourseClassesSliceDefault, CourseClassesSliceVariation, CourseClassesSlice, CourseTutorsSliceDefaultPrimary, CourseTutorsSliceDefaultItem, CourseTutorsSliceDefault, CourseTutorsSliceVariation, CourseTutorsSlice, ResourceSliceDefaultPrimary, ResourceSliceDefault, ResourceSliceVariation, ResourceSlice };
     }
 }

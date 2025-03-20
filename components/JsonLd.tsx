@@ -96,3 +96,37 @@ export const createFaqLd = (faqs: { question: string; answer: string }[]) => {
     })),
   };
 };
+
+/**
+ * Creates BlogPosting structured data
+ */
+export const createBlogPostLd = (blog: any) => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: blog.data?.title || "",
+    image: blog.data?.featured_image?.url || "",
+    datePublished: blog.first_publication_date,
+    dateModified: blog.last_publication_date,
+    author: {
+      "@type": "Person",
+      name: blog.data?.author?.[0]?.name || "",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Phoenix Education",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.phoenixedu.com.au/logo.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.phoenixedu.com.au/blog/${blog.uid}`,
+    },
+    wordCount: blog.data?.word_count || 0,
+    ...(blog.data?.reading_time && {
+      timeRequired: `PT${blog.data.reading_time}M`,
+    }),
+  };
+};
