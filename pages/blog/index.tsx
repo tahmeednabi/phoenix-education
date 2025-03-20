@@ -59,8 +59,8 @@ export default function BlogIndex({ blogs }: { blogs: any[] }) {
       />
       <JsonLd data={organizationLd} />
 
-      <header className="mb-12 text-center">
-        <h1 className="text-4xl font-bold mb-4">Phoenix Education Blog</h1>
+      <header className="mt-36 mb-12 text-center">
+        <h1 className="text-4xl font-bold mb-4">Our Blogs</h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Articles, tips, and insights from our expert tutors and educators
         </p>
@@ -92,7 +92,7 @@ export default function BlogIndex({ blogs }: { blogs: any[] }) {
               )}
 
               <div className="p-6 flex-grow flex flex-col">
-                <h2 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                <h2 className="text-xl font-bold mb-2 group-hover:text-red-600 transition-colors duration-300">
                   {blog.data.title}
                 </h2>
 
