@@ -66,13 +66,40 @@ export const Enrol: React.FC = () => {
     setActive((active) => (active === 0 ? 0 : active - 1));
   };
 
+  // Google Ads conversion tracking function
+  const gtag_report_conversion = useCallback((url?: string) => {
+    // @ts-ignore - gtag is added via script in _document.tsx
+    const gtag = window.gtag;
+    if (typeof gtag !== "function") return false;
+
+    const callback = function () {
+      if (typeof url !== "undefined") {
+        window.location.href = url;
+      }
+    };
+
+    gtag("event", "conversion", {
+      send_to: "AW-11533006224/hFM7CNyTwLYaEJDrrvsq",
+      value: 50.0,
+      currency: "AUD",
+      event_callback: callback,
+    });
+
+    return false;
+  }, []);
+
   const handleSubmit = async () => {
     setSubmitted(true);
     const { error } = await form.sendForm((values) =>
       usePost("/api/enrol", values)
     );
 
-    if (error) setError(error.message);
+    if (error) {
+      setError(error.message);
+    } else {
+      // Trigger conversion tracking on successful form submission
+      gtag_report_conversion();
+    }
   };
 
   const handleNext = useCallback(async () => {
