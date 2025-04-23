@@ -66,7 +66,6 @@ export const Enrol: React.FC = () => {
     setActive((active) => (active === 0 ? 0 : active - 1));
   };
 
-  // Google Ads conversion tracking function
   const gtag_report_conversion = useCallback((url?: string) => {
     // @ts-ignore - gtag is added via script in _document.tsx
     const gtag = window.gtag;
@@ -79,9 +78,7 @@ export const Enrol: React.FC = () => {
     };
 
     gtag("event", "conversion", {
-      send_to: "AW-11533006224/hFM7CNyTwLYaEJDrrvsq",
-      value: 50.0,
-      currency: "AUD",
+      send_to: "AW-11533006224/4uP5CKTOm7waEJDrrvsq",
       event_callback: callback,
     });
 
