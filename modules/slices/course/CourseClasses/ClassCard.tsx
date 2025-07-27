@@ -2,7 +2,7 @@ import { Badge, Card } from "@mantine/core";
 import React from "react";
 import { DAYS } from "@common/constants";
 import dayjs from "dayjs";
-import {Class} from "@common/utils/types";
+import { Class } from "@common/utils/types";
 
 interface ClassCardProps {
   cls: Class;
@@ -40,9 +40,11 @@ export const ClassCard: React.FC<ClassCardProps> = ({ cls }) => {
           <p className="w-16 text-slate-500 font-normal">Price</p>
           <p>
             $
-            {(cls.subject.price * ((cls.timeEnd - cls.timeStart) / 60)).toFixed(
-              0
-            )}
+            {(
+              cls.subject.price *
+              ((cls.timeEnd - cls.timeStart) / 60) *
+              1.1
+            ).toFixed(0)}
             /lesson
           </p>
         </div>

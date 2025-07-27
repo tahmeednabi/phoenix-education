@@ -64,9 +64,12 @@ const Pricing = ({ slice }: SliceComponentProps<PricingSlice>) => {
                               course.data.color || theme.colors["slate"][6],
                           }}
                         >
-                          {formatter.price(course.data.price_per_term || 0, {
-                            maximumFractionDigits: 0,
-                          })}
+                          {formatter.price(
+                            (course.data.price_per_term || 0) * 1.1,
+                            {
+                              maximumFractionDigits: 0,
+                            }
+                          )}
                           <span className="text-sm"> per term</span>
                         </h5>
                       </Card>

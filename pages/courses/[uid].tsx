@@ -26,13 +26,13 @@ export default function Page({
       <NextSeo
         title={`${course.data.title || ""} | Phoenix Education`}
         description={`Now enrolling at ${formatter.price(
-          course.data.price_per_term || 500
+          (course.data.price_per_term || 500) * 1.1
         )} per term. Read more about ${course.data.subject_name}`}
         canonical={`https://www.phoenixedu.com.au/courses/${course.uid}`}
         openGraph={{
           title: `${course.data.title || ""} | Phoenix Education`,
           description: `Now enrolling at ${formatter.price(
-            course.data.price_per_term || 500
+            (course.data.price_per_term || 500) * 1.1
           )} per term. Read more about ${course.data.subject_name}`,
           url: `https://www.phoenixedu.com.au/courses/${course.uid}`,
           images: [

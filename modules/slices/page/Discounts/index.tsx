@@ -38,14 +38,14 @@ const Discounts = ({ slice }: SliceComponentProps<DiscountsSlice>) => (
                     radius="sm"
                     size="xl"
                   >
-                    {formatter.price(item.pricing || 0, {
+                    {formatter.price((item.pricing || 0) * 1.1, {
                       notation: "standard",
                     })}
                   </Badge>
 
                   <p className="absolute font-medium top-8 text-xs ml-4 mt-1 text-gray-500">
                     Saving{" "}
-                    {formatter.price(item.savings || 0, {
+                    {formatter.price((item.savings || 0) * 1.1, {
                       currencyDisplay: "narrowSymbol",
                     })}
                   </p>
